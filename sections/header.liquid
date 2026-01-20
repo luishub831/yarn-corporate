@@ -121,8 +121,30 @@
                   --gsc-space-between-cards: {{ desktop_space_between_cards }}rem;
               }
           }
+        {% when 'menu-4' %}
+          .block-{{block.id}}{
+              --gsc-columns: 1;
+          }
+
+          @media {% render 'media-queries', screen: 'md' %} {
+              .block-{{block.id}} {
+                  --gsc-columns: 6;
+              }
+          }
       {% endcase %}
     {% endfor %}
+
+    .mega-menu__inner-container--centered {
+      display: flex !important;
+      justify-content: center !important;
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+
+    .mega-menu__inner-container--centered > * {
+      width: auto !important;
+      max-width: fit-content !important;
+    }
   {% endstyle %}
 {%- endcapture -%}
 
@@ -299,9 +321,22 @@
                   <div class='header__dropdown-menu {% if has_menu == true %} header__dropdown-menu--with-mega-menu{% endif %}'>
                     {%- if has_menu == true -%}
                       <div class='mega-menu'>
-                        <div class='mega-menu__outer-container container container--{{ container_size }}'>
-                          <div class='mega-menu__inner-container '>
-                            {%- if link != blank and link.links.size > 0 -%}
+                        {%- liquid
+                          assign is_menu_4 = false
+                          for block in section.blocks
+                            assign mega_nav_item_name_downcase = block.settings.mega_nav_item_name | downcase
+
+                            if mega_nav_item_name_downcase == link_title_downcase
+                              if block.type == 'menu-4'
+                                assign is_menu_4 = true
+                              endif
+                              break
+                            endif
+                          endfor
+                        -%}
+                        <div class='mega-menu__outer-container {% unless is_menu_4 %}container container--{{ container_size }}{% endunless %}'>
+                          <div class='mega-menu__inner-container {% if is_menu_4 %}mega-menu__inner-container--centered{% endif %}'>
+                            {%- if link != blank and link.links.size > 0 and is_menu_4 == false -%}
                               <div class='mega-menu__nav'>
                                 <div class='mega-menu__list'>
                                   {%- for childlink in link.links -%}
@@ -377,6 +412,9 @@
                                       break
                                     when 'menu-3'
                                       render 'header-menu-3', block: block
+                                      break
+                                    when 'menu-4'
+                                      render 'header-menu-4', block: block
                                       break
                                   endcase
                                 endif
@@ -1786,6 +1824,207 @@
           "default": 3,
           "unit": "t:sections.header.collection_list_block_autoplay_interval_unit",
           "label": "t:sections.header.collection_list_block_autoplay_interval_label"
+        }
+      ]
+    },
+    {
+      "type": "menu-4",
+      "name": "Solutions Mega Menu",
+      "settings": [
+        {
+          "type": "text",
+          "id": "mega_nav_item_name",
+          "default": "Solutions",
+          "label": "Link to menu item",
+          "info": "Enter the menu item name to link this mega menu (e.g., Solutions)"
+        },
+        {
+          "type": "header",
+          "content": "Item 1"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_item_1",
+          "default": true,
+          "label": "Show Item 1"
+        },
+        {
+          "type": "image_picker",
+          "id": "item_1_img",
+          "label": "Image 1"
+        },
+        {
+          "type": "text",
+          "id": "item_1_title",
+          "label": "Title 1",
+          "default": "Discover What We Do"
+        },
+        {
+          "type": "text",
+          "id": "item_1_subtitle",
+          "label": "Subtitle 1"
+        },
+        {
+          "type": "url",
+          "id": "item_1_link",
+          "label": "Link 1"
+        },
+        {
+          "type": "header",
+          "content": "Item 2"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_item_2",
+          "default": true,
+          "label": "Show Item 2"
+        },
+        {
+          "type": "image_picker",
+          "id": "item_2_img",
+          "label": "Image 2"
+        },
+        {
+          "type": "text",
+          "id": "item_2_title",
+          "label": "Title 2",
+          "default": "Uniforms"
+        },
+        {
+          "type": "text",
+          "id": "item_2_subtitle",
+          "label": "Subtitle 2",
+          "default": "5-8 weeks"
+        },
+        {
+          "type": "url",
+          "id": "item_2_link",
+          "label": "Link 2"
+        },
+        {
+          "type": "header",
+          "content": "Item 3"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_item_3",
+          "default": true,
+          "label": "Show Item 3"
+        },
+        {
+          "type": "image_picker",
+          "id": "item_3_img",
+          "label": "Image 3"
+        },
+        {
+          "type": "text",
+          "id": "item_3_title",
+          "label": "Title 3",
+          "default": "Express Merch"
+        },
+        {
+          "type": "text",
+          "id": "item_3_subtitle",
+          "label": "Subtitle 3",
+          "default": "5-10 days"
+        },
+        {
+          "type": "url",
+          "id": "item_3_link",
+          "label": "Link 3"
+        },
+        {
+          "type": "header",
+          "content": "Item 4"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_item_4",
+          "default": true,
+          "label": "Show Item 4"
+        },
+        {
+          "type": "image_picker",
+          "id": "item_4_img",
+          "label": "Image 4"
+        },
+        {
+          "type": "text",
+          "id": "item_4_title",
+          "label": "Title 4",
+          "default": "Corporate Gifting"
+        },
+        {
+          "type": "text",
+          "id": "item_4_subtitle",
+          "label": "Subtitle 4"
+        },
+        {
+          "type": "url",
+          "id": "item_4_link",
+          "label": "Link 4"
+        },
+        {
+          "type": "header",
+          "content": "Item 5"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_item_5",
+          "default": true,
+          "label": "Show Item 5"
+        },
+        {
+          "type": "image_picker",
+          "id": "item_5_img",
+          "label": "Image 5"
+        },
+        {
+          "type": "text",
+          "id": "item_5_title",
+          "label": "Title 5",
+          "default": "RAP Merchandise"
+        },
+        {
+          "type": "text",
+          "id": "item_5_subtitle",
+          "label": "Subtitle 5"
+        },
+        {
+          "type": "url",
+          "id": "item_5_link",
+          "label": "Link 5"
+        },
+        {
+          "type": "header",
+          "content": "Item 6"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_item_6",
+          "default": true,
+          "label": "Show Item 6"
+        },
+        {
+          "type": "image_picker",
+          "id": "item_6_img",
+          "label": "Image 6"
+        },
+        {
+          "type": "text",
+          "id": "item_6_title",
+          "label": "Title 6",
+          "default": "Custom Artworks"
+        },
+        {
+          "type": "text",
+          "id": "item_6_subtitle",
+          "label": "Subtitle 6"
+        },
+        {
+          "type": "url",
+          "id": "item_6_link",
+          "label": "Link 6"
         }
       ]
     }

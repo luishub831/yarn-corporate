@@ -32,6 +32,7 @@
     {% render 'css-variables' %}
     {{ 'index.js' | asset_url | preload_tag: as: 'script' }}
     {{ 'index.css' | asset_url | stylesheet_tag: preload: true }}
+    {{ 'custom.css' | asset_url | stylesheet_tag }}
     {% render 'fonts' %}
     {{ content_for_header }}
    <script src="{{ 'jquery.min.js' | asset_url }}"></script>

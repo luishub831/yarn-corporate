@@ -1,0 +1,102 @@
+{%- comment -%}
+  Custom Mega Menu Block (menu-4) for Solutions
+  Allows image, title, and subtitle for each item (up to 6)
+{%- endcomment -%}
+
+<div class="solutions-mega-menu">
+  {%- for i in (1..6) -%}
+    {%- assign show_key = "show_item_" | append: i -%}
+    {%- assign show = block.settings[show_key] -%}
+    {%- if show -%}
+      {%- assign img_key = "item_" | append: i | append: "_img" -%}
+      {%- assign title_key = "item_" | append: i | append: "_title" -%}
+      {%- assign subtitle_key = "item_" | append: i | append: "_subtitle" -%}
+      {%- assign link_key = "item_" | append: i | append: "_link" -%}
+      {%- assign img = block.settings[img_key] -%}
+      {%- assign title = block.settings[title_key] -%}
+      {%- assign subtitle = block.settings[subtitle_key] -%}
+      {%- assign link = block.settings[link_key] -%}
+        
+        <a href="{{ link | default: '#' }}" class="solutions-mega-menu__item">
+          {%- if img != blank -%}
+            <div class="solutions-mega-menu__image">
+              <img 
+                src="{{ img | image_url: width: 120 }}" 
+                alt="{{ title }}" 
+                width="60" 
+                height="60"
+                loading="lazy"
+              >
+            </div>
+          {%- endif -%}
+          {%- if title != blank -%}
+            <div class="solutions-mega-menu__title">{{ title }}</div>
+          {%- endif -%}
+          {%- if subtitle != blank -%}
+            <div class="solutions-mega-menu__subtitle">{{ subtitle }}</div>
+          {%- endif -%}
+        </a>
+      {%- endif -%}
+    {%- endfor -%}
+  </div>
+
+<style>
+  .solutions-mega-menu {
+    display: inline-flex !important;
+    gap: 2rem;
+    align-items: flex-start;
+    padding: 2rem 1.5rem;
+    justify-content: center;
+    width: auto;
+  }
+
+  .solutions-mega-menu__item {
+    text-align: center;
+    width: 140px;
+    flex-shrink: 0;
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    transition: transform 0.2s ease;
+  }
+
+  .solutions-mega-menu__item:hover {
+    transform: translateY(-2px);
+  }
+
+  .solutions-mega-menu__image {
+    margin-bottom: 0.75rem;
+  }
+
+  .solutions-mega-menu__image img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  .solutions-mega-menu__title {
+    font-weight: 700;
+    font-size: 1.1rem;
+    line-height: 1.3;
+    margin-bottom: 0.25rem;
+  }
+
+  .solutions-mega-menu__subtitle {
+    font-size: 0.9rem;
+    color: var(--gray-text);
+    line-height: 1.3;
+  }
+
+  @media (max-width: 768px) {
+    .solutions-mega-menu {
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      padding: 1.5rem 1rem;
+    }
+
+    .solutions-mega-menu__item {
+      width: calc(50% - 0.75rem);
+    }
+  }
+</style>
