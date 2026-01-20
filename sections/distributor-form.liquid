@@ -1,0 +1,666 @@
+{%- liquid
+  assign options = section.settings
+  assign title = options.title
+  assign text = options.text
+  assign text_align = options.text_align
+  assign input_style = options.input_style
+  assign show_captcha = options.show_captcha
+  assign show_phone = options.show_phone
+  assign color_scheme = options.color_scheme
+  assign section_spacing_top = options.section_spacing_top
+  assign section_spacing_bottom = options.section_spacing_bottom
+  assign section_mobile_spacing_top = options.section_mobile_spacing_top
+  assign section_mobile_spacing_bottom = options.section_mobile_spacing_bottom
+  assign container_size = options.container_size
+  assign heading_size = options.heading_size
+  assign enable_background_around_container = options.enable_background_around_container
+  assign body_size = options.body_size
+  assign klaviyo_list_id = options.klaviyo_list_id
+-%}
+
+{% capture css %}
+  {% style %}
+    .section-{{section.id}} {
+        --gsc-text-align: {{ text_align }};
+        --gsc-section-spacing-top: {{ section_spacing_top }}px;
+        --gsc-section-spacing-bottom: {{ section_spacing_bottom }}px;
+    }
+
+    .contact__form select.select {
+        width: 100%;
+        color: var(--gsc-text-color-100);
+        border: 1px solid var(--gsc-border-color-100);
+        border-radius: var(--gsc-input-border-radius, 0);
+        font-size: var(--gsc-fz-12);
+        line-height: var(--gsc-lh-5);
+        font-weight: var(--gsc-font-weight-medium);
+        padding: 1.3rem 1.9rem;
+        transition: border-color .2s ease-in-out;
+    }
+ 
+    @media only screen and (min-width: 769px) {
+      .field-group {
+        display: flex;
+        gap: 20px;
+      }
+
+      .field-group .column-one, 
+      .field-group .column-two {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      .textarea.textarea--large {
+        height: 8rem;
+      }
+
+      .select.select--large {
+        width: 100%;
+        padding: 12px 16px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-size: 16px;
+        background-color: white;
+      }
+    }
+
+    @media only screen and (max-width: 768px) {
+      .field-group {
+        display: block;
+      }
+      input.input.input--large.input--solid,
+      select.select.select--large {
+        margin: 10px 0;
+      }
+      textarea.textarea.textarea--solid {
+        margin: 20px 0;
+      }
+      .field.contact__field {
+        margin-bottom: 10px;
+      }
+
+      .field.contact__field.contact__field_right.rcl.tc {
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+      }
+    }
+
+    .custom-app-block textarea.spr-form-input, .textarea {
+      height: 8rem;
+      resize: vertical;
+      display: block;
+    }
+
+    .field.contact__field.contact__field_right.rcl {
+      margin-top: 2rem;
+    }
+
+    .field.contact__field.contact__field_right.rcl .upload-container {
+      display: none;
+    }
+
+    .field.contact__field.contact__field_right.rcl.tc {
+      gap: 10px;
+    }
+
+    .field.contact__field.contact__field_right.rcl.tc label {
+      margin-bottom: 0;
+    }
+
+    .select.select--large {
+      width: 100%;
+      padding: 12px 16px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 16px;
+      background-color: white;
+      appearance: none;
+      background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3E%3Cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3E%3C/svg%3E");
+      background-position: right 12px center;
+      background-repeat: no-repeat;
+      background-size: 16px;
+      padding-right: 40px;
+    }
+
+    @media screen and (max-width: 480px) {
+      .column-two {
+        margin-top: -20px;
+      }
+    }
+  {% endstyle %}
+{% endcapture %}
+
+{% render 'inline-css-minifier', css: css %}
+
+<div class='contact section section-{{ section.id }} {% unless enable_background_around_container %} section color-{{ color_scheme }}{% endunless %}'>
+  <div class='contact__container container {% if enable_background_around_container == false %} container--{{ container_size }} {% endif %} section-spacing'>
+    <div class="contact-container {% if enable_background_around_container %} rich-text__container--with-aside-spacing section color-{{ color_scheme }}{% endif %}">
+      <div class="{% if enable_background_around_container == true %} container container--{{ container_size }} {% endif %}">
+
+        {%- if title != blank or text != blank -%}
+          <div class='contact__content'>
+            {%- if title != blank -%}
+              <h5 class='contact__title {{ heading_size }}'>{{ title }}</h5>
+            {%- endif -%}
+            {%- if text != blank -%}
+              <div class='rte contact__text body-font-weight-from-global-settings {{ body_size }}'>
+                {{ text }}
+              </div>
+            {%- endif -%}
+          </div>
+        {%- endif -%}
+
+        {%- form 'contact', id: 'ContactForm', class: 'contact__form' -%}
+            {%- if form.posted_successfully? -%}
+              <script>
+                window.addEventListener('load', () => {
+                  window.bodyElement.notification.show('Distributor enquiry has been submitted successfully', 'success')
+                })
+              </script>
+            {%- endif -%}
+
+            {%- if form.errors -%}
+              {%- assign error = form.errors.translated_fields.email
+                | capitalize
+                | append: ' '
+                | append: form.errors.messages.email
+              -%}
+              <script>
+                window.addEventListener('load', () => {
+                  window.bodyElement.notification.show('{{ error }}', 'warning')
+                })
+              </script>
+            {%- endif -%}
+            
+            <div class='field-group contact__field-group'>
+              <div class="column-one">
+                <!-- Name -->
+                <div class='field contact__field'>
+                  <input
+                    class='input input--large'
+                    autocomplete='name'
+                    type='text'
+                    name='contact[name]'
+                    placeholder='Name *'
+                    required
+                  >
+                </div>
+                
+                <!-- Organisation / Business Name -->
+                <div class='field contact__field'>
+                  <input
+                    class='input input--large'
+                    autocomplete='organization'
+                    type='text'
+                    name='contact[business_name]'
+                    placeholder='Organisation / Business Name *'
+                    required
+                  >
+                </div>
+                
+                <!-- ABN -->
+                <div class='field contact__field'>
+                  <input
+                    class='input input--large'
+                    type='text'
+                    name='contact[abn]'
+                    placeholder='ABN *'
+                    required
+                  >
+                </div>
+                
+                <!-- Email -->
+                <div class='field contact__field'>
+                  <input
+                    class='input input--large'
+                    type='email'
+                    name='contact[email]'
+                    placeholder='Email *'
+                    required
+                  >
+                </div>
+                
+                <!-- Phone -->
+                <div class='field contact__field'>
+                  <input
+                    class='input input--large'
+                    type='tel'
+                    name='contact[phone]'
+                    placeholder='Phone *'
+                    required
+                  >
+                </div>
+                
+                <!-- Business Website / Social Media -->
+                <div class='field contact__field'>
+                  <input
+                    class='input input--large'
+                    type='url'
+                    name='contact[website_social]'
+                    placeholder='Business Website / Social Media'
+                  >
+                </div>
+              </div>
+              
+              <div class="column-two">
+                <!-- Business Type -->
+                <div class='field contact__field'>
+                  <select
+                    class='select select--large'
+                    name='contact[business_type]'
+                    required
+                  >
+                    <option value="">Business Type *</option>
+                    <option value="Distributor">Distributor</option>
+                    <option value="Retailer">Retailer</option>
+                    <option value="Corporate Supplier">Corporate Supplier</option>
+                    <option value="Other">Other</option>
+                  </select>
+                </div>
+                
+                <!-- Industry Focus -->
+                <div class='field contact__field'>
+                  <select
+                    class='select select--large'
+                    name='contact[industry_focus]'
+                    required
+                  >
+                    <option value="">Industry Focus *</option>
+                    <option value="Apparel / Uniforms">Apparel / Uniforms</option>
+                    <option value="Merchandise">Merchandise</option>
+                    <option value="Corporate Gifting">Corporate Gifting</option>
+                    <option value="Other">Other</option>
+                  </select>
+                </div>
+                
+                <!-- Regions You Service -->
+                <div class='field contact__field'>
+                  <select
+                    class='select select--large'
+                    name='contact[regions_serviced]'
+                    required
+                  >
+                    <option value="">Regions You Service *</option>
+                    <option value="Local">Local</option>
+                    <option value="Statewide">Statewide</option>
+                    <option value="National">National</option>
+                    <option value="International">International</option>
+                  </select>
+                </div>
+                
+                <!-- Estimated Order Volume -->
+                <div class='field contact__field'>
+                  <select
+                    class='select select--large'
+                    name='contact[order_volume]'
+                    required
+                  >
+                    <option value="">Estimated Order Volume *</option>
+                    <option value="<100 units"><100 units</option>
+                    <option value="100–500 units">100–500 units</option>
+                    <option value="500–1000 units">500–1000 units</option>
+                    <option value="1000+ units">1000+ units</option>
+                  </select>
+                </div>
+                
+                <!-- Why Do You Want to Partner with Yarn -->
+                <div class='field contact__field'>
+                  <textarea
+                    class='textarea textarea--large'
+                    name='contact[partnership_reason]'
+                    placeholder='Why Do You Want to Partner with Yarn? *'
+                    required
+                  ></textarea>
+                </div>
+                
+                <!-- Additional Notes -->
+                <div class='field contact__field'>
+                  <textarea
+                    class='textarea textarea--large'
+                    name='contact[additional_notes]'
+                    placeholder='Additional Notes (logistics, timelines, or other relevant info)'
+                  ></textarea>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Hidden Field for Message Body -->
+            <input
+              type='hidden'
+              name='contact[body]'
+              id='ContactBody'
+            >
+            
+            <!-- JavaScript to Combine Form Values -->
+            <script>
+            document.addEventListener('DOMContentLoaded', function() {
+              const form = document.getElementById('ContactForm');
+              const contactBodyField = form.querySelector('input[name="contact[body]"]');
+              
+              form.addEventListener('submit', function() {
+                const formData = new FormData(form);
+                let bodyContent = 'DISTRIBUTOR ENQUIRY FORM SUBMISSION\n\n';
+                
+                bodyContent += 'Name: ' + (formData.get('contact[name]') || '') + '\n';
+                bodyContent += 'Business Name: ' + (formData.get('contact[business_name]') || '') + '\n';
+                bodyContent += 'ABN: ' + (formData.get('contact[abn]') || '') + '\n';
+                bodyContent += 'Email: ' + (formData.get('contact[email]') || '') + '\n';
+                bodyContent += 'Phone: ' + (formData.get('contact[phone]') || '') + '\n';
+                bodyContent += 'Website/Social: ' + (formData.get('contact[website_social]') || 'Not provided') + '\n';
+                bodyContent += 'Business Type: ' + (formData.get('contact[business_type]') || '') + '\n';
+                bodyContent += 'Industry Focus: ' + (formData.get('contact[industry_focus]') || '') + '\n';
+                bodyContent += 'Regions Serviced: ' + (formData.get('contact[regions_serviced]') || '') + '\n';
+                bodyContent += 'Estimated Order Volume: ' + (formData.get('contact[order_volume]') || '') + '\n\n';
+                bodyContent += 'Why Partner with Yarn:\n' + (formData.get('contact[partnership_reason]') || '') + '\n\n';
+                bodyContent += 'Additional Notes:\n' + (formData.get('contact[additional_notes]') || 'None provided');
+                
+                contactBodyField.value = bodyContent;
+              });
+            });
+            </script>
+            
+            <!-- Terms & Conditions Checkbox -->
+            <div class='field contact__field contact__field_right rcl tc'>
+              <input
+                type='checkbox'
+                id='terms-{{ section.id }}'
+                required
+                name='contact[terms_agreement]'
+              >
+              <label for='terms-{{ section.id }}'>
+                I have read and agree to the 
+                <a href='/pages/terms-and-conditions' target='_blank'>Terms and Conditions</a>
+              </label>
+            </div>
+
+            <!-- Submit Button -->
+            <div class="field contact__field contact__field_right rcl">
+              <button
+                type='submit'
+                class='btn btn--solid btn--lg contact__btn'
+                aria-label='Submit Distributor Enquiry'
+              >
+                Submit Distributor Enquiry
+              </button>
+            </div>
+        {%- endform -%}
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Distributor Enquiry Form",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "select",
+      "id": "color_scheme",
+      "options": [
+        {
+          "value": "default",
+          "label": "t:sections.general_section_settings.color_scheme_option_default_label"
+        },
+        {
+          "value": "primary",
+          "label": "t:sections.general_section_settings.color_scheme_option_primary_label"
+        },
+        {
+          "value": "secondary",
+          "label": "t:sections.general_section_settings.color_scheme_option_secondary_label"
+        },  
+        {
+          "value": "custom-1",
+          "label": "t:sections.general_section_settings.color_scheme_option_custom_1_label"
+        },
+        {
+          "value": "custom-2",
+          "label": "t:sections.general_section_settings.color_scheme_option_custom_2_label"
+        },
+        {
+          "value": "custom-3",
+          "label": "t:sections.general_section_settings.color_scheme_option_custom_3_label"
+        }
+      ],
+      "default": "default",
+      "label": "t:sections.general_section_settings.color_scheme_label"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_background_around_container",
+      "default": false,
+      "label": "t:sections.general_section_settings.enable_background_around_container_label"
+    },
+    {
+      "type": "select",
+      "id": "container_size",
+      "options": [
+        {
+          "value": "full-screen",
+          "label": "Full screen"
+        },
+        {
+          "value": "page-width",
+          "label": "t:sections.general_section_settings.container_size.page_width_option"
+        },
+        {
+          "value": "large",
+          "label": "t:sections.general_section_settings.container_size.large_width_option"
+        },
+        {
+          "value": "medium",
+          "label": "t:sections.general_section_settings.container_size.medium_width_option"
+        },
+        {
+          "value": "small",
+          "label": "t:sections.general_section_settings.container_size.small_width_option"
+        },
+        {
+          "value": "xsmall",
+          "label": "t:sections.general_section_settings.container_size.extra_small_width_option"
+        }
+      ],
+      "default": "xsmall",
+      "label": "t:sections.general_section_settings.container_size.label"
+    },
+    {
+      "type": "header",
+      "content": "Desktop spacing"
+    },
+    {
+      "type": "range",
+      "id": "section_spacing_top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 96,
+      "unit": "t:sections.general_section_settings.section_spacing_top.unit",
+      "label": "t:sections.general_section_settings.section_spacing_top.label"
+    },
+    {
+      "type": "range",
+      "id": "section_spacing_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 96,
+      "unit": "t:sections.general_section_settings.section_spacing_bottom.unit",
+      "label": "t:sections.general_section_settings.section_spacing_bottom.label"
+    },
+    {
+      "type": "header",
+      "content": "Mobile spacing"
+    },
+    {
+      "type": "range",
+      "id": "section_mobile_spacing_top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 30,
+      "unit": "t:sections.general_section_settings.section_spacing_top.unit",
+      "label": "t:sections.general_section_settings.section_spacing_top.label"
+    },
+    {
+      "type": "range",
+      "id": "section_mobile_spacing_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 30,
+      "unit": "t:sections.general_section_settings.section_spacing_bottom.unit",
+      "label": "t:sections.general_section_settings.section_spacing_bottom.label"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.contact_form.content_settings_header"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "t:sections.contact_form.title_label",
+      "default": "Interested in Becoming a Yarn Distributor?"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "text",
+      "default": "Fill out the form below and our team will get in touch to discuss opportunities to partner with Yarn.",
+      "label": "t:sections.contact_form.text_label"
+    },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "label": "t:sections.general_section_settings.label_for_heading_size_setting",
+      "options": [
+        {
+          "value": "h0",
+          "label": "t:sections.general_section_settings.heading_size_0_option"
+        },
+        {
+          "value": "h1",
+          "label": "t:sections.general_section_settings.heading_size_1_option"
+        },
+        {
+          "value": "h2",
+          "label": "t:sections.general_section_settings.heading_size_2_option"
+        },
+        {
+          "value": "h3",
+          "label": "t:sections.general_section_settings.heading_size_3_option"
+        },
+        {
+          "value": "h4",
+          "label": "t:sections.general_section_settings.heading_size_4_option"
+        },
+        {
+          "value": "h5",
+          "label": "t:sections.general_section_settings.heading_size_5_option"
+        },
+        {
+          "value": "h6",
+          "label": "t:sections.general_section_settings.heading_size_6_option"
+        },
+        {
+          "value": "h7",
+          "label": "t:sections.general_section_settings.heading_size_7_option"
+        }
+      ],
+      "default": "h5"
+    },
+    {
+      "type": "select",
+      "id": "body_size",
+      "label": "t:sections.general_section_settings.label_for_body_size_setting",
+      "options": [
+        {
+          "value": "body0",
+          "label": "t:sections.general_section_settings.body_size_0_option"
+        },
+        {
+          "value": "body1",
+          "label": "t:sections.general_section_settings.body_size_1_option"
+        },
+        {
+          "value": "body2",
+          "label": "t:sections.general_section_settings.body_size_2_option"
+        },
+        {
+          "value": "body3",
+          "label": "t:sections.general_section_settings.body_size_3_option"
+        },
+        {
+          "value": "body4",
+          "label": "t:sections.general_section_settings.body_size_4_option"
+        },
+        {
+          "value": "body5",
+          "label": "t:sections.general_section_settings.body_size_5_option"
+        },
+        {
+          "value": "body6",
+          "label": "t:sections.general_section_settings.body_size_6_option"
+        }
+      ],
+      "default": "body3"
+    },
+    {
+      "type": "select",
+      "id": "text_align",
+      "label": "t:sections.general_section_settings.content_alignment_label",
+      "options": [
+        {
+          "value": "left",
+          "label": "t:sections.general_section_settings.alignment_option_left_label"
+        },
+        {
+          "value": "center",
+          "label": "t:sections.general_section_settings.alignment_option_center_label"
+        }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.contact_form.form_settings_header"
+    },
+    {
+      "type": "select",
+      "id": "input_style",
+      "options": [
+        {
+          "value": "solid",
+          "label": "t:sections.contact_form.input_style_option_solid_label"
+        },
+        {
+          "value": "outline",
+          "label": "t:sections.contact_form.input_style_option_outline_label"
+        }
+      ],
+      "default": "solid",
+      "label": "t:sections.contact_form.input_style_label"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_phone",
+      "default": false,
+      "label": "t:sections.contact_form.show_phone_label"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_captcha",
+      "default": true,
+      "label": "t:sections.contact_form.show_captcha_label"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Distributor Enquiry Form"
+    }
+  ]
+}
+{% endschema %}
