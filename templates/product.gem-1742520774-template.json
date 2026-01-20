@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "main": {
@@ -10,7 +19,7 @@
           }
         },
         "e41cb9cc-4f8c-4099-9aa3-436d4297ecaf": {
-          "type": "shopify:\/\/apps\/stamped-reviews\/blocks\/star-rating-badge\/a103faaf-2125-4b0e-89fa-de5149736723",
+          "type": "shopify://apps/stamped-reviews/blocks/star-rating-badge/a103faaf-2125-4b0e-89fa-de5149736723",
           "settings": {
             "use_metafields": false,
             "sku_tagtype": "sku",
@@ -58,7 +67,7 @@
           "settings": {
             "tag_style": "solid",
             "main_heading": "Ordering Process",
-            "heading": "Upload logo\/s (min 1 is required)",
+            "heading": "Upload logo/s (min 1 is required)",
             "heading2": "Select quantity by size",
             "heading3": "Place Order",
             "heading4": "Receive mockup for your approval",
@@ -67,19 +76,19 @@
             "content_alignment": "left",
             "icon": "none",
             "product_info_tag": "orderprocess_artwork",
-            "custom_icon_image": "shopify:\/\/shop_images\/icons-svgAsset_2.svg",
-            "custom_icon_image2": "shopify:\/\/shop_images\/icons-svgAsset_3.svg",
-            "custom_icon_image3": "shopify:\/\/shop_images\/icons-svgAsset_4.svg",
-            "custom_icon_image4": "shopify:\/\/shop_images\/icons-svgAsset_5.svg",
+            "custom_icon_image": "shopify://shop_images/icons-svgAsset_2.svg",
+            "custom_icon_image2": "shopify://shop_images/icons-svgAsset_3.svg",
+            "custom_icon_image3": "shopify://shop_images/icons-svgAsset_4.svg",
+            "custom_icon_image4": "shopify://shop_images/icons-svgAsset_5.svg",
             "icon_position": "inline",
             "tag_background_color": "#f6f6f6",
             "tag_text_color": "#141416",
             "enable_drawer": false,
             "drawer_text": "",
             "drawer_page": "",
-            "drawer_image": "shopify:\/\/shop_images\/ProductIcons-October_Combo_A-02.png",
-            "drawer_image2": "shopify:\/\/shop_images\/ProductIcons-October_Combo_A-01.png",
-            "drawer_image3": "shopify:\/\/shop_images\/ProductIcons-October_Combo_A-03.png",
+            "drawer_image": "shopify://shop_images/ProductIcons-October_Combo_A-02.png",
+            "drawer_image2": "shopify://shop_images/ProductIcons-October_Combo_A-01.png",
+            "drawer_image3": "shopify://shop_images/ProductIcons-October_Combo_A-03.png",
             "drawer_media_size": 60
           }
         },
@@ -88,29 +97,29 @@
           "settings": {
             "tag_style": "solid",
             "main_heading": "Ordering Process",
-            "heading": "Upload logo\/s (min 1 is required)",
+            "heading": "Upload logo/s (min 1 is required)",
             "heading2": "Upload background graphic",
             "heading3": "Select quantity by size",
             "heading4": "Place order",
             "heading5": "Receive mockup for your approval",
-            "body": "<p>Note: No Production will begin until mockup is approved<\/p>",
+            "body": "<p>Note: No Production will begin until mockup is approved</p>",
             "content_alignment": "left",
             "icon": "none",
             "product_info_tag": "orderprocess_designyourown",
-            "custom_icon_image": "shopify:\/\/shop_images\/icons-svgAsset_2.svg",
-            "custom_icon_image2": "shopify:\/\/shop_images\/iconsAsset_8_2x_2998c090-8cab-4a88-ae49-211ee818e284.png",
-            "custom_icon_image3": "shopify:\/\/shop_images\/icons-svgAsset_3.svg",
-            "custom_icon_image4": "shopify:\/\/shop_images\/icons-svgAsset_4.svg",
-            "custom_icon_image5": "shopify:\/\/shop_images\/icons-svgAsset_5.svg",
+            "custom_icon_image": "shopify://shop_images/icons-svgAsset_2.svg",
+            "custom_icon_image2": "shopify://shop_images/iconsAsset_8_2x_2998c090-8cab-4a88-ae49-211ee818e284.png",
+            "custom_icon_image3": "shopify://shop_images/icons-svgAsset_3.svg",
+            "custom_icon_image4": "shopify://shop_images/icons-svgAsset_4.svg",
+            "custom_icon_image5": "shopify://shop_images/icons-svgAsset_5.svg",
             "icon_position": "inline",
             "tag_background_color": "#f6f6f6",
             "tag_text_color": "#141416",
             "enable_drawer": false,
             "drawer_text": "",
             "drawer_page": "",
-            "drawer_image": "shopify:\/\/shop_images\/ProductIcons-October_Combo_A-02.png",
-            "drawer_image2": "shopify:\/\/shop_images\/ProductIcons-October_Combo_A-01.png",
-            "drawer_image3": "shopify:\/\/shop_images\/ProductIcons-October_Combo_A-03.png",
+            "drawer_image": "shopify://shop_images/ProductIcons-October_Combo_A-02.png",
+            "drawer_image2": "shopify://shop_images/ProductIcons-October_Combo_A-01.png",
+            "drawer_image3": "shopify://shop_images/ProductIcons-October_Combo_A-03.png",
             "drawer_media_size": 60
           }
         },
@@ -119,7 +128,7 @@
           "settings": {
             "style": "static",
             "title": "",
-            "custom_liquid": "{% render 'upload' %}\n<style>\n.rte div+div {\nmargin-top: 0!important;\n}\n<\/style>",
+            "custom_liquid": "{% render 'upload' %}\n<style>\n.rte div+div {\nmargin-top: 0!important;\n}\n</style>",
             "icon": "none"
           }
         },
@@ -138,7 +147,7 @@
           "settings": {
             "style": "collapsible_row_closed",
             "title2": "",
-            "description": "<p>{{ product.metafields.custom.artwork.value.description2 | metafield_tag }}<\/p>",
+            "description": "<p>{{ product.metafields.custom.artwork.value.description2 | metafield_tag }}</p>",
             "image": "{{ product.metafields.custom.artwork.value.image.value }}",
             "title": "Artwork Story",
             "custom_liquid": ""
@@ -149,7 +158,7 @@
           "settings": {
             "style": "static",
             "title": "",
-            "custom_liquid": "{% if product.tags contains \"novisible\" %}\n<script type=\"text\/javascript\">\n  window.location.href = \"{{ product.metafields.custom.main_product.value.url }}\";\n<\/script>\n{% endif %}",
+            "custom_liquid": "{% if product.tags contains \"novisible\" %}\n<script type=\"text/javascript\">\n  window.location.href = \"{{ product.metafields.custom.main_product.value.url }}\";\n</script>\n{% endif %}",
             "icon": "none"
           }
         }
@@ -207,7 +216,7 @@
           "settings": {
             "title": "Description",
             "icon": "star-outline",
-            "custom_icon_image": "shopify:\/\/shop_images\/SVG-1.png"
+            "custom_icon_image": "shopify://shop_images/SVG-1.png"
           }
         },
         "5594cd3a-1c1c-436c-82e1-5acc9d0e8bcf": {
@@ -215,8 +224,8 @@
           "settings": {
             "title": "How is the ordering process?",
             "icon": "none",
-            "custom_icon_image": "shopify:\/\/shop_images\/SVG-2.png",
-            "text": "<p><strong>How Does the Ordering Process Work?<\/strong><\/p><p>Ordering with Yarn Corporate is simple:<\/p><ol><li><strong>Place Your Order<\/strong> – Select your product, upload your logo (300DPI\/vector), and confirm your order.<\/li><li><strong>Artwork Approval<\/strong> – Our team will provide a custom design for your review and approval.*<\/li><li><strong>Sample Proofing (if applicable)<\/strong> – Some orders require a sample proof before production begins.<\/li><li><strong>Production & Customisation<\/strong> – Your order is produced based on your chosen customisation option.<\/li><li><strong>Dispatch & Delivery<\/strong> – Once quality checked, your order is shipped from our Meanjin warehouse with tracking provided.<\/li><\/ol><p>*Approval is required before production can begin.<\/p><p><\/p>",
+            "custom_icon_image": "shopify://shop_images/SVG-2.png",
+            "text": "<p><strong>How Does the Ordering Process Work?</strong></p><p>Ordering with Yarn Corporate is simple:</p><ol><li><strong>Place Your Order</strong> – Select your product, upload your logo (300DPI/vector), and confirm your order.</li><li><strong>Artwork Approval</strong> – Our team will provide a custom design for your review and approval.*</li><li><strong>Sample Proofing (if applicable)</strong> – Some orders require a sample proof before production begins.</li><li><strong>Production & Customisation</strong> – Your order is produced based on your chosen customisation option.</li><li><strong>Dispatch & Delivery</strong> – Once quality checked, your order is shipped from our Meanjin warehouse with tracking provided.</li></ol><p>*Approval is required before production can begin.</p><p></p>",
             "liquid": "",
             "page": "",
             "image_width": 100
@@ -231,7 +240,7 @@
             "answer1": "You can upload your design directly on our website when you submit your order. Click the Upload Your Logo button to add. Be sure to read our artwork guidelines to ensure our team can use your logo. You can find these below the upload logo button.",
             "question2": "What happens after I place an order?",
             "answer2": "After we receive your order we review it and ensure the logo you provided is in the right format and quality. Then we create a mockup of the design for you to review. Production will not begin until the mockup is approved and order payment is received.",
-            "question3": "What is the correct file format and size for uploading my logo and\/or artwork?",
+            "question3": "What is the correct file format and size for uploading my logo and/or artwork?",
             "answer3": "You can find our guidelines for artwork submissions below the upload your logo button . Please try to upload high resolution files in AI, SVG, PDF or EPS format as these are the best quality for our designers to work with. If you do not have the correct file format we can assist you with redrawing your logo. Reach out to a customer service representative to begin this process.",
             "question4": "Can I see a Mockup of my shirt before my order is finalised?",
             "answer4": "Yes! Our designers will create a mockup for you to review. Your mockup must be approved before production can begin.",
@@ -297,7 +306,7 @@
         "text_hLw7Kh": {
           "type": "text",
           "settings": {
-            "text": "<p>Watch this quick tutorial to see how simple it is to customise and place your order in just a few clicks!<\/p>",
+            "text": "<p>Watch this quick tutorial to see how simple it is to customise and place your order in just a few clicks!</p>",
             "text_2": "",
             "text_3": "",
             "body_size": "body3"
@@ -342,7 +351,7 @@
         "container_size": "large",
         "section_spacing_top": 0,
         "section_spacing_bottom": 48,
-        "custom_liquid": "<div style=\"position: relative; box-sizing: content-box; max-height: 80vh; max-height: 80svh; width: 100%; aspect-ratio: 2.0146904512067154; padding: 40px 0 40px 0;\"><iframe src=\"https:\/\/app.supademo.com\/embed\/cm7u0jok12cfrhilgwyccp3mq?embed_v=2\" loading=\"lazy\" title=\"FINAL YARN\" allow=\"clipboard-write\" frameborder=\"0\" webkitallowfullscreen=\"true\" mozallowfullscreen=\"true\" allowfullscreen style=\"position: absolute; top: 0; left: 0; width: 100%; height: 100%;\"><\/iframe><\/div>"
+        "custom_liquid": "<div style=\"position: relative; box-sizing: content-box; max-height: 80vh; max-height: 80svh; width: 100%; aspect-ratio: 2.0146904512067154; padding: 40px 0 40px 0;\"><iframe src=\"https://app.supademo.com/embed/cm7u0jok12cfrhilgwyccp3mq?embed_v=2\" loading=\"lazy\" title=\"FINAL YARN\" allow=\"clipboard-write\" frameborder=\"0\" webkitallowfullscreen=\"true\" mozallowfullscreen=\"true\" allowfullscreen style=\"position: absolute; top: 0; left: 0; width: 100%; height: 100%;\"></iframe></div>"
       }
     },
     "b60ba9f8-f0a6-493f-9027-6b33dcd08cf4": {
@@ -351,28 +360,28 @@
         "template--16927600246998__b60ba9f8-f0a6-493f-9027-6b33dcd08cf4-image-2": {
           "type": "image",
           "settings": {
-            "image": "shopify:\/\/shop_images\/srthjsrtjh_62c9f930-f0bd-4317-966b-7376fb6947c6.jpg"
+            "image": "shopify://shop_images/srthjsrtjh_62c9f930-f0bd-4317-966b-7376fb6947c6.jpg"
           }
         },
         "template--16927600246998__b60ba9f8-f0a6-493f-9027-6b33dcd08cf4-image-3": {
           "type": "image",
           "disabled": true,
           "settings": {
-            "image": "shopify:\/\/shop_images\/Frame_41667_b04a7a7e-e076-4aa3-aa2c-00e119892647.png"
+            "image": "shopify://shop_images/Frame_41667_b04a7a7e-e076-4aa3-aa2c-00e119892647.png"
           }
         },
         "template--16927600246998__b60ba9f8-f0a6-493f-9027-6b33dcd08cf4-image-4": {
           "type": "image",
           "disabled": true,
           "settings": {
-            "image": "shopify:\/\/shop_images\/Frame_41669_2ecad6fa-27f9-49bd-997c-7e59e84e1406.png"
+            "image": "shopify://shop_images/Frame_41669_2ecad6fa-27f9-49bd-997c-7e59e84e1406.png"
           }
         },
         "template--16927600246998__b60ba9f8-f0a6-493f-9027-6b33dcd08cf4-image-1": {
           "type": "image",
           "disabled": true,
           "settings": {
-            "image": "shopify:\/\/shop_images\/Frame_41668_b3384ab6-bf58-42db-b0af-002dd8f534e7.png"
+            "image": "shopify://shop_images/Frame_41668_b3384ab6-bf58-42db-b0af-002dd8f534e7.png"
           }
         }
       },
@@ -401,7 +410,7 @@
         "icon": "none",
         "subheading": "",
         "heading": "Uniforms With Purpose",
-        "body": "<p>When choosing Yarn you not only ensure that you have the right to wear the art but also that it has been ethically sourced, with royalties going back to the artists. Yarn is more than just quality and service; it's a commitment to empowering culture.<\/p><p>From art sourcing to securing rights and connecting with artists, we've taken care of the details, making it easy for you to embrace culturally appropriate uniforms for your team.<\/p>",
+        "body": "<p>When choosing Yarn you not only ensure that you have the right to wear the art but also that it has been ethically sourced, with royalties going back to the artists. Yarn is more than just quality and service; it's a commitment to empowering culture.</p><p>From art sourcing to securing rights and connecting with artists, we've taken care of the details, making it easy for you to embrace culturally appropriate uniforms for your team.</p>",
         "heading_size": "h1",
         "body_size": "body3",
         "content_alignment": "left",
@@ -476,7 +485,7 @@
             "onlymobile": false,
             "desktop_columns": 2,
             "desktop_rows": 1,
-            "image": "shopify:\/\/shop_images\/div.collage__item.png",
+            "image": "shopify://shop_images/div.collage__item.png",
             "overlay_opacity": 0,
             "caption": "",
             "title": "Like the product but want it with your own artwork?",
@@ -484,7 +493,7 @@
             "heading_size": "h3",
             "body_size": "body3",
             "link_text": "Contact Us",
-            "link": "shopify:\/\/pages\/contact",
+            "link": "shopify://pages/contact",
             "content_position": "center-center"
           }
         },
@@ -496,7 +505,7 @@
             "onlymobile": false,
             "desktop_columns": 2,
             "desktop_rows": 1,
-            "image": "shopify:\/\/shop_images\/div.collage__item-1.png",
+            "image": "shopify://shop_images/div.collage__item-1.png",
             "overlay_opacity": 0,
             "caption": "",
             "title": "Like the product but want to create bespoke art with one of our artists?",
@@ -504,7 +513,7 @@
             "heading_size": "h3",
             "body_size": "body3",
             "link_text": "Contact Us",
-            "link": "shopify:\/\/pages\/contact",
+            "link": "shopify://pages/contact",
             "content_position": "center-center"
           }
         }
@@ -579,7 +588,7 @@
       "type": "apps",
       "blocks": {
         "fb77804b-5e14-4ded-a884-bb803f10c8a8": {
-          "type": "shopify:\/\/apps\/stamped-reviews\/blocks\/single-highlight\/a103faaf-2125-4b0e-89fa-de5149736723",
+          "type": "shopify://apps/stamped-reviews/blocks/single-highlight/a103faaf-2125-4b0e-89fa-de5149736723",
           "disabled": true,
           "settings": {
             "review_ids": "",
@@ -590,7 +599,7 @@
           }
         },
         "d4c8d6a9-9adf-42f7-970f-ccf5b3977fae": {
-          "type": "shopify:\/\/apps\/stamped-reviews\/blocks\/badge-single-image\/a103faaf-2125-4b0e-89fa-de5149736723",
+          "type": "shopify://apps/stamped-reviews/blocks/badge-single-image/a103faaf-2125-4b0e-89fa-de5149736723",
           "disabled": true,
           "settings": {
             "api_key": "",
@@ -602,7 +611,7 @@
           }
         },
         "8270d273-97e3-4d30-a815-7b0bacfa0ee4": {
-          "type": "shopify:\/\/apps\/stamped-reviews\/blocks\/checkout-comments\/a103faaf-2125-4b0e-89fa-de5149736723",
+          "type": "shopify://apps/stamped-reviews/blocks/checkout-comments/a103faaf-2125-4b0e-89fa-de5149736723",
           "disabled": true,
           "settings": {
             "product_ids": "",
@@ -614,7 +623,7 @@
           }
         },
         "6340498c-64a5-48e7-b915-b21b6670d1d1": {
-          "type": "shopify:\/\/apps\/stamped-reviews\/blocks\/full-page\/a103faaf-2125-4b0e-89fa-de5149736723",
+          "type": "shopify://apps/stamped-reviews/blocks/full-page/a103faaf-2125-4b0e-89fa-de5149736723",
           "disabled": true,
           "settings": {
             "product_image": true,
@@ -636,7 +645,7 @@
           }
         },
         "f45fe683-79f3-46e0-9aff-5d6110dfbee0": {
-          "type": "shopify:\/\/apps\/stamped-reviews\/blocks\/full-page\/a103faaf-2125-4b0e-89fa-de5149736723",
+          "type": "shopify://apps/stamped-reviews/blocks/full-page/a103faaf-2125-4b0e-89fa-de5149736723",
           "disabled": true,
           "settings": {
             "product_image": true,
@@ -657,19 +666,8 @@
             "with_photos": false
           }
         },
-        "a73f9ac2-781f-4381-8de6-0c12472016be": {
-          "type": "shopify:\/\/apps\/stamped-reviews\/blocks\/product-rating-image\/a103faaf-2125-4b0e-89fa-de5149736723",
-          "disabled": true,
-          "settings": {
-            "api_key": "",
-            "store_hash": "",
-            "product_id": "",
-            "width": "",
-            "height": ""
-          }
-        },
         "7b6ee019-42d3-4e81-8e9d-85489a6acb95": {
-          "type": "shopify:\/\/apps\/stamped-reviews\/blocks\/full-page\/a103faaf-2125-4b0e-89fa-de5149736723",
+          "type": "shopify://apps/stamped-reviews/blocks/full-page/a103faaf-2125-4b0e-89fa-de5149736723",
           "disabled": true,
           "settings": {
             "product_image": true,
@@ -691,7 +689,7 @@
           }
         },
         "0b4e5366-5ce3-4a5f-8eba-04d7fd6f114c": {
-          "type": "shopify:\/\/apps\/stamped-reviews\/blocks\/main-widget\/a103faaf-2125-4b0e-89fa-de5149736723",
+          "type": "shopify://apps/stamped-reviews/blocks/main-widget/a103faaf-2125-4b0e-89fa-de5149736723",
           "settings": {
             "animation": true,
             "tags_exclude": "",
@@ -709,7 +707,6 @@
         "8270d273-97e3-4d30-a815-7b0bacfa0ee4",
         "6340498c-64a5-48e7-b915-b21b6670d1d1",
         "f45fe683-79f3-46e0-9aff-5d6110dfbee0",
-        "a73f9ac2-781f-4381-8de6-0c12472016be",
         "7b6ee019-42d3-4e81-8e9d-85489a6acb95",
         "0b4e5366-5ce3-4a5f-8eba-04d7fd6f114c"
       ],
@@ -742,7 +739,7 @@
         "template--16729789989105__53d67819-721d-46dc-889c-50c5eafb46fc-1681822195675f4d6f-2": {
           "type": "text",
           "settings": {
-            "text": "Subscribe now and get <strong>10% OFF<\/strong> on your first order. Be the first to access pre-order & new product releases, get exclusive deals and receive our latest catalogues.",
+            "text": "Subscribe now and get <strong>10% OFF</strong> on your first order. Be the first to access pre-order & new product releases, get exclusive deals and receive our latest catalogues.",
             "body_size": "body3"
           }
         },
@@ -810,7 +807,7 @@
         "template--16927600246998__3e56c4d6-3992-4d0e-81db-82393b859b29-text-1": {
           "type": "text",
           "settings": {
-            "text": "<p>We at Yarn, acknowledge the Traditional Custodians of the land on which we work, the Yuggera and Turrbal peoples. We pay our respects to all Elders, past, present and emerging.<\/p>",
+            "text": "<p>We at Yarn, acknowledge the Traditional Custodians of the land on which we work, the Yuggera and Turrbal peoples. We pay our respects to all Elders, past, present and emerging.</p>",
             "text_2": "",
             "text_3": "",
             "body_size": "body3"
