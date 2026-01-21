@@ -1,0 +1,450 @@
+{%- liquid
+  assign options = section.settings
+  assign color_scheme = options.color_scheme
+  assign container_size = options.container_size
+  assign title = options.title
+  assign blocks = section.blocks
+-%}
+
+<div class="product-category-grid section-{{ section.id }} color-{{ color_scheme }}">
+  <div class="product-category-grid__container container container--{{ container_size }}">
+    {%- if title != blank -%}
+      <h2 class="product-category-grid__main-title">{{ title }}</h2>
+    {%- endif -%}
+    
+    <div class="product-category-grid__wrapper">
+      {%- for block in blocks -%}
+        {%- liquid
+          assign category_title = block.settings.category_title
+          assign category_image = block.settings.category_image
+          assign category_link = block.settings.category_link
+          assign items = block.settings.items
+        -%}
+        
+        <div class="product-category-grid__category" {{ block.shopify_attributes }}>
+          <h3 class="product-category-grid__category-title">{{ category_title }}</h3>
+          
+          <div class="product-category-grid__items">
+            {%- for i in (1..6) -%}
+              {%- liquid
+                assign show_key = 'item_' | append: i | append: '_show'
+                assign image_key = 'item_' | append: i | append: '_image'
+                assign text_key = 'item_' | append: i | append: '_text'
+                assign link_key = 'item_' | append: i | append: '_link'
+                
+                assign show_item = block.settings[show_key]
+                assign item_image = block.settings[image_key]
+                assign item_text = block.settings[text_key]
+                assign item_link = block.settings[link_key]
+              -%}
+              
+              {%- if show_item and item_image != blank -%}
+                <a href="{{ item_link }}" class="product-category-grid__item">
+                  <div class="product-category-grid__item-image-wrapper">
+                    <img
+                      src="{{ item_image | image_url: width: 300 }}"
+                      srcset="{{ item_image | image_url: width: 150 }} 150w,
+                              {{ item_image | image_url: width: 300 }} 300w,
+                              {{ item_image | image_url: width: 400 }} 400w"
+                      sizes="(max-width: 768px) 150px, 200px"
+                      alt="{{ item_text | escape }}"
+                      loading="lazy"
+                      class="product-category-grid__item-image"
+                    >
+                  </div>
+                  <p class="product-category-grid__item-text">{{ item_text }}</p>
+                </a>
+              {%- endif -%}
+            {%- endfor -%}
+          </div>
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</div>
+
+<style>
+  .product-category-grid {
+    padding: 4rem 0;
+  }
+
+  .product-category-grid__container {
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  .product-category-grid__main-title {
+    font-size: 2rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  .product-category-grid__wrapper {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 2rem;
+    align-items: start;
+  }
+
+  .product-category-grid__category {
+    background: #f5f5f5;
+    border-radius: 12px;
+    padding: 5rem 3rem;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .product-category-grid__category-title {
+    font-size: 1.8rem;
+    font-weight: 700;
+    text-align: center;
+    margin: 0 0 2rem 0;
+    min-height: 2rem;
+  }
+
+  .product-category-grid__items {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 2rem;
+    justify-content: center;
+    align-items: flex-start;
+  }
+
+  .product-category-grid__item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.2s ease;
+    flex: 1 1 0;
+    min-width: 0;
+  }
+
+  .product-category-grid__item:hover {
+    transform: translateY(-4px);
+  }
+
+  .product-category-grid__item-image-wrapper {
+    width: 85%;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    overflow: hidden;
+    background: #e0e0e0;
+    margin-bottom: 0.75rem;
+  }
+
+  .product-category-grid__item-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .product-category-grid__item-text {
+    font-size: 1.4rem;
+    font-weight: 700;
+    text-align: center;
+    margin: 0;
+    line-height: 1.3;
+  }
+
+  /* Mobile Styles */
+  @media (max-width: 768px) {
+    .product-category-grid {
+      padding: 2rem 0;
+    }
+
+    .product-category-grid__container {
+      padding: 0 1rem;
+    }
+
+    .product-category-grid__main-title {
+      font-size: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .product-category-grid__wrapper {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+
+    .product-category-grid__category {
+      padding: 3rem 2rem;
+    }
+
+    .product-category-grid__category-title {
+      font-size: 1.25rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .product-category-grid__items {
+      gap: 1rem;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Product Category Grid",
+  "settings": [
+    {
+      "type": "select",
+      "id": "color_scheme",
+      "options": [
+        {
+          "value": "default",
+          "label": "t:sections.general_section_settings.color_scheme_option_default_label"
+        },
+        {
+          "value": "primary",
+          "label": "t:sections.general_section_settings.color_scheme_option_primary_label"
+        },
+        {
+          "value": "secondary",
+          "label": "t:sections.general_section_settings.color_scheme_option_secondary_label"
+        },
+        {
+          "value": "custom-1",
+          "label": "t:sections.general_section_settings.color_scheme_option_custom_1_label"
+        },
+        {
+          "value": "custom-2",
+          "label": "t:sections.general_section_settings.color_scheme_option_custom_2_label"
+        },
+        {
+          "value": "custom-3",
+          "label": "t:sections.general_section_settings.color_scheme_option_custom_3_label"
+        }
+      ],
+      "default": "default",
+      "label": "t:sections.general_section_settings.color_scheme_label",
+      "info": "t:sections.general_section_settings.color_scheme_tip"
+    },
+    {
+      "type": "select",
+      "id": "container_size",
+      "options": [
+        {
+          "value": "full-screen",
+          "label": "t:sections.general_section_settings.container_size.screen_width_option"
+        },
+        {
+          "value": "page-width",
+          "label": "t:sections.general_section_settings.container_size.page_width_option"
+        },
+        {
+          "value": "large",
+          "label": "t:sections.general_section_settings.container_size.large_width_option"
+        },
+        {
+          "value": "medium",
+          "label": "t:sections.general_section_settings.container_size.medium_width_option"
+        }
+      ],
+      "default": "page-width",
+      "label": "t:sections.general_section_settings.container_size.label"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section Title"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "category",
+      "name": "Category",
+      "settings": [
+        {
+          "type": "text",
+          "id": "category_title",
+          "label": "Category Title",
+          "default": "Shop Category"
+        },
+        {
+          "type": "header",
+          "content": "Item 1"
+        },
+        {
+          "type": "checkbox",
+          "id": "item_1_show",
+          "label": "Show Item 1",
+          "default": true
+        },
+        {
+          "type": "image_picker",
+          "id": "item_1_image",
+          "label": "Item 1 Image"
+        },
+        {
+          "type": "text",
+          "id": "item_1_text",
+          "label": "Item 1 Text",
+          "default": "Item Name"
+        },
+        {
+          "type": "url",
+          "id": "item_1_link",
+          "label": "Item 1 Link"
+        },
+        {
+          "type": "header",
+          "content": "Item 2"
+        },
+        {
+          "type": "checkbox",
+          "id": "item_2_show",
+          "label": "Show Item 2",
+          "default": true
+        },
+        {
+          "type": "image_picker",
+          "id": "item_2_image",
+          "label": "Item 2 Image"
+        },
+        {
+          "type": "text",
+          "id": "item_2_text",
+          "label": "Item 2 Text",
+          "default": "Item Name"
+        },
+        {
+          "type": "url",
+          "id": "item_2_link",
+          "label": "Item 2 Link"
+        },
+        {
+          "type": "header",
+          "content": "Item 3"
+        },
+        {
+          "type": "checkbox",
+          "id": "item_3_show",
+          "label": "Show Item 3",
+          "default": true
+        },
+        {
+          "type": "image_picker",
+          "id": "item_3_image",
+          "label": "Item 3 Image"
+        },
+        {
+          "type": "text",
+          "id": "item_3_text",
+          "label": "Item 3 Text",
+          "default": "Item Name"
+        },
+        {
+          "type": "url",
+          "id": "item_3_link",
+          "label": "Item 3 Link"
+        },
+        {
+          "type": "header",
+          "content": "Item 4"
+        },
+        {
+          "type": "checkbox",
+          "id": "item_4_show",
+          "label": "Show Item 4",
+          "default": true
+        },
+        {
+          "type": "image_picker",
+          "id": "item_4_image",
+          "label": "Item 4 Image"
+        },
+        {
+          "type": "text",
+          "id": "item_4_text",
+          "label": "Item 4 Text",
+          "default": "Item Name"
+        },
+        {
+          "type": "url",
+          "id": "item_4_link",
+          "label": "Item 4 Link"
+        },
+        {
+          "type": "header",
+          "content": "Item 5"
+        },
+        {
+          "type": "checkbox",
+          "id": "item_5_show",
+          "label": "Show Item 5",
+          "default": false
+        },
+        {
+          "type": "image_picker",
+          "id": "item_5_image",
+          "label": "Item 5 Image"
+        },
+        {
+          "type": "text",
+          "id": "item_5_text",
+          "label": "Item 5 Text",
+          "default": "Item Name"
+        },
+        {
+          "type": "url",
+          "id": "item_5_link",
+          "label": "Item 5 Link"
+        },
+        {
+          "type": "header",
+          "content": "Item 6"
+        },
+        {
+          "type": "checkbox",
+          "id": "item_6_show",
+          "label": "Show Item 6",
+          "default": false
+        },
+        {
+          "type": "image_picker",
+          "id": "item_6_image",
+          "label": "Item 6 Image"
+        },
+        {
+          "type": "text",
+          "id": "item_6_text",
+          "label": "Item 6 Text",
+          "default": "Item Name"
+        },
+        {
+          "type": "url",
+          "id": "item_6_link",
+          "label": "Item 6 Link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product Category Grid",
+      "blocks": [
+        {
+          "type": "category",
+          "settings": {
+            "category_title": "Shop Shirts"
+          }
+        },
+        {
+          "type": "category",
+          "settings": {
+            "category_title": "Shop Workwear"
+          }
+        },
+        {
+          "type": "category",
+          "settings": {
+            "category_title": "Shop Other Items"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

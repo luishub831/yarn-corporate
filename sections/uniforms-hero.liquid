@@ -1,62 +1,71 @@
 {%- liquid
   assign options = section.settings
   assign color_scheme = options.color_scheme
+  assign container_size = options.container_size
   assign title = options.title
   assign subtitle = options.subtitle
   assign show_breadcrumbs = options.show_breadcrumbs
 -%}
 
-<div class="uniforms-hero color-{{ color_scheme }} section-{{ section.id }}">
-  <div class="uniforms-hero__container container container--page-width">
-    {%- if show_breadcrumbs -%}
-      <nav class="breadcrumbs" role="navigation" aria-label="breadcrumbs">
-        <a href="/">Home</a>
+<div class="uniforms-hero section-{{ section.id }}">
+  {%- if show_breadcrumbs -%}
+    <div class="container container--{{ container_size }}">
+      <nav class="uniforms-hero__breadcrumbs" role="navigation" aria-label="breadcrumbs">
+        <a href="{{ routes.root_url }}">Home</a>
         <span class="breadcrumbs__separator">›</span>
         <span>{{ page.title | default: title }}</span>
       </nav>
-    {%- endif -%}
-    
-    <div class="uniforms-hero__content">
-      {%- if title != blank -%}
-        <h1 class="uniforms-hero__title">{{ title }}</h1>
-      {%- elsif page.title -%}
-        <h1 class="uniforms-hero__title">{{ page.title }}</h1>
-      {%- endif -%}
-      
-      {%- if subtitle != blank -%}
-        <p class="uniforms-hero__subtitle">{{ subtitle }}</p>
-      {%- endif -%}
+    </div>
+  {%- endif -%}
+  
+  <div class="uniforms-hero__background color-{{ color_scheme }}">
+    <div class="uniforms-hero__container container container--{{ container_size }}">
+      <div class="uniforms-hero__content">
+        {%- if title != blank -%}
+          <h1 class="uniforms-hero__title">{{ title }}</h1>
+        {%- elsif page.title -%}
+          <h1 class="uniforms-hero__title">{{ page.title }}</h1>
+        {%- endif -%}
+        
+        {%- if subtitle != blank -%}
+          <p class="uniforms-hero__subtitle">{{ subtitle }}</p>
+        {%- endif -%}
+      </div>
     </div>
   </div>
 </div>
 
 <style>
   .uniforms-hero {
-    padding: 3rem 0;
-    background-color: #1a5a6d;
-    color: white;
+    padding: 0;
+    border-top: 1px solid #EDEDED;
+  }
+
+  .uniforms-hero__background {
+    width: 100%;
+    background: var(--gsc-background-color-100);
+    color: var(--gsc-text-color-100);
   }
 
   .uniforms-hero__container {
-    max-width: 1200px;
     margin: 0 auto;
-    padding: 0 2rem;
+    padding: 3rem 2rem;
   }
 
-  .breadcrumbs {
-    margin-bottom: 1.5rem;
-    font-size: 0.875rem;
-    color: rgba(255, 255, 255, 0.8);
+  .uniforms-hero__breadcrumbs {
+    padding: 1.5rem 2rem 0.5rem;
+    font-size: 1rem;
+    color: #1A1A1A;
   }
 
-  .breadcrumbs a {
-    color: rgba(255, 255, 255, 0.8);
+  .uniforms-hero__breadcrumbs a {
+    color: #1A1A1A;
     text-decoration: none;
     transition: color 0.2s ease;
   }
 
-  .breadcrumbs a:hover {
-    color: white;
+  .uniforms-hero__breadcrumbs a:hover {
+    color: #333;
   }
 
   .breadcrumbs__separator {
@@ -68,16 +77,17 @@
   }
 
   .uniforms-hero__title {
-    font-size: 2.5rem;
+    font-size: 3rem;
     font-weight: 700;
     margin: 0 0 0.5rem 0;
     line-height: 1.2;
+    color: var(--gsc-text-color-100);
   }
 
   .uniforms-hero__subtitle {
-    font-size: 1.125rem;
     margin: 0;
-    color: rgba(255, 255, 255, 0.9);
+    color: var(--gsc-text-color-100);
+    opacity: 0.9;
   }
 
   @media (max-width: 768px) {
@@ -89,9 +99,7 @@
       font-size: 2rem;
     }
 
-    .uniforms-hero__subtitle {
-      font-size: 1rem;
-    }
+   
   }
 </style>
 
@@ -105,19 +113,56 @@
       "options": [
         {
           "value": "default",
-          "label": "Default"
+          "label": "t:sections.general_section_settings.color_scheme_option_default_label"
         },
         {
           "value": "primary",
-          "label": "Primary"
+          "label": "t:sections.general_section_settings.color_scheme_option_primary_label"
         },
         {
           "value": "secondary",
-          "label": "Secondary"
+          "label": "t:sections.general_section_settings.color_scheme_option_secondary_label"
+        },
+        {
+          "value": "custom-1",
+          "label": "t:sections.general_section_settings.color_scheme_option_custom_1_label"
+        },
+        {
+          "value": "custom-2",
+          "label": "t:sections.general_section_settings.color_scheme_option_custom_2_label"
+        },
+        {
+          "value": "custom-3",
+          "label": "t:sections.general_section_settings.color_scheme_option_custom_3_label"
         }
       ],
       "default": "default",
-      "label": "Color scheme"
+      "label": "t:sections.general_section_settings.color_scheme_label",
+      "info": "t:sections.general_section_settings.color_scheme_tip"
+    },
+    {
+      "type": "select",
+      "id": "container_size",
+      "options": [
+        {
+          "value": "full-screen",
+          "label": "t:sections.general_section_settings.container_size.screen_width_option"
+        },
+        {
+          "value": "page-width",
+          "label": "t:sections.general_section_settings.container_size.page_width_option"
+        },
+        {
+          "value": "large",
+          "label": "t:sections.general_section_settings.container_size.large_width_option"
+        },
+        {
+          "value": "medium",
+          "label": "t:sections.general_section_settings.container_size.medium_width_option"
+        }
+      ],
+      "default": "page-width",
+      "label": "t:sections.general_section_settings.container_size.label"
     },
     {
       "type": "text",
