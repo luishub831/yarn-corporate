@@ -1,11 +1,27 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "uniforms_hero": {
       "type": "uniforms-hero",
-      "settings": {}
+      "settings": {
+        "color_scheme": "custom-2",
+        "container_size": "large",
+        "title": "Shop All Uniforms",
+        "subtitle": "5-8 weeks turn around time",
+        "show_breadcrumbs": true
+      }
     },
     "main": {
       "type": "page",
+      "disabled": true,
       "settings": {
         "color_scheme": "default",
         "container_size": "large",
@@ -13,10 +29,107 @@
         "section_spacing_bottom": 96,
         "show_heading": false
       }
+    },
+    "product_category_grid_Lz9wBw": {
+      "type": "product-category-grid",
+      "blocks": {
+        "category_YwL3An": {
+          "type": "category",
+          "settings": {
+            "category_title": "Shop Shirts",
+            "item_1_show": true,
+            "item_1_image": "shopify://shop_images/short-sleeve-polos.png",
+            "item_1_text": "Short Sleeve Polos",
+            "item_1_link": "",
+            "item_2_show": true,
+            "item_2_image": "shopify://shop_images/long-sleeve-polos.png",
+            "item_2_text": "Long Sleeve Polos",
+            "item_2_link": "",
+            "item_3_show": true,
+            "item_3_image": "shopify://shop_images/blouses-fashion-top.png",
+            "item_3_text": "Blouses/Fashion Tops",
+            "item_3_link": "",
+            "item_4_show": true,
+            "item_4_image": "shopify://shop_images/tshorts.png",
+            "item_4_text": "T-Shirts",
+            "item_4_link": "",
+            "item_5_show": false,
+            "item_5_text": "Item Name",
+            "item_5_link": "",
+            "item_6_show": false,
+            "item_6_text": "Item Name",
+            "item_6_link": ""
+          }
+        },
+        "category_QzgbMr": {
+          "type": "category",
+          "settings": {
+            "category_title": "Shop Workwear",
+            "item_1_show": true,
+            "item_1_image": "shopify://shop_images/cotton-drill-shirts.png",
+            "item_1_text": "Cotton Drill Shirts",
+            "item_1_link": "",
+            "item_2_show": true,
+            "item_2_image": "shopify://shop_images/hi-vis-polos.png",
+            "item_2_text": "Hi-Vis Polos",
+            "item_2_link": "",
+            "item_3_show": true,
+            "item_3_text": "Item Name",
+            "item_3_link": "",
+            "item_4_show": true,
+            "item_4_text": "Item Name",
+            "item_4_link": "",
+            "item_5_show": false,
+            "item_5_text": "Item Name",
+            "item_5_link": "",
+            "item_6_show": false,
+            "item_6_text": "Item Name",
+            "item_6_link": ""
+          }
+        },
+        "category_bf49Eb": {
+          "type": "category",
+          "settings": {
+            "category_title": "Shop Other Items",
+            "item_1_show": true,
+            "item_1_image": "shopify://shop_images/promo-items.png",
+            "item_1_text": "Promo",
+            "item_1_link": "",
+            "item_2_show": true,
+            "item_2_image": "shopify://shop_images/bottles.png",
+            "item_2_text": "Bottles",
+            "item_2_link": "",
+            "item_3_show": true,
+            "item_3_text": "Item Name",
+            "item_3_link": "",
+            "item_4_show": true,
+            "item_4_text": "Item Name",
+            "item_4_link": "",
+            "item_5_show": false,
+            "item_5_text": "Item Name",
+            "item_5_link": "",
+            "item_6_show": false,
+            "item_6_text": "Item Name",
+            "item_6_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "category_YwL3An",
+        "category_QzgbMr",
+        "category_bf49Eb"
+      ],
+      "name": "Product Category Grid",
+      "settings": {
+        "color_scheme": "default",
+        "container_size": "large",
+        "title": ""
+      }
     }
   },
   "order": [
     "uniforms_hero",
-    "main"
+    "main",
+    "product_category_grid_Lz9wBw"
   ]
 }
