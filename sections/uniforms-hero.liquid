@@ -1,0 +1,147 @@
+{%- liquid
+  assign options = section.settings
+  assign color_scheme = options.color_scheme
+  assign title = options.title
+  assign subtitle = options.subtitle
+  assign show_breadcrumbs = options.show_breadcrumbs
+-%}
+
+<div class="uniforms-hero color-{{ color_scheme }} section-{{ section.id }}">
+  <div class="uniforms-hero__container container container--page-width">
+    {%- if show_breadcrumbs -%}
+      <nav class="breadcrumbs" role="navigation" aria-label="breadcrumbs">
+        <a href="/">Home</a>
+        <span class="breadcrumbs__separator">›</span>
+        <span>{{ page.title | default: title }}</span>
+      </nav>
+    {%- endif -%}
+    
+    <div class="uniforms-hero__content">
+      {%- if title != blank -%}
+        <h1 class="uniforms-hero__title">{{ title }}</h1>
+      {%- elsif page.title -%}
+        <h1 class="uniforms-hero__title">{{ page.title }}</h1>
+      {%- endif -%}
+      
+      {%- if subtitle != blank -%}
+        <p class="uniforms-hero__subtitle">{{ subtitle }}</p>
+      {%- endif -%}
+    </div>
+  </div>
+</div>
+
+<style>
+  .uniforms-hero {
+    padding: 3rem 0;
+    background-color: #1a5a6d;
+    color: white;
+  }
+
+  .uniforms-hero__container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  .breadcrumbs {
+    margin-bottom: 1.5rem;
+    font-size: 0.875rem;
+    color: rgba(255, 255, 255, 0.8);
+  }
+
+  .breadcrumbs a {
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .breadcrumbs a:hover {
+    color: white;
+  }
+
+  .breadcrumbs__separator {
+    margin: 0 0.5rem;
+  }
+
+  .uniforms-hero__content {
+    max-width: 800px;
+  }
+
+  .uniforms-hero__title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin: 0 0 0.5rem 0;
+    line-height: 1.2;
+  }
+
+  .uniforms-hero__subtitle {
+    font-size: 1.125rem;
+    margin: 0;
+    color: rgba(255, 255, 255, 0.9);
+  }
+
+  @media (max-width: 768px) {
+    .uniforms-hero {
+      padding: 2rem 0;
+    }
+
+    .uniforms-hero__title {
+      font-size: 2rem;
+    }
+
+    .uniforms-hero__subtitle {
+      font-size: 1rem;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Uniforms Hero",
+  "settings": [
+    {
+      "type": "select",
+      "id": "color_scheme",
+      "options": [
+        {
+          "value": "default",
+          "label": "Default"
+        },
+        {
+          "value": "primary",
+          "label": "Primary"
+        },
+        {
+          "value": "secondary",
+          "label": "Secondary"
+        }
+      ],
+      "default": "default",
+      "label": "Color scheme"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "default": "Shop All Uniforms",
+      "label": "Title"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "default": "5-8 weeks turn around time",
+      "label": "Subtitle"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_breadcrumbs",
+      "default": true,
+      "label": "Show breadcrumbs"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Uniforms Hero"
+    }
+  ]
+}
+{% endschema %}
