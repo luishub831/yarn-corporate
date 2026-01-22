@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "35abde66-b33a-4178-b3ef-5bba319784ba": {
@@ -7,8 +16,8 @@
           "type": "image-banner",
           "settings": {
             "color_scheme": "white",
-            "desktop_img": "shopify:\/\/shop_images\/Slider-1_b6ef4b9b-637b-4a95-b5f2-23648e684fa2.jpg",
-            "mobile_img": "shopify:\/\/shop_images\/Slider-1-Mobile_54ec76be-5b3a-4cc7-8835-9dde906c2a52.jpg",
+            "desktop_img": "shopify://shop_images/Slider-1_b6ef4b9b-637b-4a95-b5f2-23648e684fa2.jpg",
+            "mobile_img": "shopify://shop_images/Slider-1-Mobile_54ec76be-5b3a-4cc7-8835-9dde906c2a52.jpg",
             "desktop_overlay_opacity": 0,
             "mobile_overlay_opacity": 0,
             "caption": "",
@@ -25,7 +34,7 @@
             "desktop_content_background": "none",
             "mobile_content_background": "none",
             "btn_text": "ADD YOUR LOGO",
-            "btn_url": "shopify:\/\/collections\/all-naidoc-2025-polos",
+            "btn_url": "shopify://collections/all-naidoc-2025-polos",
             "btn_style": "solid",
             "extra_btn_text": "",
             "extra_btn_url": "",
@@ -36,8 +45,8 @@
           "type": "image-banner",
           "settings": {
             "color_scheme": "white",
-            "desktop_img": "shopify:\/\/shop_images\/Slider-3_e01e2d50-d566-4678-965c-3859e949cafe.jpg",
-            "mobile_img": "shopify:\/\/shop_images\/Slider-3-Mobile_53e33adc-a03f-455b-b848-50568e0efe1b.jpg",
+            "desktop_img": "shopify://shop_images/Slider-3_e01e2d50-d566-4678-965c-3859e949cafe.jpg",
+            "mobile_img": "shopify://shop_images/Slider-3-Mobile_53e33adc-a03f-455b-b848-50568e0efe1b.jpg",
             "desktop_overlay_opacity": 0,
             "mobile_overlay_opacity": 0,
             "caption": "",
@@ -57,7 +66,7 @@
             "btn_url": "",
             "btn_style": "solid",
             "extra_btn_text": "SHOP WORKWEAR POLOS",
-            "extra_btn_url": "shopify:\/\/collections\/all-naidoc-2025-bamboo-polos",
+            "extra_btn_url": "shopify://collections/all-naidoc-2025-bamboo-polos",
             "extra_btn_style": "solid"
           }
         },
@@ -65,8 +74,8 @@
           "type": "image-banner",
           "settings": {
             "color_scheme": "white",
-            "desktop_img": "shopify:\/\/shop_images\/Slider-4_300a94ff-8173-485a-abdb-d136332c7124.jpg",
-            "mobile_img": "shopify:\/\/shop_images\/Slider-4-Mobile_a2ee2196-0c9b-4a35-bcc5-45762572dd53.jpg",
+            "desktop_img": "shopify://shop_images/Slider-4_300a94ff-8173-485a-abdb-d136332c7124.jpg",
+            "mobile_img": "shopify://shop_images/Slider-4-Mobile_a2ee2196-0c9b-4a35-bcc5-45762572dd53.jpg",
             "desktop_overlay_opacity": 0,
             "mobile_overlay_opacity": 0,
             "caption": "",
@@ -83,7 +92,7 @@
             "desktop_content_background": "none",
             "mobile_content_background": "none",
             "btn_text": "SHOP CUSTOM ESSENCE POLOS",
-            "btn_url": "shopify:\/\/collections\/all-naidoc-2025-essence-polos",
+            "btn_url": "shopify://collections/all-naidoc-2025-essence-polos",
             "btn_style": "solid",
             "extra_btn_text": "",
             "extra_btn_url": "",
@@ -94,8 +103,8 @@
           "type": "image-banner",
           "settings": {
             "color_scheme": "white",
-            "desktop_img": "shopify:\/\/shop_images\/Slider-8_49a5b252-1e90-43b1-989d-a01922d57f35.jpg",
-            "mobile_img": "shopify:\/\/shop_images\/Slider-8-Mobile_ee24389d-412f-4d9a-97c5-5f918a072091.jpg",
+            "desktop_img": "shopify://shop_images/Slider-8_49a5b252-1e90-43b1-989d-a01922d57f35.jpg",
+            "mobile_img": "shopify://shop_images/Slider-8-Mobile_ee24389d-412f-4d9a-97c5-5f918a072091.jpg",
             "desktop_overlay_opacity": 0,
             "mobile_overlay_opacity": 0,
             "caption": "",
@@ -112,7 +121,7 @@
             "desktop_content_background": "none",
             "mobile_content_background": "none",
             "btn_text": "CONTACT US",
-            "btn_url": "shopify:\/\/pages\/contact",
+            "btn_url": "shopify://pages/contact",
             "btn_style": "solid",
             "extra_btn_text": "",
             "extra_btn_url": "",
@@ -186,8 +195,8 @@
           "type": "image-banner",
           "settings": {
             "color_scheme": "white",
-            "desktop_img": "shopify:\/\/shop_images\/Slider-5_f0a49349-1526-4821-9a9f-0f059761e831.jpg",
-            "mobile_img": "shopify:\/\/shop_images\/Slider-5-Mobile_2a559c9f-bd50-4883-8ec7-536723e73983.jpg",
+            "desktop_img": "shopify://shop_images/Slider-5_f0a49349-1526-4821-9a9f-0f059761e831.jpg",
+            "mobile_img": "shopify://shop_images/Slider-5-Mobile_2a559c9f-bd50-4883-8ec7-536723e73983.jpg",
             "desktop_overlay_opacity": 0,
             "mobile_overlay_opacity": 0,
             "caption": "",
@@ -204,7 +213,7 @@
             "desktop_content_background": "none",
             "mobile_content_background": "none",
             "btn_text": "ORDER FOR YOUR TEAM",
-            "btn_url": "shopify:\/\/collections\/all-naidoc-2025-bamboo-polos",
+            "btn_url": "shopify://collections/all-naidoc-2025-bamboo-polos",
             "btn_style": "solid",
             "extra_btn_text": "",
             "extra_btn_url": "",
@@ -215,8 +224,8 @@
           "type": "image-banner",
           "settings": {
             "color_scheme": "white",
-            "desktop_img": "shopify:\/\/shop_images\/Slider-6_9436e217-a2da-4ac7-a7ec-ea4f0b2cc167.jpg",
-            "mobile_img": "shopify:\/\/shop_images\/Slider-6-Mobile_59b3252f-10e5-4d72-b296-09d50e3b2877.jpg",
+            "desktop_img": "shopify://shop_images/Slider-6_9436e217-a2da-4ac7-a7ec-ea4f0b2cc167.jpg",
+            "mobile_img": "shopify://shop_images/Slider-6-Mobile_59b3252f-10e5-4d72-b296-09d50e3b2877.jpg",
             "desktop_overlay_opacity": 0,
             "mobile_overlay_opacity": 0,
             "caption": "",
@@ -233,7 +242,7 @@
             "desktop_content_background": "none",
             "mobile_content_background": "none",
             "btn_text": "SHOP CUSTOM NAIDOC MERCH",
-            "btn_url": "shopify:\/\/collections\/naidoc-2025-merch",
+            "btn_url": "shopify://collections/naidoc-2025-merch",
             "btn_style": "solid",
             "extra_btn_text": "",
             "extra_btn_url": "",
@@ -244,8 +253,8 @@
           "type": "image-banner",
           "settings": {
             "color_scheme": "white",
-            "desktop_img": "shopify:\/\/shop_images\/Slider-7_bd78477f-a10e-4efe-ae02-263e1aaeaabd.jpg",
-            "mobile_img": "shopify:\/\/shop_images\/Slider-7-Mobile_78edd114-6d0d-48c6-9be8-9de03c80366f.jpg",
+            "desktop_img": "shopify://shop_images/Slider-7_bd78477f-a10e-4efe-ae02-263e1aaeaabd.jpg",
+            "mobile_img": "shopify://shop_images/Slider-7-Mobile_78edd114-6d0d-48c6-9be8-9de03c80366f.jpg",
             "desktop_overlay_opacity": 0,
             "mobile_overlay_opacity": 0,
             "caption": "",
@@ -262,7 +271,7 @@
             "desktop_content_background": "none",
             "mobile_content_background": "none",
             "btn_text": "ORDER FOR YOUR TEAM",
-            "btn_url": "shopify:\/\/collections\/all-naidoc-2025-bamboo-polos",
+            "btn_url": "shopify://collections/all-naidoc-2025-bamboo-polos",
             "btn_style": "solid",
             "extra_btn_text": "",
             "extra_btn_url": "",
@@ -310,7 +319,7 @@
           "all-naidoc-2025-mouse-pads",
           "all-naidoc-2025-beach-towels",
           "all-naidoc-2025-tote-bags",
-          "naidoc-2025-t-shirts"
+          "naidoc-2026-t-shirts"
         ],
         "img_ratio": "default",
         "product_card_align": "left",
@@ -330,53 +339,53 @@
         "column_hb9rjf": {
           "type": "column",
           "settings": {
-            "image": "shopify:\/\/shop_images\/DSC_3128-2_15a97dd1-2ff4-4a16-bca1-174ed4191213.jpg",
+            "image": "shopify://shop_images/DSC_3128-2_15a97dd1-2ff4-4a16-bca1-174ed4191213.jpg",
             "desktop_image_width": 100,
             "mobile_image_width": 100,
             "image_ratio": 1,
             "title": "Full Custom Apparel 5-6 Weeks",
-            "text": "<h6>For those who want a truly unique, bespoke custom design<\/h6>",
+            "text": "<h6>For those who want a truly unique, bespoke custom design</h6>",
             "link_text": "Shop Full Custom Apparel",
-            "link_url": "https:\/\/corporate.yarn.com.au\/pages\/corporateuniforms"
+            "link_url": "https://corporate.yarn.com.au/pages/corporateuniforms"
           }
         },
         "column_T4df7c": {
           "type": "column",
           "settings": {
-            "image": "shopify:\/\/shop_images\/DSC_6499_2_23ced4fe-f5b4-4958-9f18-a3d409d20ff5.jpg",
+            "image": "shopify://shop_images/DSC_6499_2_23ced4fe-f5b4-4958-9f18-a3d409d20ff5.jpg",
             "desktop_image_width": 100,
             "mobile_image_width": 100,
             "image_ratio": 1,
             "title": "Express Range 5-10 Days",
-            "text": "<h6>For fast turnaround on custom designs<\/h6>",
+            "text": "<h6>For fast turnaround on custom designs</h6>",
             "link_text": "Shop Express Options",
-            "link_url": "https:\/\/corporate.yarn.com.au\/pages\/branded-merch"
+            "link_url": "https://corporate.yarn.com.au/pages/branded-merch"
           }
         },
         "column_C3Tj3B": {
           "type": "column",
           "settings": {
-            "image": "shopify:\/\/shop_images\/0M2A2319_1_52cf135c-0dfe-4e0a-a99d-3a76ec7b6c1e.jpg",
+            "image": "shopify://shop_images/0M2A2319_1_52cf135c-0dfe-4e0a-a99d-3a76ec7b6c1e.jpg",
             "desktop_image_width": 100,
             "mobile_image_width": 100,
             "image_ratio": 1,
             "title": "Bespoke Art (Timeframe Subject To Artist)",
-            "text": "<h6>For custom projects incorporating original, commissioned artwork<\/h6>",
+            "text": "<h6>For custom projects incorporating original, commissioned artwork</h6>",
             "link_text": "Find Out More",
-            "link_url": "https:\/\/corporate.yarn.com.au\/pages\/bespoke"
+            "link_url": "https://corporate.yarn.com.au/pages/bespoke"
           }
         },
         "column_TtXRNX": {
           "type": "column",
           "settings": {
-            "image": "shopify:\/\/shop_images\/DSC_9824_163d744a-833d-4202-8757-d0cff6ab992f.jpg",
+            "image": "shopify://shop_images/DSC_9824_163d744a-833d-4202-8757-d0cff6ab992f.jpg",
             "desktop_image_width": 100,
             "mobile_image_width": 100,
             "image_ratio": 1,
             "title": "Off The Shelf (Immediate Dispatch)",
-            "text": "<h6>For immediate dispatch on in-stock and bulk quantities<\/h6>",
+            "text": "<h6>For immediate dispatch on in-stock and bulk quantities</h6>",
             "link_text": "Shop Off The Shelf",
-            "link_url": "https:\/\/corporate.yarn.com.au\/collections\/all-from-the-shelf-products"
+            "link_url": "https://corporate.yarn.com.au/collections/all-from-the-shelf-products"
           }
         }
       },
@@ -398,7 +407,7 @@
         "title": "About The Ordering Process",
         "title_icon_alignment": "left",
         "title_icon_size": 51,
-        "text": "We offer a range of solutions to suit your project and timeline. Whether you need our full comprehensive service for custom uniforms and bespoke designs or a fast-track option with express uniforms and merchandise, we have the right fit for you. <strong>Explore our order processes to find the best solution for your project.<\/strong>",
+        "text": "We offer a range of solutions to suit your project and timeline. Whether you need our full comprehensive service for custom uniforms and bespoke designs or a fast-track option with express uniforms and merchandise, we have the right fit for you. <strong>Explore our order processes to find the best solution for your project.</strong>",
         "heading_size": "h2",
         "body_size": "body3",
         "content_alignment": "center",
@@ -413,7 +422,7 @@
         "show_column_background": true,
         "enable_carousel_on_mobile": true,
         "btn_text": "Start Planning",
-        "btn_url": "https:\/\/corporate.yarn.com.au\/pages\/ordering-process",
+        "btn_url": "https://corporate.yarn.com.au/pages/ordering-process",
         "btn_style": "solid"
       }
     },
@@ -423,7 +432,7 @@
         "template--16927600050390__66d677db-f419-4997-9d31-680b9b2a3fb9-logo-2": {
           "type": "logo",
           "settings": {
-            "image": "shopify:\/\/shop_images\/LOGO_LIST_Recovered_-03.png",
+            "image": "shopify://shop_images/LOGO_LIST_Recovered_-03.png",
             "image_width": 70,
             "link": ""
           }
@@ -431,7 +440,7 @@
         "template--16927600050390__66d677db-f419-4997-9d31-680b9b2a3fb9-logo-1": {
           "type": "logo",
           "settings": {
-            "image": "shopify:\/\/shop_images\/LOGO_LIST_Recovered_-20.png",
+            "image": "shopify://shop_images/LOGO_LIST_Recovered_-20.png",
             "image_width": 70,
             "link": ""
           }
@@ -439,7 +448,7 @@
         "template--16927600050390__66d677db-f419-4997-9d31-680b9b2a3fb9-logo-3": {
           "type": "logo",
           "settings": {
-            "image": "shopify:\/\/shop_images\/LOGO_LIST_Recovered_-24.png",
+            "image": "shopify://shop_images/LOGO_LIST_Recovered_-24.png",
             "image_width": 70,
             "link": ""
           }
@@ -447,7 +456,7 @@
         "template--16927600050390__66d677db-f419-4997-9d31-680b9b2a3fb9-logo-4": {
           "type": "logo",
           "settings": {
-            "image": "shopify:\/\/shop_images\/LOGO_LIST_Recovered_-04.png",
+            "image": "shopify://shop_images/LOGO_LIST_Recovered_-04.png",
             "image_width": 70,
             "link": ""
           }
@@ -455,7 +464,7 @@
         "template--16927600050390__66d677db-f419-4997-9d31-680b9b2a3fb9-logo-5": {
           "type": "logo",
           "settings": {
-            "image": "shopify:\/\/shop_images\/LOGO_LIST_Recovered_-21.png",
+            "image": "shopify://shop_images/LOGO_LIST_Recovered_-21.png",
             "image_width": 70,
             "link": ""
           }
@@ -463,7 +472,7 @@
         "template--16927600050390__66d677db-f419-4997-9d31-680b9b2a3fb9-logo-7": {
           "type": "logo",
           "settings": {
-            "image": "shopify:\/\/shop_images\/LOGO_LIST_Recovered_-22.png",
+            "image": "shopify://shop_images/LOGO_LIST_Recovered_-22.png",
             "image_width": 100,
             "link": ""
           }
@@ -471,7 +480,7 @@
         "template--16927600050390__66d677db-f419-4997-9d31-680b9b2a3fb9-logo-8": {
           "type": "logo",
           "settings": {
-            "image": "shopify:\/\/shop_images\/LOGO_LIST_Recovered_-15.png",
+            "image": "shopify://shop_images/LOGO_LIST_Recovered_-15.png",
             "image_width": 100,
             "link": ""
           }
@@ -479,7 +488,7 @@
         "ad37d05b-3839-44bf-80ec-37cb9b37cd87": {
           "type": "logo",
           "settings": {
-            "image": "shopify:\/\/shop_images\/LOGO_LIST_Recovered_-13.png",
+            "image": "shopify://shop_images/LOGO_LIST_Recovered_-13.png",
             "image_width": 100,
             "link": ""
           }
@@ -488,7 +497,7 @@
           "type": "logo",
           "disabled": true,
           "settings": {
-            "image": "shopify:\/\/shop_images\/LOGO_LIST-18_bae72d88-cf1b-44d3-b541-16db2ff8c630.jpg",
+            "image": "shopify://shop_images/LOGO_LIST-18_bae72d88-cf1b-44d3-b541-16db2ff8c630.jpg",
             "image_width": 100,
             "link": ""
           }
@@ -497,7 +506,7 @@
           "type": "logo",
           "disabled": true,
           "settings": {
-            "image": "shopify:\/\/shop_images\/LOGO_LIST-07_5e899c72-5c26-4139-be9a-949a4af13d9c.jpg",
+            "image": "shopify://shop_images/LOGO_LIST-07_5e899c72-5c26-4139-be9a-949a4af13d9c.jpg",
             "image_width": 100,
             "link": ""
           }
@@ -505,7 +514,7 @@
         "a9d8ad32-314c-4793-8ec5-fcd8f3f14e05": {
           "type": "logo",
           "settings": {
-            "image": "shopify:\/\/shop_images\/LOGO_LIST_Recovered_-19.png",
+            "image": "shopify://shop_images/LOGO_LIST_Recovered_-19.png",
             "image_width": 100,
             "link": ""
           }
@@ -555,7 +564,7 @@
         "template--16927600050390__7d7f3b78-a198-4be2-814c-fd3197e33a88-text-1": {
           "type": "text",
           "settings": {
-            "text": "<p>Support Artists With Every Purchase And Empower Your Team With Australia’s Premier First Nations Uniform Collection<\/p><p><\/p>",
+            "text": "<p>Support Artists With Every Purchase And Empower Your Team With Australia’s Premier First Nations Uniform Collection</p><p></p>",
             "text_2": "",
             "text_3": "",
             "body_size": "body2"
@@ -565,7 +574,7 @@
           "type": "buttons",
           "settings": {
             "btn_text": "Order For Your Team",
-            "btn_url": "https:\/\/corporate.yarn.com.au\/pages\/corporateuniforms",
+            "btn_url": "https://corporate.yarn.com.au/pages/corporateuniforms",
             "btn_style": "solid",
             "extra_btn_text": "",
             "extra_btn_url": "",
@@ -648,7 +657,7 @@
         "text_eT9Ec6": {
           "type": "text",
           "settings": {
-            "text": "<p>Yarn Corp offers dedication to quality workwear and appreciation for Aboriginal and Torres Strait Islander cultures in Australia. For over a decade, we have fostered partnerships with talented First Nations Artists, working together to produce exceptional custom printed products and apparel.<\/p>",
+            "text": "<p>Yarn Corp offers dedication to quality workwear and appreciation for Aboriginal and Torres Strait Islander cultures in Australia. For over a decade, we have fostered partnerships with talented First Nations Artists, working together to produce exceptional custom printed products and apparel.</p>",
             "text_2": "",
             "text_3": "",
             "body_size": "body2"
@@ -659,7 +668,7 @@
           "disabled": true,
           "settings": {
             "btn_text": "Read More",
-            "btn_url": "shopify:\/\/pages\/about",
+            "btn_url": "shopify://pages/about",
             "btn_style": "link",
             "extra_btn_text": "",
             "extra_btn_url": "",
@@ -693,7 +702,7 @@
         "template--16729789989105__560e895f-009c-43b9-acef-236cd697c102-1681819747fe4ef4d1-0": {
           "type": "image",
           "settings": {
-            "image": "shopify:\/\/shop_images\/Custom-uniforms-Mobile_e8abca29-c41a-4bea-a8c7-526a7ab020fd.jpg"
+            "image": "shopify://shop_images/Custom-uniforms-Mobile_e8abca29-c41a-4bea-a8c7-526a7ab020fd.jpg"
           }
         }
       },
@@ -713,13 +722,13 @@
         "icon": "none",
         "subheading": "About Us",
         "heading": "Australia's Leading Supplier For First Nations Workwear, Merchandise & Promotional Goods",
-        "body": "<p>Yarn Corp is driven by our vision to create inclusive, high quality workwear that celebrates the vibrant culture of First Nations Australia in the modern workplace. Our uniforms and merchandise not only elevate your brand, organisation, or company, but also demonstrate respect for First Nations cul<\/p>",
+        "body": "<p>Yarn Corp is driven by our vision to create inclusive, high quality workwear that celebrates the vibrant culture of First Nations Australia in the modern workplace. Our uniforms and merchandise not only elevate your brand, organisation, or company, but also demonstrate respect for First Nations cul</p>",
         "heading_size": "h2",
         "body_size": "body3",
         "content_alignment": "left",
         "desktop_content_width": 700,
         "first_button_text": "Learn More",
-        "first_button_link": "shopify:\/\/pages\/about",
+        "first_button_link": "shopify://pages/about",
         "first_button_style": "solid",
         "second_button_text": "",
         "second_button_link": "",
@@ -732,7 +741,7 @@
         "image_ERNUbF": {
           "type": "image",
           "settings": {
-            "image": "shopify:\/\/shop_images\/Testimonial_f45e63fb-609a-4a52-9591-6e5e318c3550.jpg"
+            "image": "shopify://shop_images/Testimonial_f45e63fb-609a-4a52-9591-6e5e318c3550.jpg"
           }
         }
       },
@@ -751,13 +760,13 @@
         "icon": "none",
         "subheading": "Jenni - Manly State School",
         "heading": "",
-        "body": "<h5>\"The feedback from our staff for the “Our Future Together” NAIDOC 2024 Essence Polo Shirts has been excellent... Our school community has responded well, and as a staff we love the new shirts, including our logo which has been perfectly printed. We would highly recommend YARN as a supplier of staff polo shirts.<\/h5>",
+        "body": "<h5>\"The feedback from our staff for the “Our Future Together” NAIDOC 2024 Essence Polo Shirts has been excellent... Our school community has responded well, and as a staff we love the new shirts, including our logo which has been perfectly printed. We would highly recommend YARN as a supplier of staff polo shirts.</h5>",
         "heading_size": "h2",
         "body_size": "body3",
         "content_alignment": "left",
         "desktop_content_width": 700,
         "first_button_text": "View Testimonials",
-        "first_button_link": "shopify:\/\/pages\/testimonials",
+        "first_button_link": "shopify://pages/testimonials",
         "first_button_style": "solid",
         "second_button_text": "",
         "second_button_link": "",
@@ -809,17 +818,17 @@
             "color_scheme": "custom-3",
             "image_proportion": 0,
             "content_wrapper_width": 30,
-            "desktop_right_img": "shopify:\/\/shop_images\/A03.00_00_31_09.Still017.jpg",
+            "desktop_right_img": "shopify://shop_images/A03.00_00_31_09.Still017.jpg",
             "caption": "",
             "title": "Giving Back",
-            "text": "<p>At Yarn, we are firm believers in supporting the artists whose work we proudly display. We understand that community is everything and we strive to make a positive impact through our community partnerships and Raise programs. <\/p>",
+            "text": "<p>At Yarn, we are firm believers in supporting the artists whose work we proudly display. We understand that community is everything and we strive to make a positive impact through our community partnerships and Raise programs. </p>",
             "heading_size": "h1",
             "body_size": "body2",
             "content_max_width": 424,
             "desktop_content_align": "left",
             "mobile_content_align": "center",
             "btn_text": "Learn More",
-            "btn_url": "shopify:\/\/pages\/our-community-partners",
+            "btn_url": "shopify://pages/our-community-partners",
             "btn_style": "solid",
             "extra_btn_text": "",
             "extra_btn_url": "",
@@ -855,7 +864,7 @@
         "image_Jik8nW": {
           "type": "image",
           "settings": {
-            "video": "shopify:\/\/files\/videos\/Trade Print Video.mp4"
+            "video": "shopify://files/videos/Trade Print Video.mp4"
           }
         }
       },
@@ -874,13 +883,13 @@
         "icon": "none",
         "subheading": "INVESTING IN INNOVATION",
         "heading": "Fast Turnaround Branded Merch Proudly Printed In Australia",
-        "body": "<p>Over the last decade we have expanded and refined our in-house printing facilities and production capabilities. This allows us to create local jobs and training, and enables us to offer quick turnaround times for branded products.<\/p>",
+        "body": "<p>Over the last decade we have expanded and refined our in-house printing facilities and production capabilities. This allows us to create local jobs and training, and enables us to offer quick turnaround times for branded products.</p>",
         "heading_size": "h2",
         "body_size": "body3",
         "content_alignment": "left",
         "desktop_content_width": 680,
         "first_button_text": "Learn More",
-        "first_button_link": "shopify:\/\/pages\/branded-merch",
+        "first_button_link": "shopify://pages/branded-merch",
         "first_button_style": "solid",
         "second_button_text": "",
         "second_button_link": "",
@@ -932,18 +941,18 @@
             "color_scheme": "custom-1",
             "image_proportion": 0,
             "content_wrapper_width": 30,
-            "desktop_right_img": "shopify:\/\/shop_images\/rtj6dytrj_01559832-5678-4ffb-b20f-49a7926f5544.jpg",
-            "mobile_right_img": "shopify:\/\/shop_images\/dtyjdtukuktdtk.jpg",
+            "desktop_right_img": "shopify://shop_images/rtj6dytrj_01559832-5678-4ffb-b20f-49a7926f5544.jpg",
+            "mobile_right_img": "shopify://shop_images/dtyjdtukuktdtk.jpg",
             "caption": "",
             "title": "Corporate Polos With Your Own Artwork & Logo",
-            "text": "<p>Create unique uniforms for your team, organisation, school or company using your own designs.<\/p>",
+            "text": "<p>Create unique uniforms for your team, organisation, school or company using your own designs.</p>",
             "heading_size": "h1",
             "body_size": "body2",
             "content_max_width": 424,
             "desktop_content_align": "left",
             "mobile_content_align": "center",
             "btn_text": "Design Your Own",
-            "btn_url": "shopify:\/\/collections\/design-your-own-polo",
+            "btn_url": "shopify://collections/design-your-own-polo",
             "btn_style": "solid",
             "extra_btn_text": "",
             "extra_btn_url": "",
@@ -982,21 +991,21 @@
             "color_scheme": "custom-3",
             "image_proportion": 0,
             "content_wrapper_width": 30,
-            "desktop_right_img": "shopify:\/\/shop_images\/srthsrthsrtjhjytsdtydtyttyj.jpg",
-            "mobile_right_img": "shopify:\/\/shop_images\/tyjk.jpg",
+            "desktop_right_img": "shopify://shop_images/srthsrthsrtjhjytsdtydtyttyj.jpg",
+            "mobile_right_img": "shopify://shop_images/tyjk.jpg",
             "caption": "",
             "title": "Need Custom Uniforms & Merch Fast?",
-            "text": "<p>Shop Our Express Collection<\/p>",
+            "text": "<p>Shop Our Express Collection</p>",
             "heading_size": "h1",
             "body_size": "body2",
             "content_max_width": 424,
             "desktop_content_align": "left",
             "mobile_content_align": "left",
             "btn_text": "Shop Express Polos",
-            "btn_url": "shopify:\/\/collections\/express-naidoc-2024-polos",
+            "btn_url": "shopify://collections/express-naidoc-2024-polos",
             "btn_style": "solid",
             "extra_btn_text": "Shop Express Merch",
-            "extra_btn_url": "shopify:\/\/collections\/naidoc-week-2024-merch",
+            "extra_btn_url": "shopify://collections/naidoc-week-2024-merch",
             "extra_btn_style": "solid"
           }
         }
@@ -1030,7 +1039,7 @@
         "image_AUMrhk": {
           "type": "image",
           "settings": {
-            "image": "shopify:\/\/shop_images\/Image-1_b293073a-9055-4f24-9988-d5f39e77d757.jpg"
+            "image": "shopify://shop_images/Image-1_b293073a-9055-4f24-9988-d5f39e77d757.jpg"
           }
         }
       },
@@ -1049,13 +1058,13 @@
         "icon": "none",
         "subheading": "Let Us Tell Your Story",
         "heading": "Yarn Bespoke",
-        "body": "<p>Need a more hands-on approach during your journey? Look no further that our experienced team of consultants who can guide you step by step in creating the perfect solution for your needs.<\/p>",
+        "body": "<p>Need a more hands-on approach during your journey? Look no further that our experienced team of consultants who can guide you step by step in creating the perfect solution for your needs.</p>",
         "heading_size": "h2",
         "body_size": "body3",
         "content_alignment": "left",
         "desktop_content_width": 680,
         "first_button_text": "Find Out More",
-        "first_button_link": "https:\/\/corporate.yarn.com.au\/pages\/bespoke",
+        "first_button_link": "https://corporate.yarn.com.au/pages/bespoke",
         "first_button_style": "solid",
         "second_button_text": "",
         "second_button_link": "",
@@ -1071,17 +1080,17 @@
             "color_scheme": "custom-3",
             "image_proportion": 0,
             "content_wrapper_width": 30,
-            "desktop_right_img": "shopify:\/\/shop_images\/RTHYJYTJJ_2e84def7-0a4d-4379-8708-3bc6f712b6b4.jpg",
+            "desktop_right_img": "shopify://shop_images/RTHYJYTJJ_2e84def7-0a4d-4379-8708-3bc6f712b6b4.jpg",
             "caption": "",
             "title": "Explore Our Catalogues",
-            "text": "<p>Discover the full range of options to suit your business needs. <\/p>",
+            "text": "<p>Discover the full range of options to suit your business needs. </p>",
             "heading_size": "h1",
             "body_size": "body2",
             "content_max_width": 424,
             "desktop_content_align": "left",
             "mobile_content_align": "left",
             "btn_text": "View Catalogues",
-            "btn_url": "shopify:\/\/pages\/catalogues",
+            "btn_url": "shopify://pages/catalogues",
             "btn_style": "solid",
             "extra_btn_text": "",
             "extra_btn_url": "",
@@ -1138,7 +1147,7 @@
         "text_aUiD7R": {
           "type": "text",
           "settings": {
-            "text": "<p>When choosing Yarn you not only ensure that you have the right to wear the art but also that it has been ethically sourced, with royalties going back to the artists. Yarn is more than just quality and service; it's a commitment to empowering culture.<\/p>",
+            "text": "<p>When choosing Yarn you not only ensure that you have the right to wear the art but also that it has been ethically sourced, with royalties going back to the artists. Yarn is more than just quality and service; it's a commitment to empowering culture.</p>",
             "text_2": "",
             "text_3": "",
             "body_size": "body3"
@@ -1148,7 +1157,7 @@
           "type": "buttons",
           "settings": {
             "btn_text": "Learn More",
-            "btn_url": "shopify:\/\/pages\/about",
+            "btn_url": "shopify://pages/about",
             "btn_style": "link",
             "extra_btn_text": "",
             "extra_btn_url": "",
@@ -1202,7 +1211,7 @@
             "onlymobile": false,
             "desktop_columns": 3,
             "desktop_rows": 2,
-            "image": "shopify:\/\/shop_images\/div.media.png",
+            "image": "shopify://shop_images/div.media.png",
             "overlay_opacity": 0,
             "caption": "",
             "title": "About us",
@@ -1241,7 +1250,7 @@
             "overlay_opacity": 20,
             "caption": "IMAGE",
             "title": "Image with text",
-            "text": "<p>Fill in the text to tell customers by what your products are inspired.<\/p>",
+            "text": "<p>Fill in the text to tell customers by what your products are inspired.</p>",
             "heading_size": "h6",
             "body_size": "body3",
             "link_text": "Link label",
@@ -1296,7 +1305,7 @@
         "template--16729789989105__53d67819-721d-46dc-889c-50c5eafb46fc-1681822195675f4d6f-2": {
           "type": "text",
           "settings": {
-            "text": "Subscribe now and get <strong>10% OFF<\/strong> on your first order. Be the first to access pre-order & new product releases, get exclusive deals and receive our latest catalogues.",
+            "text": "Subscribe now and get <strong>10% OFF</strong> on your first order. Be the first to access pre-order & new product releases, get exclusive deals and receive our latest catalogues.",
             "body_size": "body3"
           }
         },
