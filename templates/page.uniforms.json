@@ -40,7 +40,7 @@
             "item_1_show": true,
             "item_1_image": "shopify://shop_images/short-sleeve-polos.png",
             "item_1_text": "Short Sleeve Polos",
-            "item_1_link": "",
+            "item_1_link": "shopify://collections/all-essence-polos",
             "item_2_show": true,
             "item_2_image": "shopify://shop_images/long-sleeve-polos.png",
             "item_2_text": "Long Sleeve Polos",
