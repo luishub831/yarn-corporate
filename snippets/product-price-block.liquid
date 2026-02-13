@@ -54,7 +54,7 @@
     -%}
     <div class='product-price' data-product-block-container>
       <div class='product-price__content' data-product-block-item>
-        <div class='product-price__gst'>AUD exc. GST</div>
+        {% comment %} <div class='product-price__gst'>AUD exc. GST</div> {% endcomment %}
         <div class='product-price__cost'>
           <div class='product-price__current-price {% if block.settings.highlight_sale_price and variant.compare_at_price > price %} product-price__current-price--highlight-sale{% endif %}'>
             {%- assign new_pricing = product.metafields.custom.new_pricing -%}
@@ -79,12 +79,17 @@
             </div>
           {%- endif -%}
         </div>
+        <div class='product-price__gst'>Including GST</div>
         {%- if variant.compare_at_price > price and variant.available and block.settings.show_sale_amount_badge -%}
           <div class='product-sale-amount-badge'>
             {% render 'sale-amount-badge-text', price: variant.price, old_price: variant.compare_at_price %}
           </div>
         {%- endif -%}
       </div>
+      <div class="product-delivery_content">
+        <div>Delivery:8:10 days</div>
+        <div>Availability: <span style="color: #1BCB00;">In Stock</span></div>
+        </div>
     </div>
     {%- if show_tax_status -%}
       <div class='product-price__tax-status'>
@@ -133,7 +138,7 @@ document.addEventListener('DOMContentLoaded', function() {
         let dollars = parts[0];
         let cents = parts[1];
 
-        let newContent = `<span class="dollar-sign">$</span>${dollars}<span class="dot">.</span><span class="cents">${cents}</span>`;
+        let newContent = `<span class="dollar-sign">AUD</span>${dollars}<span class="dot">.</span><span class="cents">${cents}</span>`;
 
         priceDiv.innerHTML = newContent;
         priceDiv.classList.add('price-formatted');
@@ -141,6 +146,11 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 </script>
 <style>
+  .product-price{
+      display: flex;
+      gap: 0.5rem;
+    align-items: center;
+  }
   .product-price__current-price {
     opacity: 0;
     transition: opacity 0.1s ease;
@@ -155,5 +165,16 @@ document.addEventListener('DOMContentLoaded', function() {
   .product-price__current-price .cents {
     font-size: 14px;
     margin-top: -10px;
+  }
+  .product-price__content{
+    padding-right: 3rem;
+    border-right: 1px solid #E4E4E4;
+  }
+  .product-delivery_content{
+    flex-wrap: wrap;
+    flex-direction: column;
+    column-gap: 1.6rem;
+    display: flex;
+    padding-left: 3rem;
   }
 </style>
