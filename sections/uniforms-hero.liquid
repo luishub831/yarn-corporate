@@ -5,6 +5,7 @@
   assign title = options.title
   assign subtitle = options.subtitle
   assign show_breadcrumbs = options.show_breadcrumbs
+  assign current_step = options.current_step | default: 1
 -%}
 
 <div class="uniforms-hero section-{{ section.id }}">
@@ -31,6 +32,74 @@
           <p class="uniforms-hero__subtitle">{{ subtitle }}</p>
         {%- endif -%}
       </div>
+      
+      <div class="uniforms-hero__steps">
+        <div class="step-item {% if current_step >= 1 %}active{% else %}inactive{% endif %}">
+          <div class="step-circle-wrapper">
+            <svg class="step-number" xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30" fill="none">
+              <circle cx="15" cy="15" r="15" fill="{% if current_step >= 1 %}#F74C09{% else %}rgba(255, 255, 255, 0.2){% endif %}"/>
+              <text x="15" y="15" text-anchor="middle" dominant-baseline="middle" fill="{% if current_step >= 1 %}white{% else %}rgba(255, 255, 255, 0.5){% endif %}" font-size="14" font-weight="700">1</text>
+            </svg>
+          </div>
+          <div class="step-label">Select category</div>
+        </div>
+        <div class="step-arrow {% if current_step >= 1 %}active{% endif %}">
+          <svg xmlns="http://www.w3.org/2000/svg" width="75" height="6" viewBox="0 0 75 6" fill="none">
+            <path d="M75 2.88672L70 -3.26633e-05V5.77347L75 2.88672ZM0 2.88672V3.38672H70.5V2.88672V2.38672H0V2.88672Z" fill="currentColor"/>
+          </svg>
+        </div>
+        <div class="step-item {% if current_step >= 2 %}active{% else %}inactive{% endif %}">
+          <div class="step-circle-wrapper">
+            <svg class="step-number" xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30" fill="none">
+              <circle cx="15" cy="15" r="15" fill="{% if current_step >= 2 %}#F74C09{% else %}rgba(255, 255, 255, 0.2){% endif %}"/>
+              <text x="15" y="15" text-anchor="middle" dominant-baseline="middle" fill="{% if current_step >= 2 %}white{% else %}rgba(255, 255, 255, 0.5){% endif %}" font-size="14" font-weight="700">2</text>
+            </svg>
+          </div>
+          <div class="step-label">Select uniform type</div>
+        </div>
+        <div class="step-arrow {% if current_step >= 2 %}active{% endif %}">
+          <svg xmlns="http://www.w3.org/2000/svg" width="75" height="6" viewBox="0 0 75 6" fill="none">
+            <path d="M75 2.88672L70 -3.26633e-05V5.77347L75 2.88672ZM0 2.88672V3.38672H70.5V2.88672V2.38672H0V2.88672Z" fill="currentColor"/>
+          </svg>
+        </div>
+        <div class="step-item {% if current_step >= 3 %}active{% else %}inactive{% endif %}">
+          <div class="step-circle-wrapper">
+            <svg class="step-number" xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30" fill="none">
+              <circle cx="15" cy="15" r="15" fill="{% if current_step >= 3 %}#F74C09{% else %}rgba(255, 255, 255, 0.2){% endif %}"/>
+              <text x="15" y="15" text-anchor="middle" dominant-baseline="middle" fill="{% if current_step >= 3 %}white{% else %}rgba(255, 255, 255, 0.5){% endif %}" font-size="14" font-weight="700">3</text>
+            </svg>
+          </div>
+          <div class="step-label">Upload designs</div>
+        </div>
+        <div class="step-arrow {% if current_step >= 3 %}active{% endif %}">
+          <svg xmlns="http://www.w3.org/2000/svg" width="75" height="6" viewBox="0 0 75 6" fill="none">
+            <path d="M75 2.88672L70 -3.26633e-05V5.77347L75 2.88672ZM0 2.88672V3.38672H70.5V2.88672V2.38672H0V2.88672Z" fill="currentColor"/>
+          </svg>
+        </div>
+        <div class="step-item {% if current_step >= 4 %}active{% else %}inactive{% endif %}">
+          <div class="step-circle-wrapper">
+            <svg class="step-number" xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30" fill="none">
+              <circle cx="15" cy="15" r="15" fill="{% if current_step >= 4 %}#F74C09{% else %}rgba(255, 255, 255, 0.2){% endif %}"/>
+              <text x="15" y="15" text-anchor="middle" dominant-baseline="middle" fill="{% if current_step >= 4 %}white{% else %}rgba(255, 255, 255, 0.5){% endif %}" font-size="14" font-weight="700">4</text>
+            </svg>
+          </div>
+          <div class="step-label">Sizes & quantity</div>
+        </div>
+        <div class="step-arrow {% if current_step >= 4 %}active{% endif %}">
+          <svg xmlns="http://www.w3.org/2000/svg" width="75" height="6" viewBox="0 0 75 6" fill="none">
+            <path d="M75 2.88672L70 -3.26633e-05V5.77347L75 2.88672ZM0 2.88672V3.38672H70.5V2.88672V2.38672H0V2.88672Z" fill="currentColor"/>
+          </svg>
+        </div>
+        <div class="step-item {% if current_step >= 5 %}active{% else %}inactive{% endif %}">
+          <div class="step-circle-wrapper">
+            <svg class="step-number" xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30" fill="none">
+              <circle cx="15" cy="15" r="15" fill="{% if current_step >= 5 %}#F74C09{% else %}rgba(255, 255, 255, 0.2){% endif %}"/>
+              <text x="15" y="15" text-anchor="middle" dominant-baseline="middle" fill="{% if current_step >= 5 %}white{% else %}rgba(255, 255, 255, 0.5){% endif %}" font-size="14" font-weight="700">5</text>
+            </svg>
+          </div>
+          <div class="step-label">Place order</div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
@@ -43,13 +112,17 @@
 
   .uniforms-hero__background {
     width: 100%;
-    background: var(--gsc-background-color-100);
+    background: linear-gradient(115deg, #156571 50%, #0C4149 50%);
     color: var(--gsc-text-color-100);
   }
 
   .uniforms-hero__container {
     margin: 0 auto;
     padding: 3rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 3rem;
   }
 
   .uniforms-hero__breadcrumbs {
@@ -90,6 +163,66 @@
     opacity: 0.9;
   }
 
+  .uniforms-hero__steps {
+    display: flex;
+    align-items: flex-start;
+    gap: 0;
+    flex-shrink: 0;
+  }
+
+  .step-item {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+    position: relative;
+  }
+
+  .step-circle-wrapper {
+    display: block;
+    line-height: 0;
+    font-size: 0;
+  }
+
+  .step-number {
+    display: block;
+    vertical-align: top;
+  }
+
+  .step-label {
+    font-size: 0.875rem;
+    color: rgba(255, 255, 255, 0.5);
+    text-align: left;
+    white-space: nowrap;
+    font-weight: 500;
+    margin-top: 0.5rem;
+    position: absolute;
+    top: 35px;
+    left: 0;
+  }
+
+  .step-item.active .step-label {
+    color: #FF6B35;
+  }
+
+  .step-arrow {
+    color: rgba(255, 255, 255, 0.3);
+    margin: 0 1rem 0 0;
+    padding: 0;
+    display: inline-block;
+    line-height: 0;
+    vertical-align: top;
+    margin-top: 12px;
+  }
+
+  .step-arrow.active {
+    color: #FF6B35;
+  }
+
+  .step-arrow svg {
+    display: block;
+  }
+
   @media (max-width: 768px) {
     .uniforms-hero {
       padding: 2rem 0;
@@ -99,7 +232,29 @@
       font-size: 2rem;
     }
 
-   
+    .uniforms-hero__container {
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .uniforms-hero__steps {
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+
+    .step-number {
+      width: 25px;
+      height: 25px;
+    }
+
+    .step-number text {
+      font-size: 12px;
+    }
+
+    .step-label {
+      font-size: 0.75rem;
+    }
   }
 </style>
 
@@ -181,6 +336,16 @@
       "id": "show_breadcrumbs",
       "default": true,
       "label": "Show breadcrumbs"
+    },
+    {
+      "type": "range",
+      "id": "current_step",
+      "min": 1,
+      "max": 5,
+      "step": 1,
+      "default": 1,
+      "label": "Current Step",
+      "info": "Select which step is currently active (1-5)"
     }
   ],
   "presets": [
