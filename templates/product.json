@@ -133,6 +133,7 @@
         },
         "custom_liquid_Pt364X": {
           "type": "custom_liquid",
+          "disabled": true,
           "settings": {
             "style": "static",
             "title": "",
@@ -142,6 +143,7 @@
         },
         "buy_buttons": {
           "type": "buy_buttons",
+          "disabled": true,
           "settings": {
             "show_dynamic_checkout": false,
             "enable_pickup_availability": false,
