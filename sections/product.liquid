@@ -49,6 +49,30 @@
   .icon-chevron svg {
     transform:rotate(90deg);
   }
+
+  .back-to-collection {
+    margin-bottom: 20px;
+  }
+
+  .back-to-collection__link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--GREEN);
+    text-decoration: none;
+    transition: opacity 0.2s ease;
+  }
+
+  .back-to-collection__link:hover {
+    opacity: 0.7;
+  }
+
+  .back-to-collection__link svg {
+    flex-shrink: 0;
+  }
   </style>
 
 {% render 'inline-css-minifier', css: css %}
@@ -256,6 +280,23 @@
   "blocks": [
     {
       "type": "@app"
+    },
+    {
+      "type": "uniform_steps",
+      "name": "Uniform Steps",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "range",
+          "id": "current_step",
+          "min": 1,
+          "max": 5,
+          "step": 1,
+          "default": 3,
+          "label": "Current Step",
+          "info": "Select which step is currently active (1: Select category, 2: Select uniform type, 3: Upload designs, 4: Sizes & quantity, 5: Place order)"
+        }
+      ]
     },
     {
       "type": "custom_color_swatches",

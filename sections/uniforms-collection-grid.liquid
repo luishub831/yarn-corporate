@@ -7,14 +7,27 @@
 <div class="uniforms-collection-grid section-{{ section.id }}">
   <div class="container container--{{ container_size }}">
     <div class="collection-filters">
-      <button class="filter-btn active" data-collection="all">ALL</button>
+      <button class="filter-btn" data-collection="all">ALL</button>
       {%- for block in section.blocks -%}
         {%- if block.type == 'collection' -%}
-          <button class="filter-btn" data-collection="{{ block.settings.collection }}">
+          <button class="filter-btn{% if forloop.first %} active{% endif %}" data-collection="{{ block.settings.collection }}">
             {{ block.settings.button_label }}
           </button>
         {%- endif -%}
       {%- endfor -%}
+    </div>
+
+    <div class="collection-filters-mobile">
+      <select class="filter-dropdown" id="filter-dropdown-{{ section.id }}">
+        <option value="all">ALL</option>
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'collection' -%}
+            <option value="{{ block.settings.collection }}"{% if forloop.first %} selected{% endif %}>
+              {{ block.settings.button_label }}
+            </option>
+          {%- endif -%}
+        {%- endfor -%}
+      </select>
     </div>
 
     <div class="products-grid" id="products-grid-{{ section.id }}">
@@ -34,6 +47,31 @@
     gap: 1rem;
     margin-bottom: 3rem;
     flex-wrap: wrap;
+  }
+
+  .collection-filters-mobile {
+    display: none;
+    margin-bottom: 3rem;
+  }
+
+  .filter-dropdown {
+    width: 100%;
+    padding: 0.75rem 1.5rem;
+    background: white;
+    border: 1px solid #000;
+    color: #000;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    border-radius: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.36px;
+    appearance: none;
+    background-image: url('data:image/svg+xml;charset=UTF-8,<svg width="12" height="8" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1L6 6L11 1" stroke="black" stroke-width="2" stroke-linecap="round"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    background-size: 12px;
+    padding-right: 3rem;
   }
 
   .filter-btn {
@@ -188,19 +226,17 @@
   }
 
   @media (max-width: 768px) {
-    .products-grid {
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1rem;
-    }
-
     .collection-filters {
-      gap: 0.5rem;
-      margin-bottom: 2rem;
+      display: none;
     }
 
-    .filter-btn {
-      padding: 0.5rem 1rem;
-      font-size: 0.75rem;
+    .collection-filters-mobile {
+      display: block;
+    }
+
+    .products-grid {
+      grid-template-columns: 1fr;
+      gap: 1rem;
     }
 
     .product-info {
@@ -208,7 +244,8 @@
     }
 
     .product-title {
-      font-size: 0.875rem;
+      font-size: 1.6rem;
+      font-weight: 700;
     }
 
     .customize-btn {
@@ -326,8 +363,17 @@
       });
     });
 
-    // Load all products initially
-    loadProducts('all');
+    // Mobile dropdown handler
+    const filterDropdown = document.getElementById('filter-dropdown-' + sectionId);
+    if (filterDropdown) {
+      filterDropdown.addEventListener('change', function() {
+        loadProducts(this.value);
+      });
+    }
+
+    // Load first collection products initially
+    const firstCollection = Object.values(collections)[0] || 'all';
+    loadProducts(firstCollection);
   })();
 </script>
 

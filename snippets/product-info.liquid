@@ -1,9 +1,23 @@
 <div class='product__info-wrapper' id='ProductInfoWrapper-{{ product.id }}-{{ sectionId }}'>
   <div class='product__info'>
+    {%- comment -%} Back to uniform selection link {%- endcomment -%}
+    {%- if product.collections.size > 0 -%}
+      <div class='back-to-collection'>
+        <a href='{{ product.collections.first.url }}' class='back-to-collection__link'>
+          <svg xmlns="http://www.w3.org/2000/svg" width="12" height="8" viewBox="0 0 12 8" fill="none">
+            <path d="M10.5215 4.18201C10.7976 4.18201 11.0215 3.95815 11.0215 3.68201C11.0215 3.40586 10.7976 3.18201 10.5215 3.18201V3.68201V4.18201ZM0.14712 3.32845C-0.0481434 3.52372 -0.0481434 3.8403 0.14712 4.03556L3.3291 7.21754C3.52436 7.4128 3.84094 7.4128 4.03621 7.21754C4.23147 7.02228 4.23147 6.7057 4.03621 6.51043L1.20778 3.68201L4.03621 0.85358C4.23147 0.658318 4.23147 0.341735 4.03621 0.146473C3.84094 -0.0487893 3.52436 -0.0487893 3.3291 0.146473L0.14712 3.32845ZM10.5215 3.68201V3.18201L0.500672 3.18201V3.68201V4.18201L10.5215 4.18201V3.68201Z" fill="#156571"/>
+          </svg>
+          <span>Back to uniform selection</span>
+        </a>
+      </div>
+    {%- endif -%}
+    
     {%- liquid
       for block in section.blocks
         case block.type
         
+          when 'uniform_steps'
+            render 'product-uniform-steps-block', product: product, section: section, block: block, sectionId: sectionId
           when 'custom_color_swatches' 
             render 'custom_color_swatches', product: product, section: section, block: block, sectionId: sectionId
           when 'swatches_collection'

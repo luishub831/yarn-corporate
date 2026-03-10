@@ -1,0 +1,202 @@
+{%- liquid
+  assign options = block.settings
+  assign current_step = options.current_step | default: 3
+-%}
+
+<div class='product-uniform-steps-block block-{{ block.id }}' {{ block.shopify_attributes }}>
+  <div class="uniforms-hero__steps">
+    <div class="step-item {% if current_step > 1 %}passed{% elsif current_step == 1 %}active{% else %}inactive{% endif %}">
+      <div class="step-circle-wrapper">
+        <svg class="step-number" xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30" fill="none">
+          {% if current_step > 1 %}
+            <circle cx="15" cy="15" r="14.5" fill="transparent" stroke="#F74C09"/>
+            <path d="M9 15l4 4 8-8" stroke="#F74C09" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          {% elsif current_step == 1 %}
+            <circle cx="15" cy="15" r="15" fill="#F74C09"/>
+            <text x="15" y="15" text-anchor="middle" dominant-baseline="middle" fill="white" font-size="14" font-weight="400">1</text>
+          {% else %}
+            <circle cx="15" cy="15" r="14.5" fill="transparent" stroke="#CCCCCC" stroke-width="2"/>
+            <text x="15" y="15" text-anchor="middle" dominant-baseline="middle" fill="#999999" font-size="14" font-weight="400">1</text>
+          {% endif %}
+        </svg>
+      </div>
+      <div class="step-label">Select category</div>
+    </div>
+    <div class="step-arrow {% if current_step >= 1 %}active{% endif %}">
+      <svg xmlns="http://www.w3.org/2000/svg" width="75" height="6" viewBox="0 0 75 6" fill="none">
+        <path d="M75 2.88672L70 -3.26633e-05V5.77347L75 2.88672ZM0 2.88672V3.38672H70.5V2.88672V2.38672H0V2.88672Z" fill="currentColor"/>
+      </svg>
+    </div>
+    <div class="step-item {% if current_step > 2 %}passed{% elsif current_step == 2 %}active{% else %}inactive{% endif %}">
+      <div class="step-circle-wrapper">
+        <svg class="step-number" xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30" fill="none">
+          {% if current_step > 2 %}
+            <circle cx="15" cy="15" r="14.5" fill="transparent" stroke="#F74C09"/>
+            <path d="M9 15l4 4 8-8" stroke="#F74C09" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          {% elsif current_step == 2 %}
+            <circle cx="15" cy="15" r="15" fill="#F74C09"/>
+            <text x="15" y="15" text-anchor="middle" dominant-baseline="middle" fill="white" font-size="14" font-weight="400">2</text>
+          {% else %}
+            <circle cx="15" cy="15" r="14.5" fill="transparent" stroke="#CCCCCC" stroke-width="2"/>
+            <text x="15" y="15" text-anchor="middle" dominant-baseline="middle" fill="#999999" font-size="14" font-weight="400">2</text>
+          {% endif %}
+        </svg>
+      </div>
+      <div class="step-label">Select uniform type</div>
+    </div>
+    <div class="step-arrow {% if current_step >= 2 %}active{% endif %}">
+      <svg xmlns="http://www.w3.org/2000/svg" width="75" height="6" viewBox="0 0 75 6" fill="none">
+        <path d="M75 2.88672L70 -3.26633e-05V5.77347L75 2.88672ZM0 2.88672V3.38672H70.5V2.88672V2.38672H0V2.88672Z" fill="currentColor"/>
+      </svg>
+    </div>
+    <div class="step-item {% if current_step > 3 %}passed{% elsif current_step == 3 %}active{% else %}inactive{% endif %}">
+      <div class="step-circle-wrapper">
+        <svg class="step-number" xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30" fill="none">
+          {% if current_step > 3 %}
+            <circle cx="15" cy="15" r="14.5" fill="transparent" stroke="#F74C09"/>
+            <path d="M9 15l4 4 8-8" stroke="#F74C09" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          {% elsif current_step == 3 %}
+            <circle cx="15" cy="15" r="15" fill="#F74C09"/>
+            <text x="15" y="15" text-anchor="middle" dominant-baseline="middle" fill="white" font-size="14" font-weight="400">3</text>
+          {% else %}
+            <circle cx="15" cy="15" r="14.5" fill="transparent" stroke="#CCCCCC" stroke-width="2"/>
+            <text x="15" y="15" text-anchor="middle" dominant-baseline="middle" fill="#999999" font-size="14" font-weight="400">3</text>
+          {% endif %}
+        </svg>
+      </div>
+      <div class="step-label">Upload designs</div>
+    </div>
+    <div class="step-arrow {% if current_step >= 3 %}active{% endif %}">
+      <svg xmlns="http://www.w3.org/2000/svg" width="75" height="6" viewBox="0 0 75 6" fill="none">
+        <path d="M75 2.88672L70 -3.26633e-05V5.77347L75 2.88672ZM0 2.88672V3.38672H70.5V2.88672V2.38672H0V2.88672Z" fill="currentColor"/>
+      </svg>
+    </div>
+    <div class="step-item {% if current_step > 4 %}passed{% elsif current_step == 4 %}active{% else %}inactive{% endif %}">
+      <div class="step-circle-wrapper">
+        <svg class="step-number" xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30" fill="none">
+          {% if current_step > 4 %}
+            <circle cx="15" cy="15" r="14.5" fill="transparent" stroke="#F74C09"/>
+            <path d="M9 15l4 4 8-8" stroke="#F74C09" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          {% elsif current_step == 4 %}
+            <circle cx="15" cy="15" r="15" fill="#F74C09"/>
+            <text x="15" y="15" text-anchor="middle" dominant-baseline="middle" fill="white" font-size="14" font-weight="400">4</text>
+          {% else %}
+            <circle cx="15" cy="15" r="14.5" fill="transparent" stroke="#CCCCCC" stroke-width="2"/>
+            <text x="15" y="15" text-anchor="middle" dominant-baseline="middle" fill="#999999" font-size="14" font-weight="400">4</text>
+          {% endif %}
+        </svg>
+      </div>
+      <div class="step-label">Sizes & quantity</div>
+    </div>
+    <div class="step-arrow {% if current_step >= 4 %}active{% endif %}">
+      <svg xmlns="http://www.w3.org/2000/svg" width="75" height="6" viewBox="0 0 75 6" fill="none">
+        <path d="M75 2.88672L70 -3.26633e-05V5.77347L75 2.88672ZM0 2.88672V3.38672H70.5V2.88672V2.38672H0V2.88672Z" fill="currentColor"/>
+      </svg>
+    </div>
+    <div class="step-item {% if current_step == 5 %}active{% else %}inactive{% endif %}">
+      <div class="step-circle-wrapper">
+        <svg class="step-number" xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30" fill="none">
+          {% if current_step == 5 %}
+            <circle cx="15" cy="15" r="15" fill="#F74C09"/>
+            <text x="15" y="15" text-anchor="middle" dominant-baseline="middle" fill="white" font-size="14" font-weight="400">5</text>
+          {% else %}
+            <circle cx="15" cy="15" r="14.5" fill="transparent" stroke="#CCCCCC" stroke-width="2"/>
+            <text x="15" y="15" text-anchor="middle" dominant-baseline="middle" fill="#999999" font-size="14" font-weight="400">5</text>
+          {% endif %}
+        </svg>
+      </div>
+      <div class="step-label">Place order</div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .product-uniform-steps-block {
+    width: 100%;
+    padding: 2rem 0;
+    margin-bottom: 2rem;
+  }
+
+  .product-uniform-steps-block .uniforms-hero__steps {
+    display: flex;
+    align-items: flex-start;
+    gap: 0;
+    flex-shrink: 0;
+  }
+
+  .product-uniform-steps-block .step-item {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+    position: relative;
+  }
+
+  .product-uniform-steps-block .step-circle-wrapper {
+    display: block;
+    line-height: 0;
+    font-size: 0;
+  }
+
+  .product-uniform-steps-block .step-number {
+    display: block;
+    vertical-align: top;
+  }
+
+  .product-uniform-steps-block .step-label {
+    font-size: 1.1rem;
+    color: #999999;
+    text-align: left;
+    white-space: nowrap;
+    font-weight: 500;
+    margin-top: 0.5rem;
+    position: absolute;
+    top: 35px;
+    left: 0;
+  }
+
+  .product-uniform-steps-block .step-item.active .step-label {
+    color: #FF6B35;
+  }
+
+  .product-uniform-steps-block .step-item.passed .step-label {
+    color: #FF6B35;
+  }
+
+  .product-uniform-steps-block .step-arrow {
+    color: #CCCCCC;
+    margin: 0 1rem 0 0;
+    padding: 0;
+    display: inline-block;
+    line-height: 0;
+    vertical-align: top;
+    margin-top: 12px;
+  }
+
+  .product-uniform-steps-block .step-arrow.active {
+    color: #FF6B35;
+  }
+
+  .product-uniform-steps-block .step-arrow svg {
+    display: block;
+  }
+
+  @media (max-width: 768px) {
+    .product-uniform-steps-block {
+      padding: 1.5rem 0;
+    }
+
+    .product-uniform-steps-block .uniforms-hero__steps {
+      overflow-x: auto;
+      padding: 0.5rem 0;
+    }
+
+    .product-uniform-steps-block .step-label {
+      font-size: 0.875rem;
+    }
+
+    .product-uniform-steps-block .step-arrow {
+      margin: 0 0.5rem 0 0;
+    }
+  }
+</style>
