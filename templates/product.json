@@ -15,7 +15,7 @@
         "title": {
           "type": "title",
           "settings": {
-            "heading_size": "h5"
+            "heading_size": "h1"
           }
         },
         "e41cb9cc-4f8c-4099-9aa3-436d4297ecaf": {
@@ -34,6 +34,12 @@
             "show_tax_status": false,
             "show_sale_amount_badge": true,
             "highlight_sale_price": true
+          }
+        },
+        "uniform_steps_YPFxe6": {
+          "type": "uniform_steps",
+          "settings": {
+            "current_step": 3
           }
         },
         "custom_color_swatches_7DVbBk": {
@@ -55,6 +61,7 @@
         },
         "354ff663-0944-4191-8545-ef32b878fda5": {
           "type": "swatches_collection",
+          "disabled": true,
           "settings": {
             "text": "",
             "text2": "",
@@ -94,6 +101,7 @@
         },
         "information_tag_GzwyXj": {
           "type": "information_tag",
+          "disabled": true,
           "settings": {
             "tag_style": "solid",
             "main_heading": "Ordering Process",
@@ -167,6 +175,7 @@
         "title",
         "e41cb9cc-4f8c-4099-9aa3-436d4297ecaf",
         "price",
+        "uniform_steps_YPFxe6",
         "custom_color_swatches_7DVbBk",
         "87f11691-8ee2-4643-b3a9-fe4763bdbb53",
         "354ff663-0944-4191-8545-ef32b878fda5",
