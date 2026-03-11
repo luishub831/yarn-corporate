@@ -101,6 +101,11 @@
     flex-wrap: wrap;
   }
 
+  .uniform-qty-divider {
+    width: 100%;
+    margin: 30px 0;
+  }
+
   .uniform-qty-label {
     font-family: 'DM Sans', sans-serif;
     font-size: 16px;
@@ -878,6 +883,10 @@
     <div class="uniform-qty-display" id="uniform-total-qty">0/{% if product.metafields.custom.min_qty %}{{ product.metafields.custom.min_qty }}{% else %}50{% endif %}</div>
     <span class="uniform-qty-note">Please note that the minimum order quantity for this item is {% if product.metafields.custom.min_qty %}{{ product.metafields.custom.min_qty }}{% else %}50{% endif %} pieces</span>
   </div>
+
+  <svg class="uniform-qty-divider" xmlns="http://www.w3.org/2000/svg" width="570" height="1" viewBox="0 0 570 1" fill="none">
+    <path d="M570 0.5L2.38419e-05 0.5" stroke="#E4E4E4"/>
+  </svg>
 
   <script>
     // Update total quantity when inputs change

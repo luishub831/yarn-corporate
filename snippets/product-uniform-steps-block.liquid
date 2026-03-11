@@ -4,7 +4,7 @@
 -%}
 
 <div class='product-uniform-steps-block block-{{ block.id }}' {{ block.shopify_attributes }}>
-  <div class="uniforms-hero__steps">
+  <div class="uniforms-hero__steps uniforms-hero__steps--desktop">
     <div class="step-item {% if current_step > 1 %}passed{% elsif current_step == 1 %}active{% else %}inactive{% endif %}">
       <div class="step-circle-wrapper">
         <svg class="step-number" xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30" fill="none">
@@ -108,6 +108,48 @@
       <div class="step-label">Place order</div>
     </div>
   </div>
+  
+  {%- liquid
+    assign mobile_start = current_step
+    if current_step > 3
+      assign mobile_start = current_step | minus: 1
+    endif
+    assign mobile_end = mobile_start | plus: 2
+    if mobile_end > 5
+      assign mobile_end = 5
+      assign mobile_start = 3
+    endif
+  -%}
+  
+  <div class="uniforms-hero__steps uniforms-hero__steps--mobile">
+    {%- for i in (mobile_start..mobile_end) -%}
+      <div class="step-item {% if current_step >= i %}active{% else %}inactive{% endif %}">
+        <div class="step-circle-wrapper">
+          <svg class="step-number" xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30" fill="none">
+            <circle cx="15" cy="15" r="14.5" fill="{% if current_step >= i %}#F74C09{% else %}white{% endif %}" stroke="{% if current_step >= i %}#F74C09{% else %}#999999{% endif %}"/>
+            <text x="15" y="15" text-anchor="middle" dominant-baseline="middle" fill="{% if current_step >= i %}white{% else %}#999999{% endif %}" font-size="14" font-weight="400">{{ i }}</text>
+          </svg>
+        </div>
+        <div class="step-label">
+          {%- case i -%}
+            {%- when 1 -%}Select category
+            {%- when 2 -%}Select uniform type
+            {%- when 3 -%}Upload designs
+            {%- when 4 -%}Sizes & quantity
+            {%- when 5 -%}Place order
+          {%- endcase -%}
+        </div>
+      </div>
+      {%- if i < mobile_end -%}
+        <div class="step-arrow {% if current_step >= i %}active{% endif %}">
+          <svg xmlns="http://www.w3.org/2000/svg" width="75" height="6" viewBox="0 0 75 6" fill="none">
+            <path d="M75 2.88672L70 -3.26633e-05V5.77347L75 2.88672ZM0 2.88672V3.38672H70.5V2.88672V2.38672H0V2.88672Z" fill="currentColor"/>
+          </svg>
+        </div>
+      {%- endif -%}
+    {%- endfor -%}
+  </div>
+  
   <div class="product-upload" data-step-content="3">
     {% render 'upload' %}
     <div class="uniform-step-navigation">
@@ -150,47 +192,115 @@
     const stepsBlock = document.querySelector('.product-uniform-steps-block');
     if (!stepsBlock) return;
     
-    // Update step classes and SVG content
-    const stepItems = stepsBlock.querySelectorAll('.step-item');
-    stepItems.forEach((item, index) => {
-      const step = index + 1;
-      item.classList.remove('active', 'passed', 'inactive');
+    // Update DESKTOP step classes and SVG content
+    const desktopSteps = stepsBlock.querySelector('.uniforms-hero__steps--desktop');
+    if (desktopSteps) {
+      const stepItems = desktopSteps.querySelectorAll('.step-item');
+      stepItems.forEach((item, index) => {
+        const step = index + 1;
+        item.classList.remove('active', 'passed', 'inactive');
+        
+        const svg = item.querySelector('.step-number');
+        
+        if (step < stepNumber) {
+          item.classList.add('passed');
+          // Show checkmark for passed steps
+          svg.innerHTML = `
+            <circle cx="15" cy="15" r="14.5" fill="transparent" stroke="#F74C09"/>
+            <path d="M9 15l4 4 8-8" stroke="#F74C09" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          `;
+        } else if (step === stepNumber) {
+          item.classList.add('active');
+          // Show number for active step
+          svg.innerHTML = `
+            <circle cx="15" cy="15" r="15" fill="#F74C09"/>
+            <text x="15" y="15" text-anchor="middle" dominant-baseline="middle" fill="white" font-size="14" font-weight="400">${step}</text>
+          `;
+        } else {
+          item.classList.add('inactive');
+          // Show grayed out number for inactive steps
+          svg.innerHTML = `
+            <circle cx="15" cy="15" r="14.5" fill="transparent" stroke="#CCCCCC" stroke-width="2"/>
+            <text x="15" y="15" text-anchor="middle" dominant-baseline="middle" fill="#999999" font-size="14" font-weight="400">${step}</text>
+          `;
+        }
+      });
       
-      const svg = item.querySelector('.step-number');
-      
-      if (step < stepNumber) {
-        item.classList.add('passed');
-        // Show checkmark for passed steps
-        svg.innerHTML = `
-          <circle cx="15" cy="15" r="14.5" fill="transparent" stroke="#F74C09"/>
-          <path d="M9 15l4 4 8-8" stroke="#F74C09" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-        `;
-      } else if (step === stepNumber) {
-        item.classList.add('active');
-        // Show number for active step
-        svg.innerHTML = `
-          <circle cx="15" cy="15" r="15" fill="#F74C09"/>
-          <text x="15" y="15" text-anchor="middle" dominant-baseline="middle" fill="white" font-size="14" font-weight="400">${step}</text>
-        `;
-      } else {
-        item.classList.add('inactive');
-        // Show grayed out number for inactive steps
-        svg.innerHTML = `
-          <circle cx="15" cy="15" r="14.5" fill="transparent" stroke="#CCCCCC" stroke-width="2"/>
-          <text x="15" y="15" text-anchor="middle" dominant-baseline="middle" fill="#999999" font-size="14" font-weight="400">${step}</text>
-        `;
-      }
-    });
+      // Update arrows
+      const arrows = desktopSteps.querySelectorAll('.step-arrow');
+      arrows.forEach((arrow, index) => {
+        if (index < stepNumber - 1) {
+          arrow.classList.add('active');
+        } else {
+          arrow.classList.remove('active');
+        }
+      });
+    }
     
-    // Update arrows
-    const arrows = stepsBlock.querySelectorAll('.step-arrow');
-    arrows.forEach((arrow, index) => {
-      if (index < stepNumber - 1) {
-        arrow.classList.add('active');
-      } else {
-        arrow.classList.remove('active');
+    // Update MOBILE steps - rebuild the mobile steps section
+    const mobileSteps = stepsBlock.querySelector('.uniforms-hero__steps--mobile');
+    if (mobileSteps) {
+      let mobileStart = stepNumber;
+      if (stepNumber > 3) {
+        mobileStart = stepNumber - 1;
       }
-    });
+      let mobileEnd = mobileStart + 2;
+      if (mobileEnd > 5) {
+        mobileEnd = 5;
+        mobileStart = 3;
+      }
+      
+      const stepLabels = ['Select category', 'Select uniform type', 'Upload designs', 'Sizes & quantity', 'Place order'];
+      let mobileHTML = '';
+      
+      for (let i = mobileStart; i <= mobileEnd; i++) {
+        const isPassed = i < stepNumber;
+        const isActive = i === stepNumber;
+        const isInactive = i > stepNumber;
+        
+        let svgContent = '';
+        if (isPassed) {
+          // Show checkmark for passed steps
+          svgContent = `
+            <circle cx="15" cy="15" r="14.5" fill="transparent" stroke="#F74C09"/>
+            <path d="M9 15l4 4 8-8" stroke="#F74C09" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>`;
+        } else if (isActive) {
+          // Show filled circle with white number for active step
+          svgContent = `
+            <circle cx="15" cy="15" r="15" fill="#F74C09"/>
+            <text x="15" y="15" text-anchor="middle" dominant-baseline="middle" fill="white" font-size="14" font-weight="400">${i}</text>`;
+        } else {
+          // Show gray circle with gray number for inactive steps
+          svgContent = `
+            <circle cx="15" cy="15" r="14.5" fill="white" stroke="#999999"/>
+            <text x="15" y="15" text-anchor="middle" dominant-baseline="middle" fill="#999999" font-size="14" font-weight="400">${i}</text>`;
+        }
+        
+        const itemClass = isPassed ? 'passed' : (isActive ? 'active' : 'inactive');
+        
+        mobileHTML += `
+          <div class="step-item ${itemClass}">
+            <div class="step-circle-wrapper">
+              <svg class="step-number" xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30" fill="none">
+                ${svgContent}
+              </svg>
+            </div>
+            <div class="step-label">${stepLabels[i-1]}</div>
+          </div>`;
+        
+        if (i < mobileEnd) {
+          const arrowActive = i < stepNumber;
+          mobileHTML += `
+            <div class="step-arrow ${arrowActive ? 'active' : ''}">
+              <svg xmlns="http://www.w3.org/2000/svg" width="75" height="6" viewBox="0 0 75 6" fill="none">
+                <path d="M75 2.88672L70 -3.26633e-05V5.77347L75 2.88672ZM0 2.88672V3.38672H70.5V2.88672V2.38672H0V2.88672Z" fill="currentColor"/>
+              </svg>
+            </div>`;
+        }
+      }
+      
+      mobileSteps.innerHTML = mobileHTML;
+    }
     
     // Show/hide content based on step
     const uploadSection = stepsBlock.querySelector('[data-step-content="3"]');
@@ -276,10 +386,10 @@
     color: #CCCCCC;
     margin: 0 1rem 0 0;
     padding: 0;
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
     line-height: 0;
-    vertical-align: top;
-    margin-top: 12px;
+    height: 30px;
   }
 
   .product-uniform-steps-block .step-arrow.active {
@@ -290,14 +400,26 @@
     display: block;
   }
 
+  .product-uniform-steps-block .uniforms-hero__steps--mobile {
+    display: none;
+  }
+
   @media (max-width: 768px) {
     .product-uniform-steps-block {
       padding: 1.5rem 0;
     }
 
-    .product-uniform-steps-block .uniforms-hero__steps {
-      overflow-x: auto;
-      padding: 0.5rem 0;
+    .product-uniform-steps-block .uniforms-hero__steps--desktop {
+      display: none;
+    }
+
+    .product-uniform-steps-block .uniforms-hero__steps--mobile {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 0;
+      padding: 0;
+      margin-bottom: 50px;
     }
 
     .product-uniform-steps-block .step-label {
@@ -305,7 +427,7 @@
     }
 
     .product-uniform-steps-block .step-arrow {
-      margin: 0 0.5rem 0 0;
+      margin: 0 2rem 0 0;
     }
   }
   /* Navigation Buttons */
