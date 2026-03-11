@@ -77,73 +77,71 @@
   /* Uniform Navigation Buttons */
   .uniform-step-navigation {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
     align-items: center;
     gap: 1rem;
     margin-top: 2rem;
-    padding-top: 2rem;
   }
 
   .uniform-nav-btn {
     display: inline-flex;
     align-items: center;
-    gap: 0.5rem;
-    padding: 0.875rem 1.5rem;
-    border-radius: 8px;
+    gap: 0.75rem;
+    padding: 1rem 2rem;
+    border-radius: 50px;
     font-family: 'DM Sans', sans-serif;
-    font-size: 14px;
-    font-weight: 600;
+    font-size: 16px;
+    font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.5px;
     cursor: pointer;
-    transition: all 0.2s ease;
+    transition: all 0.3s ease;
     border: none;
+    white-space: nowrap;
   }
 
   .uniform-nav-btn--back {
     background: transparent;
     color: #156571;
-    border: 1px solid #156571;
+    border: 2px solid transparent;
   }
 
   .uniform-nav-btn--back:hover {
-    background: #156571;
-    color: white;
+    color: #0C4149;
   }
 
   .uniform-nav-btn--back svg {
-    width: 12px;
-    height: 8px;
+    width: 14px;
+    height: 10px;
   }
 
   .uniform-nav-btn--next {
     background: #F74C09;
     color: white;
-    margin-left: auto;
+    box-shadow: 0 4px 12px rgba(247, 76, 9, 0.3);
   }
 
   .uniform-nav-btn--next:hover {
     background: #d63d00;
+    box-shadow: 0 6px 16px rgba(247, 76, 9, 0.4);
+    transform: translateY(-2px);
   }
 
   .uniform-nav-btn--next svg {
-    width: 12px;
-    height: 8px;
+    width: 14px;
+    height: 10px;
   }
 
   @media (max-width: 768px) {
     .uniform-step-navigation {
-      flex-direction: column;
+      flex-direction: row;
+      flex-wrap: wrap;
       gap: 0.75rem;
     }
 
     .uniform-nav-btn {
-      width: 100%;
-      justify-content: center;
-    }
-
-    .uniform-nav-btn--next {
-      margin-left: 0;
+      padding: 0.875rem 1.5rem;
+      font-size: 14px;
     }
   }
   </style>
