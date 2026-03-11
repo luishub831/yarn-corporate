@@ -920,20 +920,19 @@
     });
   </script>
 
-  <button type="button" onclick="addToCartMulti()" class="product-form__btn btn btn--lg btn--outline">Add to cart
-    *</button>
+  {% comment %} <button type="button" onclick="addToCartMulti()" class="product-form__btn btn btn--lg btn--outline">Add to cart
+    *</button> {% endcomment %}
 </form>
 
 {% render 'upload-script' %}
 
-<div id="error-message-container" style="display: none; color: red;"></div>
+{% comment %} <div id="error-message-container" style="display: none; color: red;"></div>
 
 <p>*You must add at least {% if product.metafields.custom.min_qty %} {{ product.metafields.custom.min_qty }}
   {% else %}15 {% endif %} items</p>
 <p id="error-product1" style="color: red; display: none;">You must add at least
   {% if product.metafields.custom.min_qty %} {{ product.metafields.custom.min_qty }} {% else %}15 {% endif %} items</p>
 <p id="error-product2" style="color: red; display: none;">You must add at least
-  {% if product.metafields.custom.min_qty %} {{ product.metafields.custom.min_qty }} {% else %}15 {% endif %} items </p>
-
-
+  {% if product.metafields.custom.min_qty %} {{ product.metafields.custom.min_qty }} {% else %}15 {% endif %} items </p> {% endcomment %}
+  
 {% endunless %}
