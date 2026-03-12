@@ -176,7 +176,7 @@
         </svg>
         BACK
       </button>
-      <button type="button" class="uniform-nav-btn uniform-nav-btn--next" onclick="goToStep(5)">
+      <button type="button" id="uniform-step4-next-btn" class="uniform-nav-btn uniform-nav-btn--next" onclick="if (!this.disabled) { addToCartMulti(); setTimeout(() => goToStep(5), 500); }" disabled>
         NEXT STEP
         <svg xmlns="http://www.w3.org/2000/svg" width="12" height="8" viewBox="0 0 12 8" fill="none">
           <path d="M1.47852 3.81799C1.20238 3.81799 0.978516 4.04185 0.978516 4.31799C0.978516 4.59414 1.20238 4.81799 1.47852 4.81799V3.81799V3.81799ZM11.8529 4.67155C12.0482 4.47628 12.0482 4.1597 11.8529 3.96444L8.6709 0.782458C8.47564 0.587196 8.15906 0.587196 7.96379 0.782458C7.76853 0.977721 7.76853 1.2943 7.96379 1.48956L10.7922 4.31799L7.96379 7.14642C7.76853 7.34168 7.76853 7.65827 7.96379 7.85353C8.15906 8.04879 8.47564 8.04879 8.6709 7.85353L11.8529 4.67155ZM1.47852 4.81799H11.4993V3.81799V3.81799H1.47852V4.81799Z" fill="currentColor"/>
@@ -477,10 +477,18 @@
     box-shadow: 0 4px 12px rgba(247, 76, 9, 0.3);
   }
 
-  .uniform-nav-btn--next:hover {
+  .uniform-nav-btn--next:hover:not(:disabled) {
     background: #d63d00;
     box-shadow: 0 6px 16px rgba(247, 76, 9, 0.4);
     transform: translateY(-2px);
+  }
+
+  .uniform-nav-btn--next:disabled {
+    background: #cccccc;
+    color: #666666;
+    box-shadow: none;
+    cursor: not-allowed;
+    opacity: 0.6;
   }
 
   .uniform-nav-btn--next svg {

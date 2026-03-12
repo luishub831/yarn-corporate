@@ -509,6 +509,7 @@ const uploadEventListeners = () => {
 
 function updateAddToCartButtonState() {
   const addToCartButton = document.querySelector('.product-form__btn.btn.btn--lg');
+  const step4NextButton = document.getElementById('uniform-step4-next-btn');
   const quantityInputs = document.querySelectorAll('input[type="number"][id^="quantity-"], .quantity__input');
   let totalQuantity = 0;
   let hasUploads = false;
@@ -525,11 +526,19 @@ function updateAddToCartButtonState() {
 
   const MIN_QUANTITY = {{ product.metafields.custom.min_qty | json }} || 15;
 
-  addToCartButton.disabled = totalQuantity < MIN_QUANTITY || (!noVariantTagExists && !noUploadTagExists && !hasUploads);
+  const shouldDisable = totalQuantity < MIN_QUANTITY || (!noVariantTagExists && !noUploadTagExists && !hasUploads);
+  
+  if (addToCartButton) {
+    addToCartButton.disabled = shouldDisable;
+  }
+  
+  if (step4NextButton) {
+    step4NextButton.disabled = shouldDisable;
+  }
 
   const errorContainer = document.getElementById('error-message-container');
   if (errorContainer) {
-    if (totalQuantity < MIN_QUANTITY || (!noVariantTagExists && !noUploadTagExists && !hasUploads)) {
+    if (shouldDisable) {
       errorContainer.textContent = noVariantTagExists || noUploadTagExists ? "Please ensure you've met the minimum quantity" : "Please ensure you've met the minimum quantity and uploaded your logo (min 1).";
       errorContainer.style.display = 'block';
     } else {
