@@ -449,9 +449,9 @@
 
       if (activeRow) {
         const cells = activeRow.querySelectorAll('td, th');
-        // usually the applied price is in the last cell
-        for (let i = cells.length - 1; i >= 0; i--) {
-          const cents = parseMoneyToCents(cells[i].textContent);
+        // The unit price is in the second cell (index 1)
+        if (cells.length > 1) {
+          const cents = parseMoneyToCents(cells[1].textContent);
           if (cents > 0) return cents;
         }
       }
