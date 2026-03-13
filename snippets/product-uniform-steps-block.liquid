@@ -424,41 +424,54 @@
       .join('    ');
     document.getElementById('review-sizes').textContent = sizesText || 'No sizes selected';
     
-    // Calculate total price based on variant prices and quantities
-    let totalPrice = 0;
-    quantityInputs.forEach(input => {
-      const qty = parseInt(input.value) || 0;
-      if (qty > 0) {
-        // Extract variant ID from input id (format: "quantity-VARIANTID-product1" or "quantity-VARIANTID-product2")
-        const inputId = input.id;
-        const variantId = inputId.split('-')[1];
-        
-        // Try to find the price from a nearby price display or variant data
-        const row = input.closest('tr');
-        let price = 0;
-        
-        if (row) {
-          // Look for price in the row
-          const priceCell = row.querySelector('.variant-price, [data-variant-price]');
-          if (priceCell) {
-            const priceText = priceCell.textContent || priceCell.getAttribute('data-variant-price');
-            price = parseFloat(priceText.replace(/[^0-9.]/g, '')) * 100; // Convert to cents
-          }
+    // Calculate total price from BSS B2B quantity-break table (price applied by quantity tiers)
+    function parseMoneyToCents(value) {
+      if (!value) return 0;
+      const normalized = value.toString().replace(/,/g, '').trim();
+      const match = normalized.match(/-?\d+(?:\.\d{1,2})?/);
+      if (!match) return 0;
+      return Math.round(parseFloat(match[0]) * 100);
+    }
+
+    function getUnitPriceFromBssTable(qty) {
+      // Find row by quantity range using data-min and data-max
+      let activeRow = null;
+      const allRows = document.querySelectorAll('.product-uniform-steps-block .bss-b2b-qty-table-row, .product-uniform-steps-block .bss-b2b-qty-table-row-ef');
+      allRows.forEach((row) => {
+        if (activeRow) return;
+        const min = parseInt(row.getAttribute('data-min') || '0', 10);
+        const maxRaw = row.getAttribute('data-max');
+        const max = maxRaw ? parseInt(maxRaw, 10) : Number.POSITIVE_INFINITY;
+        if (qty >= min && qty <= max) {
+          activeRow = row;
         }
-        
-        // If no price found in row, try to get from window product data
-        if (!price && typeof window.productVariants !== 'undefined') {
-          const variant = window.productVariants.find(v => v.id.toString() === variantId);
-          if (variant) {
-            price = variant.price;
-          }
+      });
+
+      if (activeRow) {
+        const cells = activeRow.querySelectorAll('td, th');
+        // usually the applied price is in the last cell
+        for (let i = cells.length - 1; i >= 0; i--) {
+          const cents = parseMoneyToCents(cells[i].textContent);
+          if (cents > 0) return cents;
         }
-        
-        totalPrice += (price * qty);
       }
-    });
-    
-    const formattedPrice = (totalPrice / 100).toLocaleString('en-US', { style: 'currency', currency: 'AUD' }).replace('A', '');
+
+      // Fallback to BSS rendered applied price element
+      const appliedPriceEl = document.querySelector('.product-uniform-steps-block .bss-qb-price-item');
+      const appliedCents = parseMoneyToCents(appliedPriceEl ? appliedPriceEl.textContent : '');
+      if (appliedCents > 0) return appliedCents;
+
+      // Last fallback to variant base prices
+      if (typeof window.productVariants !== 'undefined' && window.productVariants.length > 0) {
+        return window.productVariants[0].price || 0;
+      }
+
+      return 0;
+    }
+
+    const unitPriceCents = getUnitPriceFromBssTable(totalQuantity);
+    const totalPriceCents = unitPriceCents * totalQuantity;
+    const formattedPrice = (totalPriceCents / 100).toLocaleString('en-US', { style: 'currency', currency: 'AUD' }).replace('A', '');
     document.getElementById('review-total-price').textContent = formattedPrice;
   }
   
