@@ -470,6 +470,7 @@
     }
 
     const unitPriceCents = getUnitPriceFromBssTable(totalQuantity);
+    console.log("qbprice-", window.BSS_B2B.getModifiedPrice);
     const totalPriceCents = unitPriceCents * totalQuantity;
     const formattedPrice = (totalPriceCents / 100).toLocaleString('en-US', { style: 'currency', currency: 'AUD' }).replace('A', '');
     document.getElementById('review-total-price').textContent = formattedPrice;
