@@ -176,8 +176,61 @@
         </svg>
         BACK
       </button>
-      <button type="button" id="uniform-step4-next-btn" class="uniform-nav-btn uniform-nav-btn--next" onclick="if (!this.disabled) { addToCartMulti(); setTimeout(() => goToStep(5), 500); }" disabled>
+      <button type="button" id="uniform-step4-next-btn" class="uniform-nav-btn uniform-nav-btn--next" onclick="if (!this.disabled) { goToStep(5); }" disabled>
         NEXT STEP
+        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="8" viewBox="0 0 12 8" fill="none">
+          <path d="M1.47852 3.81799C1.20238 3.81799 0.978516 4.04185 0.978516 4.31799C0.978516 4.59414 1.20238 4.81799 1.47852 4.81799V3.81799V3.81799ZM11.8529 4.67155C12.0482 4.47628 12.0482 4.1597 11.8529 3.96444L8.6709 0.782458C8.47564 0.587196 8.15906 0.587196 7.96379 0.782458C7.76853 0.977721 7.76853 1.2943 7.96379 1.48956L10.7922 4.31799L7.96379 7.14642C7.76853 7.34168 7.76853 7.65827 7.96379 7.85353C8.15906 8.04879 8.47564 8.04879 8.6709 7.85353L11.8529 4.67155ZM1.47852 4.81799H11.4993V3.81799V3.81799H1.47852V4.81799Z" fill="currentColor"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+  
+  <div class="product-review-step" data-step-content="5" style="display: none;">
+    <div class="uniform-review-container">
+      <h2 class="uniform-review-title">Review your order:</h2>
+      
+      <div class="uniform-review-row">
+        <div class="uniform-review-label">
+          Uploaded logo/s: <span id="review-uploaded-files" class="uniform-review-value"></span>
+        </div>
+        <button type="button" class="uniform-edit-btn" onclick="goToStep(3)">EDIT</button>
+      </div>
+      
+      <div class="uniform-review-row">
+        <div class="uniform-review-label">
+          Quantity: <span id="review-total-quantity" class="uniform-review-value"></span>
+        </div>
+        <button type="button" class="uniform-edit-btn" onclick="goToStep(4)">EDIT</button>
+      </div>
+      
+      <div class="uniform-review-row">
+        <div class="uniform-review-label">
+          Sizes: <span id="review-sizes" class="uniform-review-value"></span>
+        </div>
+        <button type="button" class="uniform-edit-btn" onclick="goToStep(4)">EDIT</button>
+      </div>
+      
+      <div class="uniform-review-row uniform-review-row--full">
+        <div class="uniform-review-label-full">Additional Details:</div>
+        <textarea id="review-additional-details" class="uniform-review-textarea" placeholder="Please type here..."></textarea>
+      </div>
+      
+      <div class="uniform-review-total">
+        <div class="uniform-total-label">Total:</div>
+        <div class="uniform-total-price" id="review-total-price">$0.00</div>
+      </div>
+      <div class="uniform-total-note">Taxes and shipping calculated at checkout</div>
+    </div>
+    
+    <div class="uniform-step-navigation">
+      <button type="button" class="uniform-nav-btn uniform-nav-btn--back" onclick="goToStep(4)">
+        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="8" viewBox="0 0 12 8" fill="none">
+          <path d="M10.5215 4.18201C10.7976 4.18201 11.0215 3.95815 11.0215 3.68201C11.0215 3.40586 10.7976 3.18201 10.5215 3.18201V3.68201V4.18201ZM0.14712 3.32845C-0.0481434 3.52372 -0.0481434 3.8403 0.14712 4.03556L3.3291 7.21754C3.52436 7.4128 3.84094 7.4128 4.03621 7.21754C4.23147 7.02228 4.23147 6.7057 4.03621 6.51043L1.20778 3.68201L4.03621 0.85358C4.23147 0.658318 4.23147 0.341735 4.03621 0.146473C3.84094 -0.0487893 3.52436 -0.0487893 3.3291 0.146473L0.14712 3.32845ZM10.5215 3.68201V3.18201L0.500672 3.18201V3.68201V4.18201L10.5215 4.18201V3.68201Z" fill="currentColor"/>
+        </svg>
+        BACK
+      </button>
+      <button type="button" class="uniform-nav-btn uniform-nav-btn--checkout" onclick="proceedToCheckout()">
+        PROCEED TO CHECKOUT
         <svg xmlns="http://www.w3.org/2000/svg" width="12" height="8" viewBox="0 0 12 8" fill="none">
           <path d="M1.47852 3.81799C1.20238 3.81799 0.978516 4.04185 0.978516 4.31799C0.978516 4.59414 1.20238 4.81799 1.47852 4.81799V3.81799V3.81799ZM11.8529 4.67155C12.0482 4.47628 12.0482 4.1597 11.8529 3.96444L8.6709 0.782458C8.47564 0.587196 8.15906 0.587196 7.96379 0.782458C7.76853 0.977721 7.76853 1.2943 7.96379 1.48956L10.7922 4.31799L7.96379 7.14642C7.76853 7.34168 7.76853 7.65827 7.96379 7.85353C8.15906 8.04879 8.47564 8.04879 8.6709 7.85353L11.8529 4.67155ZM1.47852 4.81799H11.4993V3.81799V3.81799H1.47852V4.81799Z" fill="currentColor"/>
         </svg>
@@ -305,19 +358,127 @@
     // Show/hide content based on step
     const uploadSection = stepsBlock.querySelector('[data-step-content="3"]');
     const formSection = stepsBlock.querySelector('[data-step-content="4"]');
+    const reviewSection = stepsBlock.querySelector('[data-step-content="5"]');
     
     if (stepNumber === 3) {
       if (uploadSection) uploadSection.style.display = 'block';
       if (formSection) formSection.style.display = 'none';
+      if (reviewSection) reviewSection.style.display = 'none';
     } else if (stepNumber === 4) {
       if (uploadSection) uploadSection.style.display = 'none';
       if (formSection) formSection.style.display = 'block';
+      if (reviewSection) reviewSection.style.display = 'none';
       
       // Scroll to the form
       if (formSection) {
         formSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
       }
+    } else if (stepNumber === 5) {
+      if (uploadSection) uploadSection.style.display = 'none';
+      if (formSection) formSection.style.display = 'none';
+      if (reviewSection) reviewSection.style.display = 'block';
+      
+      // Populate review section
+      populateReviewSection();
+      
+      // Scroll to the review
+      if (reviewSection) {
+        reviewSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
     }
+  }
+  
+  function populateReviewSection() {
+    // Get uploaded files
+    const uploadInputs = document.querySelectorAll('input[type="hidden"][name^="properties[upload"]');
+    const uploadedFiles = [];
+    uploadInputs.forEach(input => {
+      if (input.value.trim()) {
+        const fileName = input.value.split('/').pop().split('?')[0];
+        uploadedFiles.push(fileName);
+      }
+    });
+    document.getElementById('review-uploaded-files').textContent = uploadedFiles.length > 0 ? uploadedFiles.join(', ') : 'No files uploaded';
+    
+    // Get total quantity
+    const quantityInputs = document.querySelectorAll('input[type="number"][id^="quantity-"], .quantity__input');
+    let totalQuantity = 0;
+    const sizeBreakdown = {};
+    
+    quantityInputs.forEach(input => {
+      const qty = parseInt(input.value) || 0;
+      if (qty > 0) {
+        totalQuantity += qty;
+        const variantName = input.getAttribute('data-variant-name') || input.closest('tr')?.querySelector('td:first-child')?.textContent.trim();
+        if (variantName) {
+          sizeBreakdown[variantName] = qty;
+        }
+      }
+    });
+    
+    document.getElementById('review-total-quantity').textContent = totalQuantity + ' pcs';
+    
+    // Get size breakdown
+    const sizesText = Object.entries(sizeBreakdown)
+      .map(([size, qty]) => `${size} ${qty} pcs`)
+      .join('    ');
+    document.getElementById('review-sizes').textContent = sizesText || 'No sizes selected';
+    
+    // Calculate total price based on variant prices and quantities
+    let totalPrice = 0;
+    quantityInputs.forEach(input => {
+      const qty = parseInt(input.value) || 0;
+      if (qty > 0) {
+        // Extract variant ID from input id (format: "quantity-VARIANTID-product1" or "quantity-VARIANTID-product2")
+        const inputId = input.id;
+        const variantId = inputId.split('-')[1];
+        
+        // Try to find the price from a nearby price display or variant data
+        const row = input.closest('tr');
+        let price = 0;
+        
+        if (row) {
+          // Look for price in the row
+          const priceCell = row.querySelector('.variant-price, [data-variant-price]');
+          if (priceCell) {
+            const priceText = priceCell.textContent || priceCell.getAttribute('data-variant-price');
+            price = parseFloat(priceText.replace(/[^0-9.]/g, '')) * 100; // Convert to cents
+          }
+        }
+        
+        // If no price found in row, try to get from window product data
+        if (!price && typeof window.productVariants !== 'undefined') {
+          const variant = window.productVariants.find(v => v.id.toString() === variantId);
+          if (variant) {
+            price = variant.price;
+          }
+        }
+        
+        totalPrice += (price * qty);
+      }
+    });
+    
+    const formattedPrice = (totalPrice / 100).toLocaleString('en-US', { style: 'currency', currency: 'AUD' }).replace('A', '');
+    document.getElementById('review-total-price').textContent = formattedPrice;
+  }
+  
+  function proceedToCheckout() {
+    // Update additional details if provided
+    const additionalDetails = document.getElementById('review-additional-details').value.trim();
+    if (additionalDetails) {
+      const additionalDetailsInput = document.getElementById('additional-details');
+      if (additionalDetailsInput) {
+        additionalDetailsInput.value = additionalDetails;
+      }
+    }
+    
+    // Add to cart first, then redirect to checkout
+    addToCartMulti();
+    
+    // Wait a bit for cart to update, then redirect to checkout
+    setTimeout(() => {
+      window.location.href = '/checkout';
+    }, 1000);
   }
   
   // Initialize on page load
@@ -496,6 +657,142 @@
     height: 10px;
   }
 
+  .uniform-nav-btn--checkout {
+    background: #F74C09;
+    color: white;
+    box-shadow: 0 4px 12px rgba(247, 76, 9, 0.3);
+  }
+
+  .uniform-nav-btn--checkout:hover {
+    background: #d63d00;
+    box-shadow: 0 6px 16px rgba(247, 76, 9, 0.4);
+    transform: translateY(-2px);
+  }
+
+  .uniform-nav-btn--checkout svg {
+    width: 14px;
+    height: 10px;
+  }
+
+  /* Review Section Styles */
+  .uniform-review-container {
+    background: white;
+    border-radius: 0;
+    padding: 0;
+    margin-bottom: 2rem;
+  }
+
+  .uniform-review-title {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: #156571;
+    margin-bottom: 2rem;
+  }
+
+  .uniform-review-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.5rem 0;
+    border-bottom: 1px dotted #ddd;
+  }
+
+  .uniform-review-row--full {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .uniform-review-label {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1.125rem;
+    color: #156571;
+    flex: 1;
+  }
+
+  .uniform-review-label-full {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1.125rem;
+    color: #156571;
+    margin-bottom: 0.75rem;
+    font-weight: 600;
+  }
+
+  .uniform-review-value {
+    font-weight: 700;
+    color: #156571;
+  }
+
+  .uniform-edit-btn {
+    background: transparent;
+    color: #156571;
+    border: 1px solid #156571;
+    padding: 0.5rem 1.5rem;
+    border-radius: 50px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.875rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+  }
+
+  .uniform-edit-btn:hover {
+    background: #156571;
+    color: white;
+  }
+
+  .uniform-review-textarea {
+    width: 100%;
+    min-height: 120px;
+    padding: 1rem;
+    border: 1px solid #e4e4e4;
+    border-radius: 8px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1rem;
+    resize: vertical;
+    background: #fafafa;
+  }
+
+  .uniform-review-textarea:focus {
+    outline: none;
+    border-color: #156571;
+    background: white;
+  }
+
+  .uniform-review-total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 0;
+    border-bottom: none;
+    margin-top: 0;
+  }
+
+  .uniform-total-label {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #333;
+  }
+
+  .uniform-total-price {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: #156571;
+    background: #E8F4F6;
+    padding: 0.25rem 1rem;
+    border-radius: 4px;
+  }
+
+  .uniform-total-note {
+    font-size: 0.875rem;
+    color: #666;
+    margin-top: 0.5rem;
+  }
+
   @media (max-width: 768px) {
     .uniform-step-navigation {
       flex-direction: row;
@@ -506,5 +803,27 @@
     .uniform-nav-btn {
       padding: 0.875rem 1.5rem;
       font-size: 14px;
+    }
+
+    .uniform-review-container {
+      padding: 1.5rem;
+    }
+
+    .uniform-review-title {
+      font-size: 1.25rem;
+    }
+
+    .uniform-review-row {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.75rem;
+    }
+
+    .uniform-edit-btn {
+      align-self: flex-end;
+    }
+
+    .uniform-total-price {
+      font-size: 1.75rem;
     }
   }</style>

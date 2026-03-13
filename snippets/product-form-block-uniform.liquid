@@ -933,6 +933,25 @@
     *</button> 
 </form>
 
+<script>
+  // Expose variant prices for price calculation
+  window.productVariants = [
+    {% if product.metafields.custom.product1 %}
+      {% assign p1 = all_products[product.metafields.custom.product1.value.handle] %}
+      {% for variant in p1.variants %}
+        { id: {{ variant.id }}, price: {{ variant.price }} }{% unless forloop.last %},{% endunless %}
+      {% endfor %}
+    {% endif %}
+    {% if product.metafields.custom.product2 %}
+      ,
+      {% assign p2 = all_products[product.metafields.custom.product2.value.handle] %}
+      {% for variant in p2.variants %}
+        { id: {{ variant.id }}, price: {{ variant.price }} }{% unless forloop.last %},{% endunless %}
+      {% endfor %}
+    {% endif %}
+  ];
+</script>
+
 {% render 'upload-script' %}
 
 {% comment %} <div id="error-message-container" style="display: none; color: red;"></div>
