@@ -389,15 +389,30 @@
   }
   
   function populateReviewSection() {
-    // Get uploaded files
-    const uploadInputs = document.querySelectorAll('input[type="hidden"][name^="properties[upload"]');
+    // Get uploaded files - extract original filename from Filepond legend
     const uploadedFiles = [];
-    uploadInputs.forEach(input => {
-      if (input.value.trim()) {
-        const fileName = input.value.split('/').pop().split('?')[0];
+    
+    // Look for Filepond file elements that contain the original filename in legend tag
+    const filepodFiles = document.querySelectorAll('.filepond--file-wrapper legend');
+    console.log("filepodFiles-", filepodFiles);
+    filepodFiles.forEach(legend => {
+      const fileName = legend.textContent.trim();
+      if (fileName) {
         uploadedFiles.push(fileName);
       }
     });
+    
+    // Fallback: if no Filepond files found, try hidden inputs (will show server filename)
+    if (uploadedFiles.length === 0) {
+      const uploadInputs = document.querySelectorAll('input[type="hidden"][name^="properties[upload"]');
+      uploadInputs.forEach(input => {
+        if (input.value.trim()) {
+          const fileName = input.value.split('/').pop().split('?')[0];
+          uploadedFiles.push(fileName);
+        }
+      });
+    }
+    
     document.getElementById('review-uploaded-files').textContent = uploadedFiles.length > 0 ? uploadedFiles.join(', ') : 'No files uploaded';
     
     // Get total quantity
