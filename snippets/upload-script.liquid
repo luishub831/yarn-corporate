@@ -613,9 +613,15 @@ function addToCartMulti() {
     const totalQuantity = product1Result.totalQuantity;
 
     if (totalQuantity < MIN_QUANTITY) {
-      document.getElementById(`error-product1`).style.display = 'block';
+      const errorElement = document.getElementById(`error-product1`);
+      if (errorElement) {
+        errorElement.style.display = 'block';
+      }
     } else {
-      document.getElementById(`error-product1`).style.display = 'none';
+      const errorElement = document.getElementById(`error-product1`);
+      if (errorElement) {
+        errorElement.style.display = 'none';
+      }
       variantsToAdd.push(...product1Result.variants);
       if (variantsToAdd.length > 0) {
         addToCartSequentially(variantsToAdd, 0);
@@ -693,9 +699,15 @@ function addToCartMulti() {
     const totalQuantity = product1Result.totalQuantity + product2Result.totalQuantity;
 
     if (totalQuantity < MIN_QUANTITY) {
-      document.getElementById(`error-product1`).style.display = 'block';
+      const errorElement = document.getElementById(`error-product1`);
+      if (errorElement) {
+        errorElement.style.display = 'block';
+      }
     } else {
-      document.getElementById(`error-product1`).style.display = 'none';
+      const errorElement = document.getElementById(`error-product1`);
+      if (errorElement) {
+        errorElement.style.display = 'none';
+      }
       variantsToAdd.push(...product1Result.variants, ...product2Result.variants);
 
       if (naidocLogoQuestionExists) {

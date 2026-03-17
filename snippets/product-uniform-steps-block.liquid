@@ -210,9 +210,15 @@
         <button type="button" class="uniform-edit-btn" onclick="goToStep(4)">EDIT</button>
       </div>
       
-      <div class="uniform-review-row uniform-review-row--full">
+      {% comment %} <div class="uniform-review-row uniform-review-row--full">
         <div class="uniform-review-label-full">Additional Details:</div>
         <textarea id="review-additional-details" class="uniform-review-textarea" placeholder="Please type here..."></textarea>
+      </div> {% endcomment %}
+      <div class="uniform-review-row additional-details">
+          <div style="flex: 1;">
+            <div class="uniform-review-label">Additional Details:</div>
+            <textarea id="additional-details" name="additional-details" class="uniform-review-textarea" maxlength="300" placeholder="Please type here..."></textarea>
+          </div>
       </div>
       
       <div class="uniform-review-total">
@@ -492,14 +498,9 @@
   }
   
   function proceedToCheckout() {
-    // Update additional details if provided
-    const additionalDetails = document.getElementById('review-additional-details').value.trim();
-    if (additionalDetails) {
-      const additionalDetailsInput = document.getElementById('additional-details');
-      if (additionalDetailsInput) {
-        additionalDetailsInput.value = additionalDetails;
-      }
-    }
+    // Get additional details if provided
+    const additionalDetailsInput = document.getElementById('additional-details');
+    const additionalDetails = additionalDetailsInput ? additionalDetailsInput.value.trim() : '';
     
     // Add to cart first, then redirect to checkout
     addToCartMulti();
