@@ -502,31 +502,13 @@
     const additionalDetailsInput = document.getElementById('additional-details');
     const additionalDetails = additionalDetailsInput ? additionalDetailsInput.value.trim() : '';
     
-    // Store additional details in sessionStorage to be used by addToCartMulti
-    if (additionalDetails) {
-      sessionStorage.setItem('uniformAdditionalDetails', additionalDetails);
-    }
-    
     // Add to cart first, then redirect to checkout
-    {% comment %} addToCartMulti(); {% endcomment %}
+    addToCartMulti();
     
-    // Wait for cart to update, then apply discount and redirect to checkout
-    setTimeout(() => {
-      // Check if BSS B2B discount code is available and apply it
-      if (typeof BSS_B2B !== "undefined" && BSS_B2B.dc && BSS_B2B.dc.applyDiscountCode) {
-        const discountCodeInput = document.getElementById('bss-b2b-discount-code-input');
-        if (discountCodeInput && discountCodeInput.value.trim()) {
-          // Apply discount code before checkout
-          BSS_B2B.dc.applyDiscountCode(discountCodeInput.value.trim(), function() {
-            window.location.href = '/checkout';
-          });
-          return;
-        }
-      }
-      
-      // If no discount code or BSS not available, just redirect
+    // Wait a bit for cart to update, then redirect to checkout
+    {% comment %} setTimeout(() => {
       window.location.href = '/checkout';
-    }, 1500);
+    }, 1000); {% endcomment %}
   }
   
   // Initialize on page load
