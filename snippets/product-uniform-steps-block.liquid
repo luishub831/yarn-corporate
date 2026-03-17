@@ -506,9 +506,9 @@
     addToCartMulti();
     
     // Wait a bit for cart to update, then redirect to checkout
-    setTimeout(() => {
+    {% comment %} setTimeout(() => {
       window.location.href = '/checkout';
-    }, 1000);
+    }, 1000); {% endcomment %}
   }
   
   // Initialize on page load
