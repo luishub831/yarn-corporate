@@ -502,7 +502,7 @@
     const additionalDetailsInput = document.getElementById('additional-details');
     const additionalDetails = additionalDetailsInput ? additionalDetailsInput.value.trim() : '';
     
-    // Add cart note with additional details if provided
+    // Update cart note with additional details
     if (additionalDetails) {
       fetch('/cart/update.js', {
         method: 'POST',
@@ -515,13 +515,16 @@
       }).catch(error => console.error('Error updating cart note:', error));
     }
     
-    // Check if BSS B2B discount code is available and apply it
-    if (typeof BSS_B2B !== "undefined" && BSS_B2B.dc && BSS_B2B.dc.applyDiscountCode) {
+    // Build checkout URL with discount if available
+    let checkoutUrl = '/checkout';
+    
+    // Check if BSS B2B discount code is available
+    if (typeof BSS_B2B !== "undefined" && BSS_B2B.dc) {
       const discountCodeInput = document.getElementById('bss-b2b-discount-code-input');
       if (discountCodeInput && discountCodeInput.value.trim()) {
-        // Apply discount code before checkout
+        // Apply discount via BSS B2B and redirect
         BSS_B2B.dc.applyDiscountCode(discountCodeInput.value.trim(), function() {
-          window.location.href = '/checkout';
+          window.location.href = checkoutUrl;
         });
         return;
       }
@@ -530,13 +533,11 @@
     // Check for stored discount code in sessionStorage or localStorage
     const storedDiscount = sessionStorage.getItem('discountCode') || localStorage.getItem('discountCode');
     if (storedDiscount) {
-      // Redirect to checkout with discount code as URL parameter
-      window.location.href = '/checkout?discount=' + encodeURIComponent(storedDiscount);
-      return;
+      checkoutUrl += '?discount=' + encodeURIComponent(storedDiscount);
     }
     
-    // If no discount code, just redirect to checkout
-    window.location.href = '/checkout';
+    // Redirect to checkout
+    window.location.href = checkoutUrl;
   }
   
   // Initialize on page load
