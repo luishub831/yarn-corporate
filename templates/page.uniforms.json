@@ -38,32 +38,26 @@
           "type": "category",
           "settings": {
             "category_title": "Shop Shirts",
-
             "item_1_show": true,
             "item_1_image": "shopify://shop_images/Ellipse_10.png",
             "item_1_text": "Design Your Own",
             "item_1_link": "shopify://collections/design-your-own-polo",
-
             "item_2_show": true,
             "item_2_image": "shopify://shop_images/short-sleeve-polos.png",
             "item_2_text": "Short Sleeve Polos",
             "item_2_link": "shopify://collections/design-your-own-polo",
-
             "item_3_show": true,
             "item_3_image": "shopify://shop_images/long-sleeve-polos.png",
             "item_3_text": "Long Sleeve Polos",
             "item_3_link": "",
-
             "item_4_show": true,
             "item_4_image": "shopify://shop_images/blouses-fashion-top.png",
             "item_4_text": "Blouses/Fashion Tops",
             "item_4_link": "",
-
             "item_5_show": true,
             "item_5_image": "shopify://shop_images/tshorts.png",
             "item_5_text": "T-Shirts",
             "item_5_link": "",
-
             "item_6_show": false,
             "item_6_text": "Item Name",
             "item_6_link": ""
