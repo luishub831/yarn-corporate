@@ -12,6 +12,50 @@
     "main": {
       "type": "product",
       "blocks": {
+        "pd_description_7rjXx4": {
+          "type": "pd_description",
+          "settings": {
+            "title": "Description",
+            "icon": "none"
+          }
+        },
+        "pd_content_tab_EdGbQj": {
+          "type": "pd_content_tab",
+          "settings": {
+            "title": "How is the ordering process?",
+            "icon": "none",
+            "text": "<p><strong>How Does the Ordering Process Work?</strong></p><p>Ordering with Yarn Corporate is simple:</p><ol><li><strong>Place Your Order</strong> – Select your product, upload your logo (300DPI/vector), and confirm your order.</li><li><strong>Artwork Approval</strong> – Our team will provide a custom design for your review and approval.*</li><li><strong>Sample Proofing (if applicable)</strong> – Some orders require a sample proof before production begins.</li><li><strong>Production & Customisation</strong> – Your order is produced based on your chosen customisation option.</li><li><strong>Dispatch & Delivery</strong> – Once quality checked, your order is shipped from our Meanjin warehouse with tracking provided.</li></ol><p>*Approval is required before production can begin.</p><p></p>",
+            "page": "",
+            "image_width": 100
+          }
+        },
+        "pd_faq_4YfeN4": {
+          "type": "pd_faq",
+          "settings": {
+            "title": "FAQ",
+            "icon": "none",
+            "question1": "How do I upload my logo?",
+            "answer1": "<p>You can upload your design directly on our website when you submit your order. Click the Upload Your Logo button to add. Be sure to read our artwork guidelines to ensure our team can use your logo. You can find these below the upload logo button.</p>",
+            "question2": "What happens after I place an order?",
+            "answer2": "<p>After we receive your order we review it and ensure the logo you provided is in the right format and quality. Then we create a mockup of the design for you to review. Production will not begin until the mockup is approved and order payment is received.</p>",
+            "question3": "What is the correct file format and size for uploading my logo and/or artwork?",
+            "answer3": "<p>You can find our guidelines for artwork submissions below the upload your logo button . Please try to upload high resolution files in AI, SVG, PDF or EPS format as these are the best quality for our designers to work with. If you do not have the correct file format we can assist you with redrawing your logo. Reach out to a customer service representative to begin this process.</p>",
+            "question4": "Can I see a Mockup of my shirt before my order is finalised?",
+            "answer4": "<p>Yes! Our designers will create a mockup for you to review. Your mockup must be approved before production can begin.</p>",
+            "question5": "Will I get a sample proof before my order goes into production?",
+            "answer5": "<p>Yes! All sublimated merchandise orders will receive pressing sample proofs for you to approve or reject. You can anticipate these via email within 4 weeks of submitting your order for production. Production will not proceed until the pressing samples are approved.</p>",
+            "question6": "What’s the minimum quantity (MOQ)?",
+            "answer6": "<p>We offer some of the lowest MOQs in the industry! For custom polos, the MOQ is just 15 per design - mixing both unisex and fitted cuts in one order. For other items, MOQs vary. This information is highlighted on each product page and in the product descriptions.<br/><br/></p>",
+            "question7": "What’s the lead time for custom orders?",
+            "answer7": "<p>The lead time for orders varies depending on the product. This information is on the product page in the description. \\nPolos, Tops, Workwear and Accessories: 5-6 Weeks\\nT-Shirts and Merch: 7-10 Days\\nExpress Range: 7-10 Days<br/><br/></p>",
+            "question8": "Can I choose a design that’s not on the website?",
+            "answer8": "<p>Yes! We can help you create something with your own art, source bespoke art for you, or enquire about using any of the designs from our sister site Yarn Marketplace. Reach out to a customer service representative to begin this process.</p>",
+            "question9": "Do artists get royalties for custom products?",
+            "answer9": "<p>Yes they do! Every purchase pays royalties to the artist to build income and support their career.</p>",
+            "question10": "How can I pay for my order?",
+            "answer10": "<p>We offer two payment options:\\n\\nCredit Card: Pay instantly at checkout.\\nTax Invoice: Payment is required upfront before we can submit your order to production, as our suppliers do not accept unpaid orders.\\n\\nIf paying by invoice, please forward your remittance to corporate@yarn.com.au or your sales representative to ensure we can track the funds and process your order as quickly as possible.</p>"
+          }
+        },
         "title": {
           "type": "title",
           "settings": {
@@ -174,6 +218,9 @@
         }
       },
       "block_order": [
+        "pd_description_7rjXx4",
+        "pd_content_tab_EdGbQj",
+        "pd_faq_4YfeN4",
         "title",
         "e41cb9cc-4f8c-4099-9aa3-436d4297ecaf",
         "price",
@@ -207,7 +254,9 @@
         "enable_video_looping": true,
         "enable_video_autoplay": false,
         "scale_video": true,
-        "show_part_of_next_slide": false
+        "show_part_of_next_slide": false,
+        "product_details_style": "tabs",
+        "expand_first_product_detail": false
       }
     },
     "artwork_story_AwbG4V": {
@@ -275,6 +324,7 @@
         "5594cd3a-1c1c-436c-82e1-5acc9d0e8bcf",
         "faq_eBKJmK"
       ],
+      "disabled": true,
       "custom_css": [
         ".accordeon-plus--bottom-bordered:first-child {border-top: 1px solid var(--gsc-border-color-100);}",
         ".accordeon-plus--bottom-bordered + .accordeon-plus--top-bordered {border-bottom: 1px solid var(--gsc-border-color-100) !important;}",
