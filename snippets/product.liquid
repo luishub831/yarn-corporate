@@ -4,12 +4,49 @@
   assign first_3d_model = product.media | where: 'media_type', 'model' | first
 -%}
 
-<div class='product__content'>
-  {%- liquid
-    render 'product-media-list', section: section, product: product, sectionId: sectionId, block_layout: block_layout
-    render 'product-info', section: section, product: product, sectionId: sectionId, block_layout: block_layout
-  -%}
+<div class='product__content' id='product-content-wrapper-{{ product.id }}-{{ sectionId }}'>
+  <div class='product__media-column'>
+    {%- render 'product-media-list', section: section, product: product, sectionId: sectionId, block_layout: block_layout -%}
+    {%- render 'product-details-snippet', section: section, product: product, sectionId: sectionId -%}
+  </div>
+  <div class='product__info-column'>
+    {%- render 'product-info', section: section, product: product, sectionId: sectionId, block_layout: block_layout -%}
+  </div>
 </div>
+
+<style>
+  .product__content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    align-items: flex-start;
+  }
+
+  .product__media-column {
+    width: 100%;
+  }
+
+  .product__info-column {
+    position: sticky;
+    top: 2rem;
+    align-self: flex-start;
+  }
+
+  .product-details-snippet {
+    margin-top: 2rem;
+  }
+
+  @media (max-width: 989px) {
+    .product__content {
+      grid-template-columns: 1fr;
+    }
+
+    .product__info-column {
+      position: relative;
+      top: 0;
+    }
+  }
+</style>
 
 <div>
   {%- if first_3d_model -%}

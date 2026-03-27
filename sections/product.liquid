@@ -344,8 +344,35 @@
     {
       "type": "checkbox",
       "id": "show_part_of_next_slide",
-      "default": false,
+      "default": true,
       "label": "t:sections.product.label_show_part_of_next_slide_setting"
+    },
+    {
+      "type": "header",
+      "content": "Product Details Settings"
+    },
+    {
+      "type": "select",
+      "id": "product_details_style",
+      "options": [
+        {
+          "value": "tabs",
+          "label": "Tabs"
+        },
+        {
+          "value": "collapsible-rows",
+          "label": "Collapsible Rows"
+        }
+      ],
+      "default": "collapsible-rows",
+      "label": "Product Details Style"
+    },
+    {
+      "type": "checkbox",
+      "default": false,
+      "id": "expand_first_product_detail",
+      "label": "Expand First Detail Row",
+      "info": "Only applies to collapsible rows style"
     }
   ],
   "blocks": [
@@ -5620,7 +5647,263 @@
   }
   ]
   },
-          
+    {
+      "type": "pd_description",
+      "name": "Product Description",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "default": "Description",
+          "label": "Title"
+        },
+        {
+          "type": "select",
+          "id": "icon",
+          "options": [
+            {"value": "none", "label": "None"},
+            {"value": "document", "label": "Document"},
+            {"value": "information", "label": "Information"},
+            {"value": "list", "label": "List"},
+            {"value": "pen-and-ruler", "label": "Pen and Ruler"}
+          ],
+          "default": "none",
+          "label": "Icon"
+        },
+        {
+          "type": "image_picker",
+          "id": "custom_icon_image",
+          "label": "Custom Icon Image"
+        }
+      ]
+    },
+    {
+      "type": "pd_content_tab",
+      "name": "Product Content Tab",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "default": "Content tab",
+          "label": "Title"
+        },
+        {
+          "type": "select",
+          "id": "icon",
+          "options": [
+            {"value": "none", "label": "None"},
+            {"value": "document", "label": "Document"},
+            {"value": "information", "label": "Information"},
+            {"value": "shipping-box", "label": "Shipping Box"},
+            {"value": "fast-delivery", "label": "Fast Delivery"},
+            {"value": "easy-returns", "label": "Easy Returns"},
+            {"value": "pen-and-ruler", "label": "Pen and Ruler"},
+            {"value": "hanger", "label": "Hanger"},
+            {"value": "t-shirt", "label": "T-Shirt"}
+          ],
+          "default": "none",
+          "label": "Icon"
+        },
+        {
+          "type": "image_picker",
+          "id": "custom_icon_image",
+          "label": "Custom Icon Image"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Text"
+        },
+        {
+          "type": "page",
+          "id": "page",
+          "label": "Page"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "video",
+          "id": "video",
+          "label": "Video"
+        },
+        {
+          "type": "range",
+          "id": "image_width",
+          "min": 10,
+          "max": 100,
+          "step": 5,
+          "default": 100,
+          "unit": "%",
+          "label": "Image Width"
+        }
+      ]
+    },
+    {
+      "type": "pd_faq",
+      "name": "Product FAQ",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "default": "FAQ",
+          "label": "Title"
+        },
+        {
+          "type": "select",
+          "id": "icon",
+          "options": [
+            {"value": "none", "label": "None"},
+            {"value": "information", "label": "Information"},
+            {"value": "chat", "label": "Chat"},
+            {"value": "customer-support", "label": "Customer Support"}
+          ],
+          "default": "none",
+          "label": "Icon"
+        },
+        {
+          "type": "image_picker",
+          "id": "custom_icon_image",
+          "label": "Custom Icon Image"
+        },
+        {
+          "type": "text",
+          "id": "question1",
+          "label": "Question 1"
+        },
+        {
+          "type": "richtext",
+          "id": "answer1",
+          "label": "Answer 1"
+        },
+        {
+          "type": "text",
+          "id": "question2",
+          "label": "Question 2"
+        },
+        {
+          "type": "richtext",
+          "id": "answer2",
+          "label": "Answer 2"
+        },
+        {
+          "type": "text",
+          "id": "question3",
+          "label": "Question 3"
+        },
+        {
+          "type": "richtext",
+          "id": "answer3",
+          "label": "Answer 3"
+        },
+        {
+          "type": "text",
+          "id": "question4",
+          "label": "Question 4"
+        },
+        {
+          "type": "richtext",
+          "id": "answer4",
+          "label": "Answer 4"
+        },
+        {
+          "type": "text",
+          "id": "question5",
+          "label": "Question 5"
+        },
+        {
+          "type": "richtext",
+          "id": "answer5",
+          "label": "Answer 5"
+        },
+        {
+          "type": "text",
+          "id": "question6",
+          "label": "Question 6"
+        },
+        {
+          "type": "richtext",
+          "id": "answer6",
+          "label": "Answer 6"
+        },
+        {
+          "type": "text",
+          "id": "question7",
+          "label": "Question 7"
+        },
+        {
+          "type": "richtext",
+          "id": "answer7",
+          "label": "Answer 7"
+        },
+        {
+          "type": "text",
+          "id": "question8",
+          "label": "Question 8"
+        },
+        {
+          "type": "richtext",
+          "id": "answer8",
+          "label": "Answer 8"
+        },
+        {
+          "type": "text",
+          "id": "question9",
+          "label": "Question 9"
+        },
+        {
+          "type": "richtext",
+          "id": "answer9",
+          "label": "Answer 9"
+        },
+        {
+          "type": "text",
+          "id": "question10",
+          "label": "Question 10"
+        },
+        {
+          "type": "richtext",
+          "id": "answer10",
+          "label": "Answer 10"
+        }
+      ]
+    },
+    {
+      "type": "pd_custom_liquid",
+      "name": "Product Custom Liquid",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "default": "Custom",
+          "label": "Title"
+        },
+        {
+          "type": "select",
+          "id": "icon",
+          "options": [
+            {"value": "none", "label": "None"},
+            {"value": "settings", "label": "Settings"},
+            {"value": "document", "label": "Document"}
+          ],
+          "default": "none",
+          "label": "Icon"
+        },
+        {
+          "type": "image_picker",
+          "id": "custom_icon_image",
+          "label": "Custom Icon Image"
+        },
+        {
+          "type": "liquid",
+          "id": "custom_liquid",
+          "label": "Custom Liquid Code"
+        }
+      ]
+    },
     {
       "type": "rating",
       "name": "t:sections.product.blocks.rating.name",

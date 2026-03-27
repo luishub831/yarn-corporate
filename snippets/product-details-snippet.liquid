@@ -1,0 +1,498 @@
+{%- liquid
+  assign style = section.settings.product_details_style | default: 'collapsible-rows'
+  assign expand_first_collapsible_row = section.settings.expand_first_product_detail | default: false
+  
+  assign product_details_blocks = section.blocks | where: "type", "pd_description"
+  assign temp_blocks = section.blocks | where: "type", "pd_content_tab"
+  assign product_details_blocks = product_details_blocks | concat: temp_blocks
+  assign temp_blocks = section.blocks | where: "type", "pd_faq"
+  assign product_details_blocks = product_details_blocks | concat: temp_blocks
+  assign temp_blocks = section.blocks | where: "type", "pd_custom_liquid"
+  assign product_details_blocks = product_details_blocks | concat: temp_blocks
+  
+  assign first_block = product_details_blocks | first
+-%}
+
+<div class='product-details-snippet'>
+  {%- if product_details_blocks.size > 0 -%}
+  {%- if style == 'tabs' -%}
+    <tabs-component data-selected-tab-id='1'>
+      <div class='product-details__tab-names'>
+        {%- for block in product_details_blocks -%}
+          {% assign custom_icon_image = block.settings.custom_icon_image %}
+          {% assign icon = block.settings.icon %}
+
+          <div
+            data-tabs-name
+            class='tab-name product-details__tab-name {% if forloop.index == 1 %}selected{% endif %}'
+            data-id='{{ forloop.index }}'
+            tabindex='0'
+          >
+            {%- if custom_icon_image != blank -%}
+              <img
+                class='product-details__tab-name-icon lazyload'
+                {% render 'image-attributes', image: custom_icon_image, size: 'small' %}
+              >
+            {%- elsif icon != 'none' -%}
+              {% render 'icon-pack', icon: icon, class: 'product-details__tab-name-icon' %}
+            {%- endif -%}
+            {{- block.settings.title }}
+          </div>
+        {%- endfor -%}
+      </div>
+
+      <carousel-component
+        class='carousel product-details__tab-name-carousel'
+        data-contain-scroll='trimSnaps'
+        data-section-id='{{ section.id }}'
+        with-stop-on-hover
+      >
+        <div
+          class='carousel__viewport carousel__viewport--overflow embla'
+          data-carousel-viewport
+        >
+          <div class='carousel__container' data-carousel-container>
+            {%- for block in product_details_blocks -%}
+              {% assign custom_icon_image = block.settings.custom_icon_image %}
+              {% assign icon = block.settings.icon %}
+
+              <div class='product-details__tab-name-carousel-slide carousel__slide'>
+                <div
+                  data-tabs-name
+                  class='tab-name product-details__tab-name {% if forloop.index == 1 %}selected{% endif %}'
+                  data-id='{{ forloop.index }}'
+                  tabindex='0'
+                >
+                  {%- if custom_icon_image != blank -%}
+                    <img
+                      class='product-details__tab-name-icon lazyload'
+                      {% render 'image-attributes', image: custom_icon_image, size: 'small' %}
+                    >
+                  {%- elsif icon != 'none' -%}
+                    {% render 'icon-pack', icon: icon, class: 'product-details__tab-name-icon' %}
+                  {%- endif -%}
+                  {{ block.settings.title }}
+                </div>
+              </div>
+            {%- endfor -%}
+          </div>
+        </div>
+      </carousel-component>
+
+      <div class='tabs product-details__tabs' data-tabs-container>
+        <template data-tabs-elements-template>
+          {%- for block in product_details_blocks offset: 1 -%}
+            {%- case block.type -%}
+              {%- when 'pd_description' -%}
+                <tab-with-dynamic-height
+                  class='tab product-details__tab block-{{block.id}}'
+                  aria-hidden='true'
+                  data-id='{{ forloop.index | plus: 1 }}'
+                >
+                  <div
+                    data-tabs-element-content
+                    class='rte product-details__rte body-font-weight-from-global-settings'
+                    {{ block.shopify_attributes }}
+                  >
+                    {{ product.description }}
+                  </div>
+                </tab-with-dynamic-height>
+              {%- when 'pd_content_tab' -%}
+                <tab-with-dynamic-height
+                  class='tab product-details__tab block-{{block.id}}'
+                  aria-hidden='true'
+                  data-id='{{ forloop.index | plus: 1 }}'
+                >
+                  {%- assign image = block.settings.image -%}
+                  {%- assign video = block.settings.video -%}
+                  {%- assign page = block.settings.page -%}
+                  {%- assign text = block.settings.text -%}
+
+                  <div
+                    class='product-details__content-tab-content body-font-weight-from-global-settings'
+                    data-tabs-element-content
+                    {{ block.shopify_attributes }}
+                  >
+                    {% if text != blank %}
+                      <div class='rte product-details__rte'>
+                        {{ text }}
+                      </div>
+                    {% endif %}
+
+                    {% if page != blank %}
+                      <div class='rte rte--page product-details__rte'>
+                        {{ page.content }}
+                      </div>
+                    {% endif %}
+
+                    {% if video != blank %}
+                      {% render 'video-with-alt', video: video, class: 'image product-details__image' %}
+                    {% elsif image != blank %}
+                      <img
+                        class='image product-details__image lazyload'
+                        {% render 'image-attributes', image: image %}
+                      >
+                    {% endif %}
+                  </div>
+                </tab-with-dynamic-height>
+              {%- when 'pd_faq' -%}
+                <tab-with-dynamic-height
+                  class='tab product-details__tab block-{{block.id}}'
+                  aria-hidden='true'
+                  data-id='{{ forloop.index | plus: 1 }}'
+                >
+                  <div
+                    data-tabs-element-content
+                    class='product-details__content-tab-content body-font-weight-from-global-settings'
+                    {{ block.shopify_attributes }}
+                  >
+                    {% for i in (1..10) %}
+                      {% capture question_var %}question{{ i }}{% endcapture %}
+                      {% capture answer_var %}answer{{ i }}{% endcapture %}
+                      {% assign question = block.settings[question_var] %}
+                      {% assign answer = block.settings[answer_var] %}
+                      {% if question and answer %}
+                        <accordeon-component
+                          class='accordeon-plus {% unless forloop.last %} accordeon-plus--bottom-bordered{% endunless %} {% unless forloop.first %} accordeon-plus--top-bordered{% endunless %} block-{{block.id}}'
+                          data-aria-expanded='{% if expand_first_collapsible_row and forloop.index == 1 %}true{% else %}false{% endif %}'
+                          data-section-id='{{ section.id }}'
+                          data-block-id='{{ block.id }}'
+                          {{ block.shopify_attributes }}
+                        >
+                          <accordeon-btn
+                            class='accordeon-plus__btn accordeon-plus__btn--small product-details__accordeon-btn'
+                            tabindex='0'
+                          >
+                            {{ question }}
+                            {% render 'icon', icon_name: 'plus', class: 'accordeon-plus__icon' %}
+                          </accordeon-btn>
+                          <div class='accordeon-plus__content-wrap' data-accordeon-content-wrapper>
+                            <div class='accordeon-plus__content product-details__accordeon-content' data-accordeon-content>
+                              <div class='rte product-details__rte body-font-weight-from-global-settings'>
+                                {{ answer }}
+                              </div>
+                            </div>
+                          </div>
+                        </accordeon-component>
+                      {% endif %}
+                    {% endfor %}
+                  </div>
+                </tab-with-dynamic-height>
+              {%- when 'pd_custom_liquid' -%}
+                <tab-with-dynamic-height
+                  class='tab product-details__tab block-{{block.id}}'
+                  aria-hidden='true'
+                  data-id='{{ forloop.index | plus: 1 }}'
+                >
+                  <div
+                    class='rte product-details__rte body-font-weight-from-global-settings'
+                    data-tabs-element-content
+                    {{ block.shopify_attributes }}
+                  >
+                    {{ block.settings.custom_liquid }}
+                  </div>
+                </tab-with-dynamic-height>
+            {%- endcase -%}
+          {%- endfor -%}
+        </template>
+
+        {%- case first_block.type -%}
+          {%- when 'pd_description' -%}
+            <tab-with-dynamic-height
+              class='tab product-details__tab block-{{first_block.id}}'
+              aria-hidden='false'
+              data-id='1'
+            >
+              <div
+                class='rte product-details__rte body-font-weight-from-global-settings'
+                data-tabs-element-content
+                {{ first_block.shopify_attributes }}
+              >
+                {{ product.description }}
+              </div>
+            </tab-with-dynamic-height>
+          {%- when 'pd_content_tab' -%}
+            <tab-with-dynamic-height
+              class='tab product-details__tab block-{{first_block.id}}'
+              aria-hidden='false'
+              data-id='1'
+            >
+              {%- assign image = first_block.settings.image -%}
+              {%- assign video = first_block.settings.video -%}
+              {%- assign page = first_block.settings.page -%}
+              {%- assign text = first_block.settings.text -%}
+
+              <div
+                class='product-details__content-tab-content body-font-weight-from-global-settings'
+                data-tabs-element-content
+                {{ first_block.shopify_attributes }}
+              >
+                {% if text != blank %}
+                  <div class='rte product-details__rte'>
+                    {{ text }}
+                  </div>
+                {% endif %}
+
+                {% if page != blank %}
+                  <div class='rte rte--page product-details__rte'>
+                    {{ page.content }}
+                  </div>
+                {% endif %}
+
+                {%- if image != blank or video != blank -%}
+                  {% if video != blank %}
+                    {% render 'video-with-alt', video: video, class: 'image product-details__image' %}
+                  {% elsif image != blank %}
+                    <img
+                      class='image product-details__image lazyload'
+                      {% render 'image-attributes', image: image %}
+                    >
+                  {% endif %}
+                {%- endif -%}
+              </div>
+            </tab-with-dynamic-height>
+          {%- when 'pd_faq' -%}
+            <tab-with-dynamic-height
+              class='tab product-details__tab block-{{ first_block.id }}'
+              aria-hidden='false'
+              data-id='1'
+            >
+              <div
+                class='product-details__content-tab-content body-font-weight-from-global-settings'
+                data-tabs-element-content
+                {{ first_block.shopify_attributes }}
+              >
+                {% for i in (1..10) %}
+                  {% capture question_var %}question{{ i }}{% endcapture %}
+                  {% capture answer_var %}answer{{ i }}{% endcapture %}
+                  {% assign question = first_block.settings[question_var] %}
+                  {% assign answer = first_block.settings[answer_var] %}
+                  {% if question and answer %}
+                    <accordeon-component
+                      class='accordeon-plus {% unless forloop.last %} accordeon-plus--bottom-bordered{% endunless %} {% unless forloop.first %} accordeon-plus--top-bordered{% endunless %} block-{{first_block.id}}'
+                      data-aria-expanded='{% if expand_first_collapsible_row and forloop.index == 1 %}true{% else %}false{% endif %}'
+                      data-section-id='{{ section.id }}'
+                      data-block-id='{{ first_block.id }}'
+                      {{ first_block.shopify_attributes }}
+                    >
+                      <accordeon-btn
+                        class='accordeon-plus__btn accordeon-plus__btn--small product-details__accordeon-btn'
+                        tabindex='0'
+                      >
+                        {{ question }}
+                        {% render 'icon', icon_name: 'plus', class: 'accordeon-plus__icon' %}
+                      </accordeon-btn>
+                      <div class='accordeon-plus__content-wrap' data-accordeon-content-wrapper>
+                        <div class='accordeon-plus__content product-details__accordeon-content' data-accordeon-content>
+                          <div class='rte product-details__rte body-font-weight-from-global-settings'>
+                            {{ answer }}
+                          </div>
+                        </div>
+                      </div>
+                    </accordeon-component>
+                  {% endif %}
+                {% endfor %}
+              </div>
+            </tab-with-dynamic-height>
+          {%- when 'pd_custom_liquid' -%}
+            <tab-with-dynamic-height
+              class='tab product-details__tab block-{{ first_block.id }}'
+              aria-hidden='false'
+              data-id='1'
+            >
+              <div
+                class='rte product-details__rte body-font-weight-from-global-settings'
+                data-tabs-element-content
+                {{ first_block.shopify_attributes }}
+              >
+                {{ first_block.settings.custom_liquid }}
+              </div>
+            </tab-with-dynamic-height>
+        {%- endcase -%}
+      </div>
+    </tabs-component>
+  {%- else -%}
+    {%- for block in product_details_blocks -%}
+      {% assign custom_icon_image = block.settings.custom_icon_image %}
+      {% assign icon = block.settings.icon %}
+
+      {%- case block.type -%}
+        {%- when 'pd_description' -%}
+          <accordeon-component
+            class='accordeon-plus {% unless forloop.last %} accordeon-plus--bottom-bordered{% endunless %} {% unless forloop.first %} accordeon-plus--top-bordered{% endunless %} block-{{block.id}}'
+            data-aria-expanded='{% if expand_first_collapsible_row and forloop.index == 1 %}true{% else %}false{% endif %}'
+            data-section-id='{{ section.id }}'
+            data-block-id='{{ block.id }}'
+            {{ block.shopify_attributes }}
+          >
+            <accordeon-btn
+              class='accordeon-plus__btn accordeon-plus__btn--small product-details__accordeon-btn'
+              tabindex='0'
+            >
+              {%- if custom_icon_image != blank -%}
+                <img
+                  class='accordeon-plus__btn-icon lazyload'
+                  {% render 'image-attributes', image: custom_icon_image, size: 'small' %}
+                >
+              {%- elsif icon != 'none' -%}
+                {% render 'icon-pack', icon: icon, class: 'accordeon-plus__btn-icon' %}
+              {%- endif -%}
+              {{ block.settings.title }}
+              {% render 'icon', icon_name: 'plus', class: 'accordeon-plus__icon' %}
+            </accordeon-btn>
+            <div class='accordeon-plus__content-wrap' data-accordeon-content-wrapper>
+              <div class='accordeon-plus__content product-details__accordeon-content' data-accordeon-content>
+                <div class='rte product-details__rte body-font-weight-from-global-settings'>
+                  {{ product.description }}
+                </div>
+              </div>
+            </div>
+          </accordeon-component>
+        {%- when 'pd_content_tab' -%}
+          <accordeon-component
+            class='accordeon-plus {% unless forloop.last %} accordeon-plus--bottom-bordered{% endunless %} {% unless forloop.first %} accordeon-plus--top-bordered{% endunless %} block-{{block.id}}'
+            data-aria-expanded='{% if expand_first_collapsible_row and forloop.index == 1 %}true{% else %}false{% endif %}'
+            data-section-id='{{ section.id }}'
+            data-block-id='{{ block.id }}'
+            {{ block.shopify_attributes }}
+          >
+            <accordeon-btn
+              class='accordeon-plus__btn accordeon-plus__btn--small product-details__accordeon-btn'
+              tabindex='0'
+            >
+              {%- if custom_icon_image != blank -%}
+                <img
+                  class='accordeon-plus__btn-icon lazyload'
+                  {% render 'image-attributes', image: custom_icon_image, size: 'small' %}
+                >
+              {%- elsif icon != 'none' -%}
+                {% render 'icon-pack', icon: icon, class: 'accordeon-plus__btn-icon' %}
+              {%- endif %}
+              {{ block.settings.title }}
+              {% render 'icon', icon_name: 'plus', class: 'accordeon-plus__icon' %}
+            </accordeon-btn>
+            <div class='accordeon-plus__content-wrap' data-accordeon-content-wrapper>
+              <div class='accordeon-plus__content product-details__accordeon-content' data-accordeon-content>
+                {%- assign image = block.settings.image -%}
+                {%- assign video = block.settings.video -%}
+                {%- assign page = block.settings.page -%}
+                {%- assign text = block.settings.text -%}
+
+                <div class='product-details__content-tab-content body-font-weight-from-global-settings'>
+                  {% if text != blank %}
+                    <div class='rte product-details__rte'>
+                      {{ text }}
+                    </div>
+                  {% endif %}
+
+                  {% if page != blank %}
+                    <div class='rte rte--page product-details__rte'>
+                      {{ page.content }}
+                    </div>
+                  {% endif %}
+
+                  {% if video != blank %}
+                    {% render 'video-with-alt', video: video, class: 'image product-details__image' %}
+                  {% elsif image != blank %}
+                    <img
+                      class='image product-details__image lazyload'
+                      {% render 'image-attributes', image: image %}
+                    >
+                  {% endif %}
+                </div>
+              </div>
+            </div>
+          </accordeon-component>
+        {%- when 'pd_faq' -%}
+          <accordeon-component
+            class='accordeon-plus {% unless forloop.last %} accordeon-plus--bottom-bordered{% endunless %} {% unless forloop.first %} accordeon-plus--top-bordered{% endunless %} block-{{block.id}}'
+            data-aria-expanded='{% if expand_first_collapsible_row and forloop.index == 1 %}true{% else %}false{% endif %}'
+            data-section-id='{{ section.id }}'
+            data-block-id='{{ block.id }}'
+            {{ block.shopify_attributes }}
+          >
+            <accordeon-btn
+              class='accordeon-plus__btn accordeon-plus__btn--small product-details__accordeon-btn'
+              tabindex='0'
+            >
+              {%- if custom_icon_image != blank -%}
+                <img
+                  class='accordeon-plus__btn-icon lazyload'
+                  {% render 'image-attributes', image: custom_icon_image, size: 'small' %}
+                >
+              {%- elsif icon != 'none' -%}
+                {% render 'icon-pack', icon: icon, class: 'accordeon-plus__btn-icon' %}
+              {%- endif -%}
+              {{ block.settings.title }}
+              {% render 'icon', icon_name: 'plus', class: 'accordeon-plus__icon' %}
+            </accordeon-btn>
+            <div class='accordeon-plus__content-wrap' data-accordeon-content-wrapper>
+              <div class='accordeon-plus__content product-details__accordeon-content' data-accordeon-content>
+                {% for i in (1..10) %}
+                  {% capture question_var %}question{{ i }}{% endcapture %}
+                  {% capture answer_var %}answer{{ i }}{% endcapture %}
+                  {% assign question = block.settings[question_var] %}
+                  {% assign answer = block.settings[answer_var] %}
+                  {% if question and answer %}
+                    <accordeon-component
+                      class='accordeon-plus {% unless forloop.last %} accordeon-plus--bottom-bordered{% endunless %} {% unless forloop.first %} accordeon-plus--top-bordered{% endunless %}'
+                      data-aria-expanded='{% if expand_first_collapsible_row and forloop.index == 1 %}true{% else %}false{% endif %}'
+                      data-section-id='{{ section.id }}'
+                      data-block-id='{{ block.id }}'
+                    >
+                      <accordeon-btn
+                        class='accordeon-plus__btn accordeon-plus__btn--small product-details__accordeon-btn'
+                        tabindex='0'
+                      >
+                        {{ question }}
+                        {% render 'icon', icon_name: 'plus', class: 'accordeon-plus__icon' %}
+                      </accordeon-btn>
+                      <div class='accordeon-plus__content-wrap' data-accordeon-content-wrapper>
+                        <div class='accordeon-plus__content product-details__accordeon-content' data-accordeon-content>
+                          <div class='rte product-details__rte body-font-weight-from-global-settings'>
+                            {{ answer }}
+                          </div>
+                        </div>
+                      </div>
+                    </accordeon-component>
+                  {% endif %}
+                {% endfor %}
+              </div>
+            </div>
+          </accordeon-component>
+        {%- when 'pd_custom_liquid' -%}
+          <accordeon-component
+            class='accordeon-plus {% unless forloop.last %} accordeon-plus--bottom-bordered{% endunless %} {% unless forloop.first %} accordeon-plus--top-bordered{% endunless %} block-{{block.id}}'
+            data-aria-expanded='{% if expand_first_collapsible_row and forloop.index == 1 %}true{% else %}false{% endif %}'
+            data-section-id='{{ section.id }}'
+            data-block-id='{{ block.id }}'
+            {{ block.shopify_attributes }}
+          >
+            <accordeon-btn
+              class='accordeon-plus__btn accordeon-plus__btn--small product-details__accordeon-btn'
+              tabindex='0'
+            >
+              {%- if custom_icon_image != blank -%}
+                <img
+                  class='accordeon-plus__btn-icon lazyload'
+                  {% render 'image-attributes', image: custom_icon_image, size: 'small' %}
+                >
+              {%- elsif icon != 'none' -%}
+                {% render 'icon-pack', icon: icon, class: 'accordeon-plus__btn-icon' %}
+              {%- endif -%}
+              {{ block.settings.title }}
+              {% render 'icon', icon_name: 'plus', class: 'accordeon-plus__icon' %}
+            </accordeon-btn>
+            <div class='accordeon-plus__content-wrap' data-accordeon-content-wrapper>
+              <div class='accordeon-plus__content product-details__accordeon-content' data-accordeon-content>
+                <div class='rte product-details__rte body-font-weight-from-global-settings'>
+                  {{ block.settings.custom_liquid }}
+                </div>
+              </div>
+            </div>
+          </accordeon-component>
+      {%- endcase -%}
+    {%- endfor -%}
+  {%- endif -%}
+  {%- endif -%}
+</div>
