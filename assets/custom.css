@@ -5,3 +5,29 @@
   --BORDER: #E4E4E4
 }
 
+/* Product Details Tab Styling */
+.tab-name.selected {
+  color: var(--GREEN, #156571);
+}
+
+@media screen and (min-width:768px) {
+  .tab-name:hover {
+    color: var(--GREEN, #156571);
+  }
+}
+
+.product-details__tab-name {
+  border-bottom-color: var(--BORDER, #E4E4E4);
+}
+
+.product-details__tab-name.selected {
+  color: var(--GREEN, #156571);
+  border-bottom-color: var(--GREEN, #156571);
+}
+
+@media screen and (min-width:768px) {
+  .product-details__tab-name:hover {
+    color: var(--GREEN, #156571);
+  }
+}
+
