@@ -2,7 +2,7 @@
 
 The `product-details-snippet.liquid` has been created and integrated into your product template. To make it configurable through the Shopify theme editor, you need to add settings and block types to your main product section.
 
-## Step 1: Add Settings to Product Section
+## Step 1: Add Settings to Product Section.
 
 Add these settings to `sections/product.liquid` in the `settings` array (around line 200-300):
 
