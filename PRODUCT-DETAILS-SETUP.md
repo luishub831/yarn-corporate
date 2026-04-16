@@ -257,4 +257,4 @@ After adding these to your product section schema:
    - "Add block" button to add product detail blocks
    - Each block type will appear with its name (Description, Content Tab, FAQ, Custom Liquid)
 
-The product details will appear below the product images on the left side, with the product info staying sticky on the right.
+The product details will appear below the product images on the left side, with the product info staying sticky on the right
