@@ -4,7 +4,7 @@ The `product-details-snippet.liquid` has been created and integrated into your p
 
 ## Step 1: Add Settings to Product Section.
 
-Add these settings to `sections/product.liquid` in the `settings` array (around line 200-300):
+Add these settings to `sections/product.liquid` in the `settings` array (around line 200-300):.
 
 ```json
 {
