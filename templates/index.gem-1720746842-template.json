@@ -395,7 +395,7 @@
         "heading_size": "h3",
         "alignment": "center",
         "collection_list": [
-          "express-naidoc-2024-polos",
+          "express-polos",
           "naidoc-week-2024-t-shirts",
           "naidoc-week-2024-merch"
         ],
@@ -917,7 +917,7 @@
             "desktop_content_align": "left",
             "mobile_content_align": "left",
             "btn_text": "Shop Express Polos",
-            "btn_url": "shopify://collections/express-naidoc-2024-polos",
+            "btn_url": "shopify://collections/express-polos",
             "btn_style": "solid",
             "extra_btn_text": "Shop Express Merch",
             "extra_btn_url": "shopify://collections/naidoc-week-2024-merch",
